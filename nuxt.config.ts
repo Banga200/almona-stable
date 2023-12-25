@@ -9,7 +9,7 @@ export default defineNuxtConfig({
   },
   nitro: {
     devProxy: {
-      '/real-estate/' : process.env.BaseURL
+      '/api' : process.env.BaseURL,
     }
   },
   devtools: { enabled: true },

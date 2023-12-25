@@ -16,15 +16,15 @@ export default defineNuxtConfig({
   build: {
     transpile: ['vuetify', 'vue-toastification'],
   },
-  app: {
-    head: {
-      meta: [
-        { "http-equiv": "Content-Security-Policy",
-          content: "default-src 'self'; img-src data:;"
-        }
-      ]
-    }
-  },
+  // app: {
+  //   head: {
+  //     meta: [
+  //       { "http-equiv": "Content-Security-Policy",
+  //         content: "default-src 'self'; img-src data:;"
+  //       }
+  //     ]
+  //   }
+  // },
   components: [
     {
       path: '~/components',

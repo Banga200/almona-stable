@@ -1,0 +1,577 @@
+$primary-color: #198c9f;
+$primary-color-onHover: #005461;
+$light-primary: #0ebede;
+$bold-color: #00535c;
+$carousel-background: #00353b;
+$hero-background: #ffffff;
+$background-gray: rgb(184, 172, 172);
+$white: #fff;
+$box-shadow: 0px 3px 30px #2696a936;
+$border-radius: 16px;
+$text-color: #36939e;
+$light-color: #4fb0be;
+
+$liner-gredient: linear-gradient(139deg, #4fb0be 15%, #36939e 56%);
+
+@font-face {
+    font-family: "Almarai";
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url("../fonts/Almarai-Regular.ttf");
+}
+* {
+    letter-spacing: 0.001em;
+    list-style: none;
+}
+html{
+    scroll-behavior: smooth;
+}
+.heroSection .v-timeline-divider__after,
+.heroSection .v-timeline-divider__before {
+    background: $white;
+}
+body {
+    font-family: "Almarai", sans-serif;
+}
+.title {
+    font-size: 3rem;
+}
+#header {
+    background-color: transparent;
+    color: $white;
+}
+#header.backgroundColor {
+    color: black !important;
+    background-color: $white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3) !important;
+}
+// main {
+//     padding-top: 70px ;
+// }
+main.bg-gray {
+    background-color:#0f49500e;
+}
+main .v-container.heroSection {
+    min-height: 100vh;
+    padding-inline: 6rem;
+    // background-color: $hero-background;
+    position: relative;
+    overflow: hidden;
+    background-attachment: fixed;
+    background: $liner-gredient;
+    color: $white;
+    position: relative;
+    // &::after {
+    //     content: "";
+    //     position: absolute;
+    //     bottom: 0;
+    //     left: -340px;
+    //     width: 100%;
+    //     height: 70px;
+    //     transform: rotate(60deg);
+    //     background: $liner-gredient;
+    // }
+    // &>* {
+    //     color: $white;
+    // }
+    .hero-content {
+        h1 {
+            @extend .title;
+        }
+    }
+}
+
+.coma {
+    @extend .title;
+    position: relative;
+    background: linear-gradient(to right, $white 0% 1.0em, $light-primary 1.05em 1.65em, $white 0em 113%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.heroImage {
+    position: absolute;
+    right: -100px;
+    bottom: 0;
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+.heroButton {
+    color: $text-color !important;
+
+    &:hover{
+        background-color: $primary-color-onHover;
+        color: $white !important;
+    }
+}
+section {
+    padding: 4rem 0;
+}
+
+// ِAbout Us Section
+.subTitle {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    padding: 10px 0;
+    font-size: 2rem;
+    margin: 2rem 0;
+    &::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        right: 0;
+        width: 100%;
+        height: 5px;
+        background: $liner-gredient;
+    }
+    
+}
+p {
+    line-height: 45px;
+    opacity: .8;
+    color: #00535c;
+}
+#aboutus {
+    position: relative;
+    min-height: 80vh;
+    p {
+        
+        max-width: 58%;
+    }
+    h1 {
+        color: $bold-color;
+        margin: 1rem 0 2rem;
+    }
+} 
+.line {
+    position: absolute;
+    height: 8px;
+    background-color: $text-color;
+}
+
+.top_long_line {
+    width: 15%;
+    left: 0;
+}
+.top_short_line {
+    width: 10%;
+    left: 0;
+    top: 78px;
+}
+.bottom_long_line {
+    width: 40%;
+    bottom: 0;
+}
+.bottom_short_line {
+    width: 30%;
+    bottom: 12px;
+}
+// Vision And Message Section 
+
+#visionAndmessage {
+    padding-block: 6rem;
+
+    .subTitle {
+        color: $bold-color;
+        &::after {
+            width: 0%;
+            padding: 0;
+        }
+    }
+}
+.card-hold-text {
+    background-color: $white;
+    box-shadow: $box-shadow;
+    padding: 1.5rem;
+    border-radius: $border-radius;
+    height: 100%;
+    width: 80%;
+    text-align: center;
+    position: relative;
+
+    i {
+        color: $primary-color;
+        font-size: 4rem;
+    }
+    .subTitle{
+        margin: .8rem 0 0;
+        padding: 0;
+        font-size: 2rem;
+    }
+    p {
+        width: 100%;
+        line-height: 38px;
+        margin: 1.5rem auto;
+    }
+    .top_long_line{
+        height: 5px;
+        top: 15px;
+    }
+    .top_short_line{
+        height: 5px;
+        top: 26px;
+    }
+}
+
+// Goals Section 
+ 
+.goal {
+    position: relative;
+    .number {
+        position: absolute;
+        top: -15px;
+        right: -0px;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.5rem;
+        background-color: $primary-color;
+        color: $white;
+    }
+    p{
+        margin-top: 1rem;
+    }
+}
+
+// Services Section 
+.card-no-shadow {
+    border-radius: $border-radius;
+    height: 100%;
+    width: 100%;
+    padding: 2rem;
+    font-size: .8rem;
+    transition: all .3s ease-in-out;
+    .v-icon {
+        color: $primary-color;
+        width: 50px;
+        font-weight: bold;
+    }
+
+    p{
+        margin-top: 1rem;
+    }
+
+   &:hover {
+    background:$primary-color;
+    color: $white !important;
+    transition: all .3s ease-in-out;
+    .v-icon {
+        color: $white;
+    }
+    p {
+        opacity: 1;
+        color: $white;
+    }
+   }
+}
+
+// Footer Section 
+#footer {
+    padding: 6rem 0 1rem;
+    background-color: $primary-color-onHover;
+    position: relative;
+    color: $white;
+
+    h1 {
+        font-size: 2rem;
+    }
+    p {
+        color: $white;
+        opacity: 1;
+    }
+}
+
+
+// Real Estate عقارات 
+.image_container {
+    width: 230px;
+    height: 175px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    img {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: fill;
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+    }
+
+    .image_feature{
+        background-color: rgba(0, 0, 0, 0.863);
+        color: white;
+        border-radius: 4px;
+        padding: 4px 8px;
+        position: absolute;
+        font-size: 14px;
+        
+    }
+    .left{
+        left: 5px;
+        bottom: 5px;
+    }
+    .right {
+        right: 5px;
+        bottom: 5px;
+        opacity: 0;
+        transition: all .2s ease-in-out;
+    }
+
+    &:hover{
+        .right {opacity: 1;}
+    }
+}
+.RealEstate_card {
+    .v-card-subtitle {
+        padding: 0 3px;
+    }
+
+    .content {
+        overflow: hidden;
+    }
+    .v-btn__content {
+        grid-area: auto;
+    }
+    .price {
+        color: $bold-color;
+    }
+}
+.RealEstate_card.height {
+    height: 200px;
+}
+
+.RealEstate_images_grid {
+    .v-img {
+        border-radius: 4px;
+    }
+}
+
+.carousel_card {
+    background-color: $carousel-background !important;
+    overflow-y: hidden !important;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+
+    .close_btn {
+        position: absolute;
+        left: 16px;
+        top: 10px;
+        z-index: 999;
+    }
+    .grid_container {
+        
+    }
+    .row_images {
+        max-height: 100%;
+       
+        .v-row{
+            gap: .5rem;
+            overflow-y: auto;
+            max-height: 90%;
+
+            &::-webkit-scrollbar {
+                width: .5em;
+              }
+            
+            &::-webkit-scrollbar-thumb {
+                background-color: $primary-color;
+                // outline: 1px solid $bold-color;
+            }
+        }
+        li {
+            height: 100px;
+            width: 100px;
+            .v-responsive{
+                width: 100%;
+                height: 100%;
+            }
+        }
+        img {
+            width: 100%;
+            height: 100%;
+            opacity: 0.7;
+            border-radius: 4px;
+            object-fit: fill;
+            &:hover {
+                opacity: 1;
+                border: 2px solid $white;
+                cursor: pointer;
+            }
+        }
+    }
+    
+}
+
+// Registratio Layout 
+.registration-left{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    text-align: left;
+    background: $liner-gredient;
+    z-index: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    .title {
+        color: $white;
+    }
+}
+
+// Advertisment 
+.preview_images_container {
+    max-height: 200px;
+    overflow-y: auto;
+}
+.v-card#Filter_Card label.v-label ,.v-card#Filter_Card .v-card-subtitle {
+    font-size:12px;
+}
+.v-card#Filter_Card .v-field--appended {
+    padding-inline-end: 0px
+}
+.hover_effect {
+    transition: all .3s ease-in-out;
+}
+.hover_effect:hover {
+    transition: all .3s ease-in-out;
+    transform: scale(1.05);
+}
+// Transtiosns animation
+
+// For Groups
+.list-enter-active,
+.list-leave-active {
+    transition: all 3s ease;
+}
+.list-enter-from,
+.list-leave-to {
+    opacity: 0;
+    transform: translateX(30px);
+}
+// for Single Elemnts 
+.slide-fade-enter-active {
+    transition: all 0.3s ease-out;
+  }
+  
+  .slide-fade-leave-active {
+    transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
+  }
+  
+  .slide-fade-enter-from,
+  .slide-fade-leave-to {
+    transform: translateX(20px);
+    opacity: 0;
+  }
+
+
+// Mobile
+@media (max-width: 321px) {
+    .carousel_card .row_images {
+        li {
+            width: 130px;
+        }
+    }
+}
+@media (max-width: 426px) {
+    .title {
+        font-size: 2rem;
+    }
+    main .v-container.heroSection {
+        padding: 2rem !important;
+        &::after {
+            bottom: 50px !important;
+            left: -150px !important;
+        }
+    }
+    .coma {
+        &::after {
+            left: 14px;
+            top: -10px;
+        }
+    }
+    .heroImage {
+        width: 250px !important;
+        height: 250px !important;
+    }
+    #aboutus {
+        p {
+            max-width: 100%;
+        }
+    }
+    .carousel_card .row_images {
+        li {
+            width: 120px;
+        }
+    }
+}
+// Tablets
+@media (max-width: 769px) {
+    main .v-container.heroSection {
+        padding: 4rem;
+        &::after {
+            bottom: 120px;
+            left: -260px;
+        }
+    }
+    .heroImage {
+        right: -50px;
+        bottom: 0;
+        width: 300px;
+        height: 300px;
+    }
+    #aboutus {
+        p {
+            max-width: 100%;
+        }
+    }
+    .card-hold-text {
+        width: 100%;
+        padding: 1rem;
+    }
+}
+@media (min-width: 1023px) {
+    main .v-container.heroSection {
+        &::after {
+            bottom: 300px;
+            left: -400px;
+        }
+    }
+    .title{
+        font-size: 2.5rem;
+    }
+}
+
+@media (min-width: 1438px) {
+    main .v-container.heroSection {
+        &::after {
+            left: -420px;
+        }
+    }
+    .title{
+        font-size: 3rem;
+    }
+}
+@media (min-width: 1438px) {
+    main .v-container.heroSection {
+        &::after {
+            left: -670px;
+        }
+    }
+}
+
+@media (min-width: 1920px) {
+    main .v-container.realEstate-container  {
+        max-width: 1360px;
+    }
+}

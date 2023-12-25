@@ -45,12 +45,12 @@ export default defineNuxtConfig({
     },
     //...
   ],
-  //  proxy:{
-  //   options: {
-  //     target: process.env.BaseURL,
-  //     changeOrigin: true,
-  //   }
-  //  },
+   proxy:{
+    options: {
+      target: process.env.BaseURL,
+      changeOrigin: true,
+    }
+   },
   vite: {
     vue: {
       template: {

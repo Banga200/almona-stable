@@ -33,7 +33,7 @@ function changeTab(value) {
         <v-sheet rounded class="RealEstate_card w-100" :class="{ 'height': !mobile }">
             <v-row class="ma-0 h-100">
                 <v-col class="image_container " :class="{ 'h-100': !mobile }" cols="12" sm="4" lg="4">
-                    <img class="h-100" :src="images.length > 0 ? `${images[0].url}` : ''"
+                    <v-img class="h-100" :src="images.length > 0 ? `${images[0].url}` : ''"
                         :alt="props.advertisment.imageIDs.length > 0 ? props.advertisment.imageIDs[0].description : ''"
                         loading="lazy" @click="toggleMoreDetails(), changeTab(2)" />
                     <a class="image_feature right" @click="toggleMoreDetails(); changeTab(2)">صور أكثر

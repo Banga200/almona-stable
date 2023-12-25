@@ -7,11 +7,11 @@ export default defineNuxtConfig({
       'composables/**'
     ]
   },
-  nitro: {
-    devProxy: {
-      '/api' : process.env.BaseURL,
-    }
-  },
+  // nitro: {
+  //   devProxy: {
+  //     '/api' : process.env.BaseURL,
+  //   }
+  // },
   devtools: { enabled: true },
   build: {
     transpile: ['vuetify', 'vue-toastification'],
@@ -45,12 +45,12 @@ export default defineNuxtConfig({
     },
     //...
   ],
-   proxy:{
-    options: {
-      target: process.env.BaseURL,
-      changeOrigin: true,
-    }
-   },
+  //  proxy:{
+  //   options: {
+  //     target: process.env.BaseURL,
+  //     changeOrigin: true,
+  //   }
+  //  },
   vite: {
     vue: {
       template: {

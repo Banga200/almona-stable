@@ -1,10 +1,16 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify';
+import { defineNuxtConfig } from 'nuxt/config';
 export default defineNuxtConfig({
   imports: {
     dirs: [
       'composables/**'
     ]
+  },
+  nitro: {
+    devProxy: {
+      '/real-estate/' : process.env.BaseURL
+    }
   },
   devtools: { enabled: true },
   build: {

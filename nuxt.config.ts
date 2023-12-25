@@ -36,7 +36,7 @@ export default defineNuxtConfig({
       apiBase: process.env.BaseURL
     }
   },
-  modules: [ '@pinia/nuxt',
+  modules: [ '@pinia/nuxt','nuxt-proxy',
     (_options, nuxt) => {
       nuxt.hooks.hook('vite:extendConfig', (config) => {
         // @ts-expect-error
@@ -44,7 +44,13 @@ export default defineNuxtConfig({
       })
     },
     //...
-  ], 
+  ],
+   proxy:{
+    options: {
+      target: process.env.BaseURL,
+      changeOrigin: true,
+    }
+   },
   vite: {
     vue: {
       template: {

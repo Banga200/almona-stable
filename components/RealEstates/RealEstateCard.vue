@@ -76,7 +76,7 @@ function changeTab(value) {
                 <v-col cols="12" sm="3" lg="2" class="text-center d-flex flex-column justify-end align-center" style="position: relative;">
                     <!-- طلب عقار  -->
                     <v-alert variant="tonal" width="100%"  class="text-center request_alert justify-center pa-3"
-                        color="teal-darken-3" title="طلب عقار" v-if="$route.name === 'RealEstateRequest'"></v-alert>
+                        color="teal-darken-3" title="طلب عقار" v-if="props.advertisment.advertisementTypeId === 2"></v-alert>
                     <v-spacer />
                     <v-card-title class="price">{{ props.advertisment.price }} {{ props.advertisment.currency
                     }}</v-card-title>

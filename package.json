@@ -21,6 +21,7 @@
     "@mdi/font": "^7.3.67",
     "@pinia/nuxt": "^0.5.1",
     "jwt-decode": "^4.0.0",
+    "nuxt-proxy": "^0.4.1",
     "pinia": "^2.1.7",
     "vue-toastification": "^2.0.0-rc.5",
     "vue3-cookies": "^1.0.6"

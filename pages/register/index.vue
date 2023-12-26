@@ -3,7 +3,10 @@ import { ref, watch } from 'vue';
 import {useUserStore} from '~/stores/auth'
 import { useRouter } from 'vue-router';
 definePageMeta({
-    layout: 'registration'
+   name: 'register', 
+   breadcrumb: 'تسجبل جديد',
+   middleware: ['auth'],
+   layout: 'registration'
 })
 const userStore = useUserStore();
 const router = useRouter();

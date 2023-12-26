@@ -80,6 +80,7 @@ function changePasswordDialogState(value) {
                         {{ item.title }}
                     </v-list-item>
                     <v-spacer />
+                    <v-btn stacked prepend-icon="mdi-view-dashboard-outline" class="ml-10" v-if="isUser" to="/dashboard/orders">لوحة التحكم</v-btn>
                     <v-btn prepend-icon="mdi-account-outline" variant="outlined" to="/login" rounded class="mr-2 mt-10" v-if="!isUser">
                         تسجيل الدخول
                     </v-btn>
@@ -112,7 +113,9 @@ function changePasswordDialogState(value) {
                                 <v-btn prepend-icon="mdi-plus" to="/real-estate/advertis" stacked>عرض إعلان</v-btn>
                                 <!-- <v-btn prepend-icon="mdi-note-edit-outline">إرسال طلب </v-btn> -->
                                 <!-- زر خاص للمسوؤل  -->
+                                
                             </v-row>
+                            <v-btn stacked prepend-icon="mdi-view-dashboard-outline" class="ml-10" v-if="isUser" to="/dashboard/orders">لوحة التحكم</v-btn>
                             <v-btn rounded variant="outlined" :size="mobile ? 'small' : 'large'" to="/login"
                                 prepend-icon="mdi-account-outline" v-if="!isUser">
                                 تسجيل الدخول

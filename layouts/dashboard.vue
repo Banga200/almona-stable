@@ -5,6 +5,18 @@ import { useUserStore } from '~/stores/auth';
 const userStore = useUserStore();
 const drawer = ref(false);
 const openPasswordDialog = ref(false)
+const items = ref([
+    {
+        title: "الطلبات",
+        link: '/dashboard/orders',
+        icon: 'mdi-cart'
+    },
+    {
+        title: "المستخدمين",
+        link: '/dashboard/users',
+        icon: 'mdi-account'
+    },
+])
 const isUser = computed(() => {
 
     if (userStore.getUser) {
@@ -35,16 +47,25 @@ function changePasswordDialogState(value) {
 
             </v-container>
         </v-app-bar>
-    
-    <v-navigation-drawer v-model="drawer" location="right" rail>
-        <v-list :items="items"></v-list>
-    </v-navigation-drawer>
 
-    <v-main>
-        <v-container fluid>
-            <slot />
-        </v-container>
-        <change-password-dialog :open="openPasswordDialog" @PasswordDialog="changePasswordDialogState" />
-    </v-main>
-</v-app>
+        <v-navigation-drawer v-model="drawer" location="right">
+            <v-list>
+                <v-list-item  title="شركة المنى"
+                    subtitle="للتجارة والخدمات المحدودة"></v-list-item>
+            </v-list>
+            <v-list>
+                <v-list-group>
+                    <v-list-item v-for="item in items" :key="item.title" :prepend-icon="item.icon" :to="item.link"
+                        color="primary" clas style="padding-inline: 20px !important;">{{ item.title }}</v-list-item>
+                </v-list-group>
+            </v-list>
+        </v-navigation-drawer>
+
+        <v-main>
+            <v-container fluid>
+                <slot />
+            </v-container>
+            <change-password-dialog :open="openPasswordDialog" @PasswordDialog="changePasswordDialogState" />
+        </v-main>
+    </v-app>
 </template>

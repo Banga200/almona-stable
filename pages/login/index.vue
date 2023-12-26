@@ -3,7 +3,10 @@ import { ref, computed } from 'vue';
 import { useUserStore } from '~/stores/auth'
 const userStore = useUserStore();
 definePageMeta({
-    layout: 'registration'
+   name: 'login', 
+   breadcrumb: 'تسجبل الدخول',
+   middleware: ['auth'],
+   layout: 'registration'
 })
 const user = ref({
     username: '',

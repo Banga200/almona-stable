@@ -1,6 +1,5 @@
 <script setup>
 import { ref, watch, onMounted,onBeforeUnmount } from 'vue';
-import { id } from 'vuetify/lib/locale/index.mjs';
 import { useAdvertismentStore } from '~/stores/advertisment';
 import { useCategoryStore } from '~/stores/category';
 import { useSubCategoryStore } from '~/stores/subCategory';
@@ -75,11 +74,8 @@ const categoryLoading = computed(() => { return categoryStore.getLoading });
 
 onMounted(() => {
     document.getElementsByClassName("card_radios")[0].classList.add("text-teal");
-    formData.value.advertisementTypeId = route.params._slug === "عرض إعلان" ? 1:2;
+    formData.value.advertisementTypeId = 1
 });
-watch(categoryRadio, (value) => {
-    subCategoryStore.GetAllSubCategoryByID(id)
-})
 watch(category, (value) => {
     categoryStore.GetGategoryByID(value.id)
 })

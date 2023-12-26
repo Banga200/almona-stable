@@ -7,7 +7,12 @@ export default defineNuxtRouteMiddleware((to,from )=> {
     const token = useCookie('token').value;
     // skip middleware on server
     if (process.server) return
-    
+    if (to.name === 'register' || to.name === 'login') {
+            if (user || token) {
+               return navigateTo('/')
+            }
+           else { return;}
+    }
     if (user || token) {
         if (to.name === 'AddAdvertisment') {
             return;

@@ -24,7 +24,6 @@ export const useUserStore = defineStore('User', () => {
     const getError = computed(() => { return Error.value })
     // Actions 
     async function login(payload) {
-        console.log(payload)
         Loading.value = true
         try {
             const { data: user, error } = await useFetch(`${BaseURL}/Auth/login`, {
@@ -34,10 +33,10 @@ export const useUserStore = defineStore('User', () => {
                 method: "POST",
                 body: JSON.stringify(payload)
             })
+            console.log(user)
             if (error.value) {
                 if (error.value.data.code === 1005) {
                     ComposableError.handelErros(error.value)
-                    console.log(error.value.data)
                     UserEmail.value = error.value.data.content.email
                     SendVerifyCode(error.value.data.content.userId);
                     Loading.value =false
@@ -49,7 +48,6 @@ export const useUserStore = defineStore('User', () => {
 
             else {
                 const decodeUser = jwtDecode(user.value.content.accessToken);
-                console.log(user.value.content)
                 setTokenToCookies(user.value.content, decodeUser);
                 User.value = decodeUser;
                 Token.value = user.value.content.accessToken

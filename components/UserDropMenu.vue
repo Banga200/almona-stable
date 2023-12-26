@@ -8,11 +8,17 @@ const props = defineProps(['User']);
 const emit = defineEmits(['PasswordDialog'])
 const userItems = ref([
     // { title: 'الملف الشخصي', icon: 'mdi-card-account-details-outline', link: '/user/profile' },
-    { type: 'item', title: 'إعلاناتي', icon: 'mdi-sign-real-estate', link: '/user/advertisement', value: 1 },
-    { type: 'item', title: 'تغير كلمة السر', icon: 'mdi-lock', link: 'changePassword', value: 1 },
+    { type: 'item', title: 'إعلاناتي', icon: 'mdi-sign-real-estate', link: '/real-estate/عقارات', value: 1 },
+    { type: 'item', title: 'تغير كلمة السر', icon: 'mdi-lock', link: 'changePassword', value: 2 },
     { type: 'divider' },
-    { type: 'item', title: 'تسجيل الخروج', icon: 'mdi-logout', link: 'logout', value: 2 },
+    { type: 'item', title: 'تسجيل الخروج', icon: 'mdi-logout', link: 'logout', value: 3 },
 ])
+const isUser = computed(() => {
+
+if (userStore.getUser) {
+    return userStore.getUser
+}
+})
 const fullName = computed(() => {
     if (props.User) {
         return `${props.User.FirstName}`
@@ -26,9 +32,16 @@ function userMenu(url) {
         emit('PasswordDialog', true)
     }
     else {
-        router.push(url)
+        if (url === '/real-estate/عقارات') {
+            if (isUser) {
+                router.push('/real-estate/عقارات')
+                userStore
+            }
+        }
+        
     }
 }
+
 </script>
 <template>
     <v-menu transition="slide-y-transition">

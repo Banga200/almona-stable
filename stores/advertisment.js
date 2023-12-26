@@ -160,6 +160,26 @@ const ImagesCounter = ref(0)
       loading.value = false
     }
   }
+  async function GetAllAdvertismentsByUser(userId) {
+    loading.value = true;
+    try {
+      const { data: advertisments, error } = await useFetch(`${BaseURL}/Advertisements/`, {params: {userId: userId}})
+      if (error.value) {
+        ComposableError.handelErros(error.value)
+        loading.value = false
+      }
+      else{
+        loading.value = false;
+        Advertisments.value = advertisments.value.content;
+      }
+      
+
+    }
+    catch (error) {
+      ComposableError.handelErros(error)
+      loading.value = false
+    }
+  }
   function setCounterImage(number) {
     ImagesCounter.value = number
   }

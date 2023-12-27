@@ -13,6 +13,7 @@ export const useUserStore = defineStore('User', () => {
     const ComposableError = useError()
     // States 
     const User = ref(null);
+    const UserList = ref([])
     const Token = ref('')
     const Loading = ref(false);
     const UserEmail = ref('')
@@ -22,6 +23,7 @@ export const useUserStore = defineStore('User', () => {
     const getToken = computed(() => { return Token.value })
     const getLaoding = computed(() => { return Loading.value })
     const getError = computed(() => { return Error.value })
+    const getUserList = computed(() => { return UserList.value })
     // Actions 
     async function login(payload) {
         Loading.value = true
@@ -138,6 +140,71 @@ export const useUserStore = defineStore('User', () => {
             Loading.value = false
         }
     }
+    async function GetAllUsers() {
+        Loading.value = true
+        try {
+            const { data: users, error } = await useFetch(`${BaseURL}/UserManagement/GetUsersAsync`, {
+                headers: {
+                    'Content-Type': "application/json",
+                    "Authorization": `Bearer ${Token.value}`
+                },
+            })
+            console.log(users)
+            if (error.value) {
+                ComposableError.handelErros(error.value)
+                Loading.value = false
+            }
+
+            else {
+                UserList.value = users.value.content
+                Loading.value = false;
+            }
+
+        }
+        catch (error) {
+            ComposableError.handelErros(error)
+            Loading.value = false
+        }
+    }
+    // Delete User
+    async function DeleteUser(id) {
+        Loading.value = true
+        try {
+            const { data: user, error } = await useFetch(`${BaseURL}/UserManagement`, {
+                headers: {
+                    'Content-Type': "application/json",
+                    "Authorization": `Bearer ${Token.value}`
+                },
+                params: {id: id},
+                method: "DELETE"
+            })
+            if (error.value) {
+                ComposableError.handelErros(error.value)
+                Loading.value = false
+            }
+
+            else {
+                toast.success("تم حذف الحساب بنجاح")
+                const index = UserList.value.findIndex(item => {
+                    return item.id === id
+                  })
+                  console.log(index)
+                  if (index !== -1) {
+                    UserList.value.splice(index, 1)
+                    console.log(UserList.value)
+                    console.log('Object removed:');
+                  } else {
+                    console.log('Object not found');
+                  }
+                Loading.value = false;
+            }
+
+        }
+        catch (error) {
+            ComposableError.handelErros(error)
+            Loading.value = false
+        }
+    }
     function setTokenToCookies(token, decode) {
         const today = new Date();
         const cookie = useCookie('token', {
@@ -160,5 +227,5 @@ export const useUserStore = defineStore('User', () => {
         User.value = user,
         Token.value = token
     }
-    return { login, Register,setUser, SendVerifyCode,VerifyAccount, UserEmail,getLaoding,getError, getUser, getToken, RemoveUser }
+    return { login, Register,setUser, SendVerifyCode,VerifyAccount,GetAllUsers,DeleteUser, getUserList, UserEmail,getLaoding,getError, getUser, getToken, RemoveUser }
 })

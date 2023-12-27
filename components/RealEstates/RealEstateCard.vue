@@ -4,12 +4,18 @@ import RealEstateImages from './RealEstateImages.vue';
 import RealEstateInfo from './RealEstateInfo.vue';
 import { useDisplay } from 'vuetify';
 import { useAdvertismentStore } from '~/stores/advertisment';
-
+import { useUserStore } from '~/stores/auth';
+import { useOrdersStore } from '~/stores/orders';
+import { useDayjs } from '#dayjs'
 // const Varibels 
-const props = defineProps(['advertisment', 'services'])
+const props = defineProps(['advertisment', 'services', 'isUserAdvertisements', 'loading'])
 const advertismentStore = useAdvertismentStore();
+const userStore = useUserStore();
+const orderStore = useOrdersStore()
 const tab = ref(false);
 const showMoreDetails = ref(false);
+const dayjs = useDayjs();
+dayjs.locale('ar')
 const components = [
     RealEstateInfo,
     RealEstateImages
@@ -20,6 +26,14 @@ const { mobile } = useDisplay()
 const images = computed(() => {
     return props.advertisment.imageIDs
 })
+const isUser = computed(() => {
+
+    if (userStore.getUser) {
+        return userStore.getUser
+    }
+})
+const loading = computed(() => { return orderStore.getLoading })
+const success = computed(() => { return orderStore.getSuccess })
 // Functions 
 function toggleMoreDetails() {
     showMoreDetails.value = !showMoreDetails.value;
@@ -27,12 +41,34 @@ function toggleMoreDetails() {
 function changeTab(value) {
     tab.value = value
 }
+
+async function makeOrderAndDirect(advertiseID, advertisTypeID, subCategory) {
+    const order = {
+        userId: parseInt(isUser.value.UserId),
+        advertisementId: advertiseID,
+        orderTime: dayjs().format('YYYY-MM-DDTHH:mm:ss.sssZ'),
+        subCategoryId: subCategory,
+        advertisementTypeId: advertisTypeID
+    }
+    await orderStore.AddNewOrders(order)
+    if (success.value) {
+        window.open("https://wa.me/967734081383", '_blank')
+    }
+
+}
+function deleteAdvertisement(id) {
+    advertismentStore.DeleteAdvertisement(id)
+}
 </script>
 <template>
     <v-card class="w-100 mb-5" elevation="5">
         <v-sheet rounded class="RealEstate_card w-100" :class="{ 'height': !mobile }">
             <v-row class="ma-0 h-100">
                 <v-col class="image_container " :class="{ 'h-100': !mobile }" cols="12" sm="4" lg="4">
+                    <div style="position: absolute;z-index: 999;" v-if="props.isUserAdvertisements">
+                        <v-btn icon="mdi-pencil" color="green" class="ml-2" size="small"></v-btn>
+                        <v-btn icon="mdi-delete" color="red" :loading="props.loading" size="small" @click.stop="deleteAdvertisement(props.advertisment.id)"></v-btn>
+                    </div>
                     <img class="h-100" :src="images.length > 0 ? `${images[0].url}` : ''"
                         :alt="props.advertisment.imageIDs.length > 0 ? props.advertisment.imageIDs[0].description : ''"
                         loading="lazy" @click="toggleMoreDetails(), changeTab(2)" />
@@ -73,10 +109,26 @@ function changeTab(value) {
                         اكثر</v-btn>
                 </v-col>
                 <!-- Price السعر  -->
-                <v-col cols="12" sm="3" lg="2" class="text-center d-flex flex-column justify-end align-center" style="position: relative;">
+                <v-col cols="12" sm="3" lg="2" class="text-center d-flex flex-column justify-end align-center"
+                    style="position: relative;">
                     <!-- طلب عقار  -->
-                    <v-alert variant="tonal" width="100%"  class="text-center request_alert justify-center pa-3"
-                        color="teal-darken-3" title="طلب عقار" v-if="props.advertisment.advertisementTypeId === 2"></v-alert>
+                    <v-alert variant="tonal" width="100%" class="text-center request_alert justify-center pa-3"
+                        color="teal-darken-2" title="طلب عقار"
+                        v-if="props.advertisment.advertisementTypeId === 2"></v-alert>
+                    <v-spacer />
+                    <!-- Whatsapp button  -->
+                    <div class="mt-md-10 mt-13">
+                        <!-- For All Users  -->
+                        <v-btn append-icon="mdi-whatsapp" href="https://wa.me/967734081383" target="_blank"
+                            color="green-accent-4" style="color: #fff !important;" variant="flat" v-if="!isUser">تواصل
+                            معنا</v-btn>
+                        <!-- Only for Users Sign in  -->
+                        <v-btn append-icon="mdi-whatsapp" color="green-accent-4" style="color: #fff !important;"
+                            variant="flat" v-if="isUser"
+                            @click="makeOrderAndDirect(props.advertisment.id, props.advertisment.advertisementTypeId, props.advertisment.subCategoryId,)"
+                            :loading="loading">تواصل
+                            معنا</v-btn>
+                    </div>
                     <v-spacer />
                     <v-card-title class="price">{{ props.advertisment.price }} {{ props.advertisment.currency
                     }}</v-card-title>

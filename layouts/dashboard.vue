@@ -14,7 +14,7 @@ const items = ref([
     {
         title: "المستخدمين",
         link: '/dashboard/users',
-        icon: 'mdi-account'
+        icon: 'mdi-account-lock'
     },
 ])
 const isUser = computed(() => {

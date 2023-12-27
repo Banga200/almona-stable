@@ -10,7 +10,7 @@
                     <v-divider />
                     <v-list bg-color="transparent" class="text-right d-inline-block">
                         <v-list-item to="/">الصفحة الرئيسية</v-list-item>
-                        <v-list-item to="/real-estate">عقارات</v-list-item>
+                        <v-list-item to="/real-estate/عقارات">عقارات</v-list-item>
                         <v-list-item href="/#aboutus">من نحن؟</v-list-item>
                         <v-list-item href="/#services">خدماتنا</v-list-item>
                     </v-list>

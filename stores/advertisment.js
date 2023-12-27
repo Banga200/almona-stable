@@ -16,12 +16,12 @@ export const useAdvertismentStore = defineStore('Advertisment', () => {
   const toast = useToast();
   const ComposableError = useError();
   const router = useRouter();
-  const {token} = useUser()
+  const { token } = useUser()
   // States 
   // Holds All Advertisment
   const Advertisments = ref([]);
   const ReturnNewAdvertismentID = ref(0);
-const ImagesCounter = ref(0)
+  const ImagesCounter = ref(0)
   // loading 
   const loading = ref(false)
   const success_message = ref(null);
@@ -34,17 +34,17 @@ const ImagesCounter = ref(0)
   async function GetAllAdvertisments(advertisId) {
     loading.value = true;
     try {
-      const { data: advertisments, error } = await useFetch(`${BaseURL}/Advertisements/GetAllByTypeAsync`, {params: {AdversmentTypeId: advertisId}})
+      const { data: advertisments, error } = await useFetch(`${BaseURL}/Advertisements/GetAllByTypeAsync`, { params: { AdversmentTypeId: advertisId } })
       if (error.value) {
         ComposableError.handelErros(error.value)
         loading.value = false
       }
-      
-      else{
+
+      else {
         loading.value = false;
         Advertisments.value = advertisments.value.content;
       }
-      
+
 
     }
     catch (error) {
@@ -63,7 +63,7 @@ const ImagesCounter = ref(0)
       const { data: advertisments, error } = await useFetch(`${BaseURL}/Advertisements`, {
         headers: {
           'Content-Type': "application/json",
-          "Authorization": `Bearer ${userStore.getToken}` 
+          "Authorization": `Bearer ${userStore.getToken}`
           // "Authorization": `Bearer ${token}` 
         },
         method: "POST",
@@ -74,12 +74,12 @@ const ImagesCounter = ref(0)
         loading.value = false
         error_message.value = true
       }
-      else{
+      else {
         ReturnNewAdvertismentID.value = advertisments.value.content.id
         if (advertisments.value.code === 0) { toast.success("تم إضافة الإعلان بنجاح") }
         loading.value = false;
       }
-     
+
     }
     catch (error) {
       ComposableError.handelErros(error)
@@ -96,7 +96,7 @@ const ImagesCounter = ref(0)
       const { data: file, error } = await useFetch(`${BaseURL}/File`, {
         headers: {
           'Content-Type': "application/json",
-          "Authorization": `Bearer ${userStore.getToken}` 
+          "Authorization": `Bearer ${userStore.getToken}`
           // "Authorization": `Bearer ${token}` 
         },
         method: "POST",
@@ -109,7 +109,8 @@ const ImagesCounter = ref(0)
       else {
         if (file.value.code === 0) { toast.success("تم إضافة بنجاح") }
         if (ImagesCounter.value === count.value) {
-          router.push('/real-estate/advertis');
+          console.log(ImagesCounter.value, count.value)
+          router.push('/real-estate/عقارات');
           loading.value = false;
         }
         loading.value = false;
@@ -123,17 +124,15 @@ const ImagesCounter = ref(0)
   async function FilterAdvertisements(fields) {
     loading.value = true;
     try {
-      const { data: advertisments, error } = await useFetch(`${BaseURL}/Advertisements/GetAllByFilterAsync/${fields.AdvertisementTypeId}`, {params: fields})
+      const { data: advertisments, error } = await useFetch(`${BaseURL}/Advertisements/GetAllByFilterAsync/${fields.AdvertisementTypeId}`, { params: fields })
       if (error.value) {
         ComposableError.handelErros(error.value)
         loading.value = false
       }
-      else{
+      else {
         loading.value = false;
         Advertisments.value = advertisments.value.content;
       }
-      
-
     }
     catch (error) {
       ComposableError.handelErros(error)
@@ -143,16 +142,16 @@ const ImagesCounter = ref(0)
   async function GetAllAdvertismentsBySubcategory(id) {
     loading.value = true;
     try {
-      const { data: advertisments, error } = await useFetch(`${BaseURL}/Advertisements/GetAllBySubCatogryAsync`, {params: {SubcatogryId: id}})
+      const { data: advertisments, error } = await useFetch(`${BaseURL}/Advertisements/GetAllBySubCatogryAsync`, { params: { SubcatogryId: id } })
       if (error.value) {
         ComposableError.handelErros(error.value)
         loading.value = false
       }
-      else{
+      else {
         loading.value = false;
         Advertisments.value = advertisments.value.content;
       }
-      
+
 
     }
     catch (error) {
@@ -163,16 +162,60 @@ const ImagesCounter = ref(0)
   async function GetAllAdvertismentsByUser(userId) {
     loading.value = true;
     try {
-      const { data: advertisments, error } = await useFetch(`${BaseURL}/Advertisements/`, {params: {userId: userId}})
+      const { data: advertisments, error } = await useFetch(`${BaseURL}/Advertisements/GetAllByUsderIdAsync`, {
+        headers: {
+          "Authorization": `Bearer ${userStore.getToken}`
+        },
+        params: { userId: userId }
+      }
+      )
       if (error.value) {
         ComposableError.handelErros(error.value)
         loading.value = false
       }
-      else{
+      else {
         loading.value = false;
         Advertisments.value = advertisments.value.content;
       }
-      
+
+
+    }
+    catch (error) {
+      ComposableError.handelErros(error)
+      loading.value = false
+    }
+  }
+  // Delete Advertisement 
+  async function DeleteAdvertisement(id) {
+    console.log(id)
+    loading.value = true;
+    try {
+      const { data: advertisments, error } = await useFetch(`${BaseURL}/Advertisements`, {
+        headers: {
+          'Content-Type': "application/json",
+          "Authorization": `Bearer ${userStore.getToken}`
+        },
+        method: "DELETE",
+        params: {id: id}
+      })
+      console.log(advertisments)
+      if (error.value) {
+        ComposableError.handelErros(error.value)
+        loading.value = false
+      }
+      else {
+        if (advertisments.value.code === 0) { toast.success("تم حذف الإعلان بنجاح") }
+        const index = Advertisments.value.findIndex(item => {
+          return item.id === id
+        })
+        if (index !== -1) {
+          Advertisments.value.splice(index, 1)
+          console.log('Object removed:');
+        } else {
+          console.log('Object not found');
+        }
+        loading.value = false;
+      }
 
     }
     catch (error) {
@@ -183,5 +226,5 @@ const ImagesCounter = ref(0)
   function setCounterImage(number) {
     ImagesCounter.value = number
   }
-  return { Advertisments, getAdvertisments, loading, success_message, error_message,setCounterImage, ReturnNewAdvertismentID,GetAllAdvertismentsBySubcategory, FilterAdvertisements,AddNewAdvertisment, AddImageToAdvertisment, GetAllAdvertisments, GetAdvertismentByID }
+  return { Advertisments, getAdvertisments, loading, success_message, error_message,DeleteAdvertisement, setCounterImage, ReturnNewAdvertismentID, GetAllAdvertismentsBySubcategory, GetAllAdvertismentsByUser, FilterAdvertisements, AddNewAdvertisment, AddImageToAdvertisment, GetAllAdvertisments, GetAdvertismentByID }
 })

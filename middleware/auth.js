@@ -1,8 +1,8 @@
 import { useUserStore } from "~/stores/auth";
 import { useToast } from "vue-toastification"
-export default defineNuxtRouteMiddleware((to,from )=> {
+export default defineNuxtRouteMiddleware(async(to,from )=> {
     const userStore = useUserStore();
-    const user =   userStore.getUser
+    const user = await  userStore.getUser
     const toast = useToast()
     const token = useCookie('token').value;
     // skip middleware on server
@@ -23,11 +23,4 @@ export default defineNuxtRouteMiddleware((to,from )=> {
         return navigateTo('/login')
     }
     console.log(user)
-    if (userStore.getUser.Verified) {
-        
-    }
-    // if(user.getUser.isAdmin) return
-    else {
-        return navigateTo('/')
-    }
   })

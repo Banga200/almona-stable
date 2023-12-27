@@ -3,9 +3,7 @@ const headers = ['']
 definePageMeta({
     name: "Orders",
     breadcrumb: 'الطلبات',
-    middleware: ['auth']
-})
-definePageMeta({
+    middleware: ['auth'],
     layout: 'dashboard'
 })
 </script>

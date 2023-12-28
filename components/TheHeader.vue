@@ -39,7 +39,6 @@ const navs = ref([
 
 ])
 const props = defineProps(['HomeHeader'])
-const openPasswordDialog = ref(false)
 onMounted(() => {
     window.addEventListener('scroll', handleScroll);
     // document.getElementById("header").classList.add("backgroundColor")
@@ -63,9 +62,6 @@ function handleScroll(event) {
         }
         else { document.getElementById("header").classList.remove('backgroundColor') }
     }
-}
-function changePasswordDialogState(value) {
-    openPasswordDialog.value = value
 }
 </script>
 <template>
@@ -125,9 +121,9 @@ function changePasswordDialogState(value) {
                             
                         </v-row>
                     </client-only>
-                    <user-drop-menu v-if="isUser" :User="isUser" @PasswordDialog="changePasswordDialogState" />
+                    <user-drop-menu v-if="isUser" :User="isUser" />
                 </v-container>
-                <change-password-dialog :open="openPasswordDialog" @PasswordDialog="changePasswordDialogState" />
+                
             </client-only>
         </v-app-bar>
 </template>

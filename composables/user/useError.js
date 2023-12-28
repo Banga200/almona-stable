@@ -40,7 +40,9 @@ export default function () {
           else if (error.request) {
             // The request was made, but no response was received
             toast.error('لايوجد رد من الخادم');
-          } else {
+          }
+          else if(error.code === 1002) {toast.error('كلمة السر القديمة غير متطابقة')}
+          else {
             // A different error occurred here
             toast.error('حدث خطا غير متوقع, الرجاء المحاولة لاحقا');
             console.log(error)

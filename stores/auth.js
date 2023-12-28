@@ -205,6 +205,41 @@ export const useUserStore = defineStore('User', () => {
             Loading.value = false
         }
     }
+    // Change Password 
+    async function ChangePassword(payload) {
+        Loading.value = true
+        try {
+            const { data: response, error } = await useFetch(`${BaseURL}/Auth/ChangePassword`, {
+                headers: {
+                    'Content-Type': "application/json",
+                    "Authorization": `Bearer ${Token.value}`
+                },
+                method: "PUT",
+                body: JSON.stringify(payload)
+            })
+            if (response.value) {
+                if (response.value.code === 0 ) {
+                    toast.success("تم تغير كلمة السر بنجاح")
+                    Loading.value = false
+                }
+                else {
+                    ComposableError.handelErros(response.value)
+                    Loading.value = false
+                }
+                
+            }
+
+            else {
+                toast.success("تم تغير كلمة السر بنجاح")
+                Loading.value = false
+            }
+
+        }
+        catch (error) {
+            ComposableError.handelErros(error)
+            Loading.value = false
+        }
+    }
     function setTokenToCookies(token, decode) {
         const today = new Date();
         const cookie = useCookie('token', {
@@ -227,5 +262,5 @@ export const useUserStore = defineStore('User', () => {
         User.value = user,
         Token.value = token
     }
-    return { login, Register,setUser, SendVerifyCode,VerifyAccount,GetAllUsers,DeleteUser, getUserList, UserEmail,getLaoding,getError, getUser, getToken, RemoveUser }
+    return { login, Register,setUser, SendVerifyCode,VerifyAccount,GetAllUsers,DeleteUser,ChangePassword, getUserList, UserEmail,getLaoding,getError, getUser, getToken, RemoveUser }
 })

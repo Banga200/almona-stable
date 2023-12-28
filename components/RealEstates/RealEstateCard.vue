@@ -61,7 +61,11 @@ async function makeOrderAndDirect(advertiseID, advertisTypeID, subCategory) {
 
 }
 function deleteAdvertisement(id) {
-    advertismentStore.DeleteAdvertisement(id)
+    const answer = window.confirm("هل انت متأكد من حذف هذا الإعلان؟")
+    if (answer) {
+        advertismentStore.DeleteAdvertisement(id)
+    }
+    
 }
 function editAdvertisement(id) {
     const currentPath = route.path

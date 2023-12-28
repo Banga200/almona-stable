@@ -7,7 +7,6 @@ const advertismentStore = useAdvertismentStore();
 const router = useRouter();
 const userStore = useUserStore();
 const props = defineProps(['User']);
-const emit = defineEmits(['PasswordDialog'])
 const userItems = ref([
     // { title: 'الملف الشخصي', icon: 'mdi-card-account-details-outline', link: '/user/profile' },
     { type: 'item', title: 'إعلاناتي', icon: 'mdi-sign-real-estate', link: '/user-advertisements', value: 1 },
@@ -15,6 +14,7 @@ const userItems = ref([
     { type: 'divider' },
     { type: 'item', title: 'تسجيل الخروج', icon: 'mdi-logout', link: 'logout', value: 3 },
 ])
+const openDialog = ref(false)
 const isUser = computed(() => {
 
     if (userStore.getUser) {
@@ -31,7 +31,7 @@ function userMenu(url) {
         userStore.RemoveUser();
     }
     else if (url === 'changePassword') {
-        emit('PasswordDialog', true)
+        openDialog.value = true
     }
     else {
         if (url === '/user-advertisements') {
@@ -62,4 +62,5 @@ function userMenu(url) {
             </v-list>
         </v-card>
     </v-menu>
+    <change-password-dialog :open="openDialog" @update:open="() => openDialog = !openDialog"/>
 </template>

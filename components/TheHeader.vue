@@ -19,7 +19,8 @@ const routeNavs = ref([
     {
         title: 'إضافة إعلان',
         link: `/real-estate/advertis`,
-        color: 'primary'
+        color: 'primary',
+        icon: "mdi-plus"
     },
 ])
 const navs = ref([
@@ -76,11 +77,12 @@ function changePasswordDialogState(value) {
                         {{ item.title }}
                     </v-list-item>
                     <!-- This list is for any routing pages  -->
-                    <v-list-item v-for="item in routeNavs" :key="item.title" :to="item.link" color="priamry">
+                    <v-list-item v-for="item in routeNavs" :key="item.title" :to="item.link" color="priamry" >
                         {{ item.title }}
                     </v-list-item>
                     <v-spacer />
-                    <v-btn stacked prepend-icon="mdi-view-dashboard-outline" class="ml-10" v-if="isUser" to="/dashboard/orders">لوحة التحكم</v-btn>
+                    <v-divider class="mt-2"/>
+                    <v-btn  variant="flat" class="mt-2" v-if="isUser" to="/dashboard/orders">لوحة التحكم</v-btn>
                     <v-btn prepend-icon="mdi-account-outline" variant="outlined" to="/login" rounded class="mr-2 mt-10" v-if="!isUser">
                         تسجيل الدخول
                     </v-btn>

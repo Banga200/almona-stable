@@ -20,6 +20,7 @@ export const useAdvertismentStore = defineStore('Advertisment', () => {
   // States 
   // Holds All Advertisment
   const Advertisments = ref([]);
+  const OneAdvertisment = ref([])
   const ReturnNewAdvertismentID = ref(0);
   const ImagesCounter = ref(0)
   // loading 
@@ -28,6 +29,7 @@ export const useAdvertismentStore = defineStore('Advertisment', () => {
   const error_message = ref(null)
   // Getters 
   const getAdvertisments = computed(() => { return Advertisments.value })
+  const getOneAdvertisment = computed(() => { return OneAdvertisment.value })
 
   // Actions 
   // Get All Advertisments 
@@ -53,11 +55,36 @@ export const useAdvertismentStore = defineStore('Advertisment', () => {
     }
   }
   // Get Advertisment By ID 
-  async function GetAdvertismentByID() {
+  async function GetAdvertisementByID(id) {
+    console.log(id)
+    loading.value = true;
+    try {
+      const { data: advertisment, error } = await useFetch(`${BaseURL}/Advertisements`, {
+        headers: {
+          'Content-Type': "application/json",
+        },
+        params: { id: id }
+      })
+      if (error.value) {
+        ComposableError.handelErros(error.value)
+        loading.value = false
+      }
 
+      else {
+        loading.value = false;
+        OneAdvertisment.value = advertisment.value.content;
+      }
+
+
+    }
+    catch (error) {
+      ComposableError.handelErros(error)
+      loading.value = false
+    }
   }
   // Add New Advertisment
   async function AddNewAdvertisment(payload) {
+    console.log(payload)
     loading.value = true;
     try {
       const { data: advertisments, error } = await useFetch(`${BaseURL}/Advertisements`, {
@@ -69,6 +96,7 @@ export const useAdvertismentStore = defineStore('Advertisment', () => {
         method: "POST",
         body: JSON.stringify(payload)
       })
+      console.log(error)
       if (error.value) {
         ComposableError.handelErros(error.value)
         loading.value = false
@@ -77,6 +105,39 @@ export const useAdvertismentStore = defineStore('Advertisment', () => {
       else {
         ReturnNewAdvertismentID.value = advertisments.value.content.id
         if (advertisments.value.code === 0) { toast.success("تم إضافة الإعلان بنجاح") }
+        loading.value = false;
+        error_message.value = false
+      }
+
+    }
+    catch (error) {
+      ComposableError.handelErros(error)
+      loading.value = false
+      error_message.value = true
+    }
+  }
+
+  // Update Advertisement 
+  async function UpdateAdvertisement(payload) {
+    loading.value = true;
+    try {
+      const { data: advertisments, error } = await useFetch(`${BaseURL}/Advertisements`, {
+        headers: {
+          'Content-Type': "application/json",
+          "Authorization": `Bearer ${userStore.getToken}`
+          // "Authorization": `Bearer ${token}` 
+        },
+        method: "PUT",
+        body: JSON.stringify(payload)
+      })
+      if (error.value) {
+        ComposableError.handelErros(error.value)
+        loading.value = false
+        error_message.value = true
+      }
+      else {
+        ReturnNewAdvertismentID.value = advertisments.value.content.id
+        if (advertisments.value.code === 0) { toast.success("تم التعديل الإعلان بنجاح") }
         loading.value = false;
       }
 
@@ -107,7 +168,7 @@ export const useAdvertismentStore = defineStore('Advertisment', () => {
         loading.value = false
       }
       else {
-        if (file.value.code === 0) { toast.success("تم إضافة بنجاح") }
+        if (file.value.code === 0) { toast.success("تم إضافةالصورة بنجاح") }
         if (ImagesCounter.value === count.value) {
           console.log(ImagesCounter.value, count.value)
           router.push('/real-estate/عقارات');
@@ -196,7 +257,7 @@ export const useAdvertismentStore = defineStore('Advertisment', () => {
           "Authorization": `Bearer ${userStore.getToken}`
         },
         method: "DELETE",
-        params: {id: id}
+        params: { id: id }
       })
       console.log(advertisments)
       if (error.value) {
@@ -226,5 +287,5 @@ export const useAdvertismentStore = defineStore('Advertisment', () => {
   function setCounterImage(number) {
     ImagesCounter.value = number
   }
-  return { Advertisments, getAdvertisments, loading, success_message, error_message,DeleteAdvertisement, setCounterImage, ReturnNewAdvertismentID, GetAllAdvertismentsBySubcategory, GetAllAdvertismentsByUser, FilterAdvertisements, AddNewAdvertisment, AddImageToAdvertisment, GetAllAdvertisments, GetAdvertismentByID }
+  return { Advertisments, getAdvertisments, loading, success_message, getOneAdvertisment, error_message,UpdateAdvertisement, DeleteAdvertisement,GetAdvertisementByID, setCounterImage, ReturnNewAdvertismentID, GetAllAdvertismentsBySubcategory, GetAllAdvertismentsByUser, FilterAdvertisements, AddNewAdvertisment, AddImageToAdvertisment, GetAllAdvertisments }
 })

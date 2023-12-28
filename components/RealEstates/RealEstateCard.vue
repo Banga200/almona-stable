@@ -6,7 +6,9 @@ import { useDisplay } from 'vuetify';
 import { useAdvertismentStore } from '~/stores/advertisment';
 import { useUserStore } from '~/stores/auth';
 import { useOrdersStore } from '~/stores/orders';
-import { useDayjs } from '#dayjs'
+import { useDayjs } from '#dayjs';
+import { useRouter } from 'vue-router';
+import { useRoute } from 'vue-router';
 // const Varibels 
 const props = defineProps(['advertisment', 'services', 'isUserAdvertisements', 'loading'])
 const advertismentStore = useAdvertismentStore();
@@ -15,6 +17,8 @@ const orderStore = useOrdersStore()
 const tab = ref(false);
 const showMoreDetails = ref(false);
 const dayjs = useDayjs();
+const router = useRouter()
+const route = useRoute()
 dayjs.locale('ar')
 const components = [
     RealEstateInfo,
@@ -59,6 +63,10 @@ async function makeOrderAndDirect(advertiseID, advertisTypeID, subCategory) {
 function deleteAdvertisement(id) {
     advertismentStore.DeleteAdvertisement(id)
 }
+function editAdvertisement(id) {
+    const currentPath = route.path
+    router.push(`${currentPath}/edit/${id}`)
+}
 </script>
 <template>
     <v-card class="w-100 mb-5" elevation="5">
@@ -66,7 +74,7 @@ function deleteAdvertisement(id) {
             <v-row class="ma-0 h-100">
                 <v-col class="image_container " :class="{ 'h-100': !mobile }" cols="12" sm="4" lg="4">
                     <div style="position: absolute;z-index: 999;" v-if="props.isUserAdvertisements">
-                        <v-btn icon="mdi-pencil" color="green" class="ml-2" size="small"></v-btn>
+                        <v-btn icon="mdi-pencil" color="green" class="ml-2" size="small" @click.stop="editAdvertisement(props.advertisment.id)"></v-btn>
                         <v-btn icon="mdi-delete" color="red" :loading="props.loading" size="small" @click.stop="deleteAdvertisement(props.advertisment.id)"></v-btn>
                     </div>
                     <img class="h-100" :src="images.length > 0 ? `${images[0].url}` : ''"

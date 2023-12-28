@@ -1,10 +1,11 @@
 <script setup>
-import { ref, watch, onMounted,onBeforeUnmount } from 'vue';
+import { ref, watch, onMounted, onBeforeUnmount } from 'vue';
 import { useAdvertismentStore } from '~/stores/advertisment';
 import { useCategoryStore } from '~/stores/category';
 import { useSubCategoryStore } from '~/stores/subCategory';
 import { useAdvertisementTypesStore } from '~/stores/advertisementTypes';
 import { useRoute } from 'vue-router';
+const props = defineProps(['isEdit'])
 const route = useRoute();
 const categoryStore = useCategoryStore();
 const subCategoryStore = useSubCategoryStore();
@@ -60,12 +61,18 @@ const advertismentTypes = ref([
     { text: 'عرض عقار', id: 1 },
     { text: 'طلب عقار', id: 2 },
 ])
+setTimeout(() => {
+    if (route.params.editId) {
+        Advertismentstore.GetAdvertisementByID(parseInt(route.params.editId))
+    }
+}, 200)
 // Call APi 
 advertisementTypesStore.GetAllAdvertisementTypes();
 categoryStore.GetAllCategories();
 // Computed 
 const categories = computed(() => { return categoryStore.getCategories });
 const subCategories = computed(() => { return categoryStore.getSubCategories });
+const advertis = computed(() => { return Advertismentstore.getOneAdvertisment })
 // const advertisementTypes = computed(() => {return advertisementTypesStore.getAdvertisementTypes})
 // Loading 
 const isLaoding = computed(() => { return Advertismentstore.loading; });
@@ -75,7 +82,16 @@ const categoryLoading = computed(() => { return categoryStore.getLoading });
 onMounted(() => {
     document.getElementsByClassName("card_radios")[0].classList.add("text-teal");
     formData.value.advertisementTypeId = 1
+    if (route.params.editId) {
+        formData.value = Advertismentstore.getOneAdvertisment
+    }
+    
 });
+watch(advertis, () => {
+    if (Advertismentstore.getOneAdvertisment) {
+        formData.value = Advertismentstore.getOneAdvertisment
+    }
+})
 watch(category, (value) => {
     categoryStore.GetGategoryByID(value.id)
 })
@@ -86,6 +102,10 @@ async function submitForm() {
     if (Advertismentstore.error_message) { return; }
     emit('moveNextStep')
 }
+async function editForm() {
+    console.log(formData.value)
+    await Advertismentstore.UpdateAdvertisement(formData.value)
+}
 function changeRadio(value) {
     radio.value = value;
     document.getElementsByClassName("card_radios")[0].classList.remove("text-teal")
@@ -94,7 +114,7 @@ function changeRadio(value) {
 </script>
 <template>
     <v-card border>
-        <v-form @submit.prevent="submitForm">
+        <v-form @submit.prevent="props.isEdit ? editForm(): submitForm()">
             <!-- <v-row class="ma-0 align-center justify-center mb-2">
                 <v-card-title>{{ $route.params._slug }}</v-card-title>
             </v-row> -->
@@ -102,7 +122,7 @@ function changeRadio(value) {
                 <v-container class="pt-0">
                     <v-card-title class="pr-0 mb-2">نوع العقار:</v-card-title>
                     <v-row class="align-center ">
-                        <v-col cols="8" sm="6" md="4" lg="3" v-for="type in advertismentTypes" >
+                        <v-col cols="8" sm="6" md="4" lg="3" v-for="type in advertismentTypes">
                             <v-item v-slot:default="{ isSelected, toggle }">
                                 <v-btn border variant="outlined" :color="isSelected ? 'primary' : ''" elevation="0"
                                     class="d-flex align-center card_radios" :class="{ 'teal': selectedItem }" dark
@@ -141,7 +161,7 @@ function changeRadio(value) {
                     </v-col>
                 </v-row>
                 <v-row class="align-center mb-2">
-                    <v-col cols="12" sm="3"><v-card-title class="pr-1 ">  فئة العقار:</v-card-title></v-col>
+                    <v-col cols="12" sm="3"><v-card-title class="pr-1 "> فئة العقار:</v-card-title></v-col>
                     <v-col cols="12" sm="4" md="3">
                         <v-combobox variant="outlined" hide-details label="النوع" color="primary" density="compact"
                             :items="categories" item-title="name" item-value="id" v-model="category"></v-combobox>
@@ -182,8 +202,7 @@ function changeRadio(value) {
                 <v-row>
                     <v-col cols="12" md="3">
                         <v-text-field variant="outlined" color="primary" append-inner-icon="mdi-sofa-outline"
-                            v-model="formData.nHall" label="الصالة" type="number" required
-                            density="compact"></v-text-field>
+                            v-model="formData.nHall" label="الصالة" type="number" required density="compact"></v-text-field>
                     </v-col>
                     <v-col cols="12" md="3">
                         <v-text-field variant="outlined" color="primary" append-inner-icon="mdi-shower"
@@ -218,8 +237,10 @@ function changeRadio(value) {
 
                 <v-row>
                     <v-col class="text-left">
-                        <v-btn type="submit" color="primary" :disabled="isLaoding" :loading="isLaoding"
-                            size="x-large">حفظ</v-btn>
+                        <v-btn type='submit' color="primary" :disabled="isLaoding" :loading="isLaoding" size="x-large"
+                            v-if="!props.isEdit" @submit.prevent="submitForm()">حفظ</v-btn>
+                        <v-btn type='submit' color="success" :disabled="isLaoding" :loading="isLaoding" size="x-large"
+                            v-if="props.isEdit" @submit.prevent="editForm()">تعديل</v-btn>
                     </v-col>
                 </v-row>
             </v-container>

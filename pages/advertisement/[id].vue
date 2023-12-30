@@ -13,15 +13,22 @@ advertismentStore.GetAdvertisementByID(route.params.id)
 const Advertisement = computed(() => {
     return advertismentStore.getOneAdvertisment
 })
+const loading = computed(() => {
+    return advertismentStore.loading
+})
 
 </script>
 <template>
     <Head>
         <Title>{{ Advertisement.title }}</Title>
     </Head>
-    <v-container class="my-10">
-            <div v-if="Advertisement">
-                <real-estate-card :advertisment="Advertisement" :isDetails="true" />
-            </div>
+    <!-- loading  -->
+    <div v-if="loading" class="text-center mt-5">
+        <v-progress-circular :size="40" color="primary" indeterminate></v-progress-circular>
+    </div>
+    <v-container class="my-5">
+        <div v-if="Advertisement">
+            <real-estate-card :advertisment="Advertisement" :isDetails="true" />
+        </div>
     </v-container>
 </template>

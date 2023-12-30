@@ -2,7 +2,7 @@
 import { ref } from 'vue';
 const otp = ref('')
 definePageMeta({
-    name: 'advertisement'
+    name: 'AuthCode'
 })
 useHead({
     title: 'شركة المنى | التحقق من الحساب',

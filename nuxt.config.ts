@@ -35,7 +35,7 @@ export default defineNuxtConfig({
       apiBase: process.env.BaseURL
     }
   },
-  modules: [ '@pinia/nuxt','nuxt-proxy','dayjs-nuxt','nuxt-simple-sitemap','nuxt-simple-sitemap',
+  modules: [ '@pinia/nuxt','nuxt-proxy','dayjs-nuxt',
     (_options, nuxt) => {
       nuxt.hooks.hook('vite:extendConfig', (config) => {
         // @ts-expect-error

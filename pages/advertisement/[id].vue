@@ -20,10 +20,8 @@ const Advertisement = computed(() => {
         <Title>{{ Advertisement.title }}</Title>
     </Head>
     <v-container class="my-10">
-        <ClientOnly>
             <div v-if="Advertisement">
                 <real-estate-card :advertisment="Advertisement" :isDetails="true" />
             </div>
-        </ClientOnly>
     </v-container>
 </template>

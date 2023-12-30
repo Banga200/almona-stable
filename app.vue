@@ -1,5 +1,5 @@
 <script setup>
-import Success from './components/messages/Success.vue';
+
 import { useUserStore } from "~/stores/auth";
 import { jwtDecode } from "jwt-decode";
 const userStore = useUserStore();
@@ -14,7 +14,6 @@ if (token) {
   <div>
     <NuxtLayout>
       <NuxtPage />
-      <Success />
     </NuxtLayout>
   </div>
 </template>

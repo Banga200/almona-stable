@@ -13,7 +13,6 @@
     "@nuxt/devtools": "latest",
     "dayjs-nuxt": "^2.1.9",
     "nuxt": "^3.8.2",
-    "nuxt-simple-sitemap": "^4.2.3",
     "vite-plugin-vuetify": "^1.0.2",
     "vue": "^3.3.8",
     "vue-router": "^4.2.5",
@@ -21,7 +20,6 @@
   },
   "dependencies": {
     "@mdi/font": "^7.3.67",
-    "@nuxtjs/robots": "^3.0.0",
     "@pinia/nuxt": "^0.5.1",
     "jwt-decode": "^4.0.0",
     "nuxt-proxy": "^0.4.1",

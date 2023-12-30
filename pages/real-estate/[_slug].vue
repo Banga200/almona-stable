@@ -35,13 +35,15 @@ definePageMeta({
             <v-btn append-icon="mdi-arrow-left" class="text-teal" variant="outlined" to="/real-estate/request-advertisements" v-if="$route.path !== '/real-estate/request-advertisements'">طلبات العقار</v-btn>
         </v-row>
         <v-sheet class="px-md-10 px-2 py-3" rounded>
-            <TheSearchField />
+            <ClientOnly>
+                <TheSearchField />
+            </ClientOnly>
             
         </v-sheet>
         <v-divider class="my-5" />
         <v-row class="ma-0 mt-5" :class="{'justify-center': !Advertisments}">
             <div class="w-100" v-if="loading">
-                <AdvertisementLoading v-for="n in 5"/>
+                <AdvertisementLoading v-for="n in 5" :key="n"/>
             </div>
             <div v-if="!Advertisments" class="text-center my-10">
                 
@@ -49,8 +51,10 @@ definePageMeta({
                 <v-btn color="primary" append-icon="mdi-plus" class="ml-md-10 ml-2" to="/real-estate/advertis">إضافة إعلان</v-btn>
                 <v-btn  to="/real-estate/request-advertisements" variant="outlined" append-icon="mdi-arrow-left">طلبات العقار</v-btn>
             </div>
-            <RealEstateCard v-for="(advertisment, i) in Advertisments" :key="advertisment.id"
+            <ClientOnly>
+                <RealEstateCard v-for="(advertisment) in Advertisments" :key="advertisment.id"
                 :advertisment="advertisment" />
+            </ClientOnly>
         </v-row>
         
     </v-container>

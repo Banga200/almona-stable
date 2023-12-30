@@ -10,7 +10,7 @@ import { useDayjs } from '#dayjs';
 import { useRouter } from 'vue-router';
 import { useRoute } from 'vue-router';
 // const Varibels 
-const props = defineProps(['advertisment', 'services', 'isUserAdvertisements', 'loading'])
+const props = defineProps(['advertisment', 'services', 'isUserAdvertisements', 'loading', 'isDetails'])
 const advertismentStore = useAdvertismentStore();
 const userStore = useUserStore();
 const orderStore = useOrdersStore()
@@ -46,47 +46,58 @@ function changeTab(value) {
     tab.value = value
 }
 
-async function makeOrderAndDirect(advertiseID, advertisTypeID, subCategory) {
+async function makeOrderAndDirect(advertisment) {
     const order = {
         userId: parseInt(isUser.value.UserId),
-        advertisementId: advertiseID,
+        advertisementId: advertisment.id,
         orderTime: dayjs().format('YYYY-MM-DDTHH:mm:ss.sssZ'),
-        subCategoryId: subCategory,
-        advertisementTypeId: advertisTypeID
+        subCategoryId: advertisment.subCategoryId,
+        advertisementTypeId: advertisment.advertisementTypeId
     }
     await orderStore.AddNewOrders(order)
     if (success.value) {
-        window.open("https://wa.me/967734081383", '_blank')
+        directNoneUserToWhatsapp(advertisment)
     }
 
+}
+function directNoneUserToWhatsapp(advertisment) {
+    console.log(advertisment)
+    window.open(`https://wa.me/967734081383?text=نوع العقار: *${advertisment.subCategory.name}*%0A سعر العقار: *${advertisment.price}* %0A  موقع العقار: *${advertisment.location}* %0A رقم المرجع: *${advertisment.id}* %0A%0A http://www.almona.com/advertisement/${advertisment.id}`, "_blank")
 }
 function deleteAdvertisement(id) {
     const answer = window.confirm("هل انت متأكد من حذف هذا الإعلان؟")
     if (answer) {
         advertismentStore.DeleteAdvertisement(id)
     }
-    
+
 }
 function editAdvertisement(id) {
     const currentPath = route.path
     router.push(`${currentPath}/edit/${id}`)
 }
-</script>
+function NavigateToDetails(id) {
+    router.push(`/advertisement/${id}`)
+}
+</script> 
 <template>
-    <v-card class="w-100 mb-5" elevation="5">
+    <v-card class="w-100 mb-5" :border="props.isDetails" :elevation="props.isDetails ? '0' : '5'"
+        @click="NavigateToDetails(props.advertisment.id)">
         <v-sheet rounded class="RealEstate_card w-100" :class="{ 'height': !mobile }">
             <v-row class="ma-0 h-100">
                 <v-col class="image_container " :class="{ 'h-100': !mobile }" cols="12" sm="4" lg="4">
                     <div style="position: absolute;z-index: 999;" v-if="props.isUserAdvertisements">
-                        <v-btn icon="mdi-pencil" color="green" class="ml-2" size="small" @click.stop="editAdvertisement(props.advertisment.id)"></v-btn>
-                        <v-btn icon="mdi-delete" color="red" :loading="props.loading" size="small" @click.stop="deleteAdvertisement(props.advertisment.id)"></v-btn>
+                        <v-btn icon="mdi-pencil" color="green" class="ml-2" size="small"
+                            @click.stop="editAdvertisement(props.advertisment.id)"></v-btn>
+                        <v-btn icon="mdi-delete" color="red" :loading="props.loading" size="small"
+                            @click.stop="deleteAdvertisement(props.advertisment.id)"></v-btn>
                     </div>
-                    <img class="h-100" :src="images.length > 0 ? `${images[0].url}` : ''"
-                        :alt="props.advertisment.imageIDs.length > 0 ? props.advertisment.imageIDs[0].description : ''"
-                        loading="lazy" @click="toggleMoreDetails(), changeTab(2)" />
-                    <a class="image_feature right" @click="toggleMoreDetails(); changeTab(2)">صور أكثر
+                    <img class="h-100" :src="images ? `${images[0].url}` : ''"
+                        :alt="props.advertisment.imageIDs ? props.advertisment.imageIDs[0].description : ''" loading="lazy"
+                        @click.stop="toggleMoreDetails(), changeTab(2)" />
+                    <a class="image_feature right" @click.stop="toggleMoreDetails(); changeTab(2)">صور أكثر
                         <v-icon>mdi-chevron-down</v-icon></a>
-                    <span class="image_feature left">1 / {{ props.advertisment.imageIDs.length }}</span>
+                    <span class="image_feature left">1 / {{ props.advertisment.imageIDs ? props.advertisment.imageIDs.length
+                        : 1 }}</span>
                 </v-col>
                 <v-col class="content py-2 px-5" cols="12" sm="5" lg="6">
                     <h3>{{ props.advertisment.title }}</h3>
@@ -117,7 +128,7 @@ function editAdvertisement(id) {
                         </client-only>
                     </v-row>
                     <v-btn class="w-100 justify-space-between pr-0 " variant="text" append-icon="mdi-chevron-down"
-                        @click="toggleMoreDetails(); changeTab(1)"> معلومات
+                        @click.stop="toggleMoreDetails(); changeTab(1)"> معلومات
                         اكثر</v-btn>
                 </v-col>
                 <!-- Price السعر  -->
@@ -131,13 +142,13 @@ function editAdvertisement(id) {
                     <!-- Whatsapp button  -->
                     <div class="mt-md-10 mt-13">
                         <!-- For All Users  -->
-                        <v-btn append-icon="mdi-whatsapp" href="https://wa.me/967734081383" target="_blank"
-                            color="green-accent-4" style="color: #fff !important;" variant="flat" v-if="!isUser">تواصل
+                        <v-btn append-icon="mdi-whatsapp" color="green-accent-4" style="color: #fff !important;"
+                            variant="flat" v-if="!isUser" @click.stop="directNoneUserToWhatsapp(props.advertisment)">تواصل
                             معنا</v-btn>
                         <!-- Only for Users Sign in  -->
                         <v-btn append-icon="mdi-whatsapp" color="green-accent-4" style="color: #fff !important;"
                             variant="flat" v-if="isUser"
-                            @click="makeOrderAndDirect(props.advertisment.id, props.advertisment.advertisementTypeId, props.advertisment.subCategoryId,)"
+                            @click.stop="makeOrderAndDirect(props.advertisment)"
                             :loading="loading">تواصل
                             معنا</v-btn>
                     </div>
@@ -148,7 +159,7 @@ function editAdvertisement(id) {
             </v-row>
 
         </v-sheet>
-        <v-sheet class="w-100" v-if="showMoreDetails">
+        <v-sheet class="w-100" v-if="showMoreDetails" @click.stop="">
             <v-card>
                 <v-tabs v-model="tab" color="primary" align-tabs="center">
                     <v-tab :value="1">المعلومات</v-tab>

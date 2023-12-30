@@ -54,6 +54,9 @@ async function CallLogin() {
 }
 </script>
 <template>
+    <Head>
+        <Title>شركة المنى | تسجيل الدخول</Title>
+    </Head>
     <div class="pt-1">
         <v-card class="mx-auto pa-4 pa-md-12 pb-8 mt-5" elevation="8" max-width="448" rounded="lg">
             <v-form ref="form" @keyup.enter.prevent="CallLogin">

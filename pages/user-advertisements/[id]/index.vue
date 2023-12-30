@@ -2,6 +2,9 @@
 import { useAdvertismentStore } from '~/stores/advertisment';
 import { useRoute } from 'vue-router';
 import {useUserStore} from '~/stores/auth';
+useHead({
+    title: 'شركة المنى | إعلاناتي '
+})
 const userStore = useUserStore()
 const route = useRoute()
 const advertismentStore = useAdvertismentStore();
@@ -26,7 +29,7 @@ const loading = computed(() => { return advertismentStore.loading })
         <BackButton />
         <v-row class="ma-0 mt-5" :class="{ 'justify-center': !Advertisments }">
             <div class="w-100" v-if="loading">
-                <AdvertisementLoading v-for="n in 5" />
+                <AdvertisementLoading v-for="n in 5" :key="n"/>
             </div>
             <div v-if="!Advertisments" class="text-center my-10">
 
@@ -36,13 +39,17 @@ const loading = computed(() => { return advertismentStore.loading })
                 <v-btn to="/real-estate/request-advertisements" variant="outlined" append-icon="mdi-arrow-left">طلبات
                     العقار</v-btn>
             </div>
-            <div class="w-100" v-if="parseInt(isUser.UserId) === parseInt($route.params.id)">
-                <RealEstateCard v-for="(advertisment, i) in Advertisments" :key="advertisment.id" :advertisment="advertisment"
+            <div v-if="isUser" class="w-100">
+                <div  v-if="parseInt(isUser.UserId) === parseInt($route.params.id)">
+                <RealEstateCard v-for="(advertisment) in Advertisments" :key="advertisment.id" :advertisment="advertisment"
                 :isUserAdvertisements="true" :loading="loading"/>
             </div>
-            <v-alert :closable="false" type="error" variant="tonal" v-if="parseInt(isUser.UserId) !== parseInt($route.params.id)" class="text-center">
+            </div>
+            <div v-if="isUser">
+                <v-alert :closable="false" type="error" variant="tonal" v-if="parseInt(isUser.UserId) !== parseInt($route.params.id)" class="text-center">
                 ليس لديك الصلاحية
             </v-alert>
+            </div>
         </v-row>
     </v-container>
     </client-only>

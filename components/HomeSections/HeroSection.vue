@@ -17,7 +17,7 @@ const icons = [
                 <span class="title"> شركة <span class="coma">المٌنى</span> للتجارة والخدمات المحدودة</span>
                 <br />
                 <v-btn append-icon="mdi-chevron-left-circle-outline" class="heroButton mt-8 text-center mx-auto"
-                    width="200px" size="large" variant="flat">تصفح العقارات</v-btn>
+                    width="200px" size="large" variant="flat" to="/real-estate/عقارات">تصفح العقارات</v-btn>
             </v-col>
             <v-col cols="12" md="3" class="text-left d-flex justify-center justify-md-end">
 

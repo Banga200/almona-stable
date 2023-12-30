@@ -16,15 +16,14 @@ export default defineNuxtConfig({
   build: {
     transpile: ['vuetify', 'vue-toastification'],
   },
-  // app: {
-  //   head: {
-  //     meta: [
-  //       { "http-equiv": "Content-Security-Policy",
-  //         content: "default-src 'self'; img-src data:;"
-  //       }
-  //     ]
-  //   }
-  // },
+  app: {
+    head: {
+      title: "شركة المُنى للتجارة والخدمات المحدودة ",
+      meta: [
+        { name: 'description', content: 'شركة المُنى للتجارة والخدمات المحدودة , خدمات العقار ' },
+      ]
+    }
+  },
   components: [
     {
       path: '~/components',
@@ -36,7 +35,7 @@ export default defineNuxtConfig({
       apiBase: process.env.BaseURL
     }
   },
-  modules: [ '@pinia/nuxt','nuxt-proxy','dayjs-nuxt',
+  modules: [ '@pinia/nuxt','nuxt-proxy','dayjs-nuxt','nuxt-simple-sitemap','nuxt-simple-sitemap',
     (_options, nuxt) => {
       nuxt.hooks.hook('vite:extendConfig', (config) => {
         // @ts-expect-error

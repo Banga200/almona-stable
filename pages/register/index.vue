@@ -8,6 +8,9 @@ definePageMeta({
    middleware: ['auth'],
    layout: 'registration'
 })
+useHead({
+    title: 'شركة المنى | تسجيل جديد'
+})
 const userStore = useUserStore();
 const router = useRouter();
 const form = ref(null)

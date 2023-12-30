@@ -8,8 +8,16 @@ definePageMeta({
     middleware: ['auth'],
     layout: 'dashboard'
 })
+useHead({
+    title: 'لوحة التحكم | المستخدمين'
+})
 const headers = ref(
     [
+        {
+            title: 'الاسم',
+            align: 'start',
+            key: 'firstName',
+        },
         {
             title: 'اسم المستخدم',
             align: 'start',
@@ -38,23 +46,31 @@ const userStore = useUserStore();
 userStore.GetAllUsers();
 
 const users = computed(() => { return userStore.getUserList })
-const loading = computed(() => {return userStore.getLaoding})
+const loading = computed(() => { return userStore.getLaoding })
+const search = ref('')
 function showAlert(userName, id) {
     const answer = window.confirm(` هل انت متأكد من حذف هذا الحساب => ${userName}`)
     if (answer) {
         userStore.DeleteUser(id)
     }
-    else {console.log("cancel")}
+    else { console.log("cancel") }
 }
 </script>
 <template>
     <client-only>
         <v-container fluid>
             <v-card-title>المستخدمين</v-card-title>
-            <ProgressLoading :isLoading="loading"/>
-            <v-data-table :items="users" :headers="headers">
-                <template v-slot:item="{item}">
+            <v-row class="ma-0">
+                <v-col cols="12" md="4">
+                    <v-text-field hide-details v-model="search" color="primary" variant="underlined" label="بحث" append-inner-icon="mdi-magnify" class="w-md-25" />
+                </v-col>
+            </v-row>
+            <v-divider/>
+            <ProgressLoading :isLoading="loading" />
+            <v-data-table :items="users" :headers="headers" :search="search">
+                <template v-slot:item="{ item }">
                     <tr>
+                        <td>{{ item.lastName }} {{ item.firstName }}</td>
                         <td>{{ item.userName }}</td>
                         <td>{{ item.emailAddress }}</td>
                         <td>{{ item.phoneNumber }}</td>

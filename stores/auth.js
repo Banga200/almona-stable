@@ -258,7 +258,6 @@ export const useUserStore = defineStore('User', () => {
         }
     }
     function setUser(user, token) {
-        console.log(user)
         User.value = user,
         Token.value = token
     }

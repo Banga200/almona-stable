@@ -1,25 +1,38 @@
 <script setup>
 import { ref } from 'vue';
+import { useOrdersStore } from '~/stores/orders';
+import { useDayjs } from '#dayjs';
+const dayjs = useDayjs();
+
+const OrdersStore = useOrdersStore();
+OrdersStore.GetAllOrders();
+const Orders = computed(() => {return OrdersStore.getOrders})
+const loading = computed(() => {return OrdersStore.getLoading})
 const headers = [
     {
-        title: 'CPU Model',
+        title: 'رقم المرجع',
         align: 'start',
-        key: 'name',
+        key: 'advertisementId',
     },
     {
-        title: 'Cores',
-        align: 'end',
-        key: 'cores',
+        title: 'اسم العميل',
+        align: 'start',
+        key: 'user.firstName',
     },
     {
-        title: 'Threads',
-        align: 'end',
-        key: 'threads',
+        title: 'البريد الإلكتروني',
+        align: 'start',
+        key: 'user.emailAddress',
     },
     {
-        title: 'Base Clock',
-        align: 'end',
-        key: 'baseClock',
+        title: 'رقم الجوال',
+        align: 'start',
+        key: 'user.phoneNumber',
+    },
+    {
+        title: 'تاريخ الطلب',
+        align: 'start',
+        key: 'orderTime',
     },
 ]
 definePageMeta({
@@ -31,6 +44,7 @@ definePageMeta({
 useHead({
     title: 'لوحة التحكم | الطلبات'
 })
+dayjs.locale('ar')
 const searchById = ref('')
 </script>
 <template>
@@ -43,7 +57,18 @@ const searchById = ref('')
                 </v-col>
             </v-row>
             <v-divider/>
-            <v-data-table :headers="headers" :search="searchById"></v-data-table>
+            <ProgressLoading :isLoading="loading" />
+            <v-data-table :headers="headers" :search="searchById" :items="Orders">
+                <template v-slot:item="{item}">
+                    <tr>
+                        <td>{{ item.advertisementId }}</td>
+                        <td>{{ item.user.firstName }} {{ item.user.lastName }}</td>
+                        <td>{{ item.user.emailAddress }}</td>
+                        <td>{{ item.user.phoneNumber }}</td>
+                        <td>{{ dayjs(item.orderTime).format("dddd, MMMM D, YYYY h:mm A") }}</td>
+                    </tr>
+                </template>
+            </v-data-table>
         </v-container>
     </client-only>
 </template>

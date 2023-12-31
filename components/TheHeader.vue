@@ -78,7 +78,7 @@ function handleScroll(event) {
                     </v-list-item>
                     <v-spacer />
                     <v-divider class="mt-2"/>
-                    <v-btn  variant="flat" class="mt-2" v-if="isUser" to="/dashboard/orders">لوحة التحكم</v-btn>
+                    <v-btn  variant="flat" class="mt-2" v-if="isUser ? isUser.Role === 'Admin' : isUser" to="/dashboard/orders">لوحة التحكم</v-btn>
                     <v-btn prepend-icon="mdi-account-outline" variant="outlined" to="/login" rounded class="mr-2 mt-10" v-if="!isUser">
                         تسجيل الدخول
                     </v-btn>
@@ -113,7 +113,7 @@ function handleScroll(event) {
                                 <!-- زر خاص للمسوؤل  -->
                                 
                             </v-row>
-                            <v-btn stacked prepend-icon="mdi-view-dashboard-outline" class="ml-10" v-if="isUser" to="/dashboard/orders">لوحة التحكم</v-btn>
+                            <v-btn stacked prepend-icon="mdi-view-dashboard-outline" class="ml-10" v-if="isUser ? isUser.Role === 'Admin' : isUser" to="/dashboard/orders">لوحة التحكم</v-btn>
                             <v-btn rounded variant="outlined" :size="mobile ? 'small' : 'large'" to="/login"
                                 prepend-icon="mdi-account-outline" v-if="!isUser">
                                 تسجيل الدخول

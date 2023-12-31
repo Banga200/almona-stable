@@ -3,9 +3,9 @@ import { useUserStore } from '~/stores/auth';
 import ProgressLoading from '~/components/Loadings/ProgressLoading.vue';
 import { ref } from 'vue';
 definePageMeta({
-    name: "‘Users",
+    name: "Users",
     breadcrumb: 'المستخدمين',
-    middleware: ['auth'],
+    middleware: ['dashboard'],
     layout: 'dashboard'
 })
 useHead({

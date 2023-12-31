@@ -49,6 +49,7 @@ function changePasswordDialogState(value) {
             </v-container>
         </v-app-bar>
 
+       <client-only>
         <v-navigation-drawer v-model="drawer" location="right">
             <v-list>
                 <v-list-item  title="شركة المنى"
@@ -66,6 +67,7 @@ function changePasswordDialogState(value) {
                 </v-list-group>
             </v-list>
         </v-navigation-drawer>
+       </client-only>
 
         <v-main>
             <v-container fluid>

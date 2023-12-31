@@ -2,8 +2,9 @@
 import { ref, computed, onMounted } from 'vue';
 import { useUserStore } from '~/stores/auth';
 import { useRouter } from 'vue-router';
-import { useAdvertismentStore } from '~/stores/advertisment';
-const advertismentStore = useAdvertismentStore();
+defineOptions({
+  inheritAttrs: false
+})
 const router = useRouter();
 const userStore = useUserStore();
 const props = defineProps(['User']);

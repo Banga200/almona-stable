@@ -1,6 +1,9 @@
 <script setup>
 import { ref, watch } from 'vue';
 import { useUserStore } from '~/stores/auth'
+defineOptions({
+  inheritAttrs: false
+})
 const userStore = useUserStore()
 const props = defineProps(['open'])
 const emit = defineEmits(['update:open'])

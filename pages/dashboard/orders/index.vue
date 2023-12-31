@@ -38,7 +38,7 @@ const headers = [
 definePageMeta({
     name: "Orders",
     breadcrumb: 'الطلبات',
-    middleware: ['auth'],
+    middleware: ['dashboard'],
     layout: 'dashboard'
 })
 useHead({

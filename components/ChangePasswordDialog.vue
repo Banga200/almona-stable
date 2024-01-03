@@ -48,7 +48,6 @@ watch(formData.value, () => {
 
     else {
         disabled.value = false
-        console.log("Else")
     }
 })
 async function submitForm() {

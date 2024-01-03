@@ -4,8 +4,6 @@ import { ref, onMounted, computed } from 'vue'
 import { useAdvertismentStore } from '~/stores/advertisment';
 const route = useRoute();
 const advertismentStore = useAdvertismentStore();
-console.log(route)
-
 definePageMeta({
     name: 'advertisement'
 })

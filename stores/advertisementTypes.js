@@ -11,17 +11,20 @@ export const useAdvertisementTypesStore = defineStore('AdvertisementTypes', () =
   const loading = ref(false);
   // Getters 
   const getAdvertisementTypes = computed(() => { return AdvertisementTypes.value })
-  const getLoading = computed(() => {return loading.value})
+  const getLoading = computed(() => { return loading.value })
 
   // Actions 
   async function GetAllAdvertisementTypes() {
     loading.value = true
     try {
       const { data: advertisementTypes, error } = await useFetch(`${BaseURL}/AdvertisementTypes`)
-      AdvertisementTypes.value = advertisementTypes.value.content;
-      loading.value = false
+      if (advertisementTypes.value) {
+        AdvertisementTypes.value = advertisementTypes.value.content;
+        loading.value = false
+      }
+
     }
-    
+
     catch (error) {
       console.log(error);
       loading.value = false

@@ -32,8 +32,17 @@ export const useCategoryStore = defineStore('Category', () => {
         loading.value = false
       }
       else {
-        Categories.value = categories.value.content;
-        loading.value = false
+        setTimeout(() => {
+          if (categories.value) {
+            Categories.value = categories.value.content;
+            loading.value = false
+          }
+          else {
+            Categories.value = categories.content;
+            loading.value = false
+          }
+        },200)
+        
       }
     }
     catch (error) {

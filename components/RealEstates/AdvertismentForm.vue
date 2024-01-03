@@ -103,7 +103,6 @@ async function submitForm() {
     emit('moveNextStep')
 }
 async function editForm() {
-    console.log(formData.value)
     await Advertismentstore.UpdateAdvertisement(formData.value)
 }
 function changeRadio(value) {
@@ -122,7 +121,7 @@ function changeRadio(value) {
                 <v-container class="pt-0">
                     <v-card-title class="pr-0 mb-2">نوع العقار:</v-card-title>
                     <v-row class="align-center ">
-                        <v-col cols="8" sm="6" md="4" lg="3" v-for="type in advertismentTypes">
+                        <v-col cols="12" sm="6" md="4" lg="3" v-for="type in advertismentTypes" :key="type.id">
                             <v-item v-slot:default="{ isSelected, toggle }">
                                 <v-btn border variant="outlined" :color="isSelected ? 'primary' : ''" elevation="0"
                                     class="d-flex align-center card_radios" :class="{ 'teal': selectedItem }" dark
@@ -160,7 +159,7 @@ function changeRadio(value) {
                         </v-row>
                     </v-col>
                 </v-row>
-                <v-row class="align-center mb-2">
+                <v-row class="align-center ma-0 mb-2 ">
                     <v-col cols="12" sm="3"><v-card-title class="pr-1 "> فئة العقار:</v-card-title></v-col>
                     <v-col cols="12" sm="4" md="3">
                         <v-combobox variant="outlined" hide-details label="النوع" color="primary" density="compact"
@@ -199,7 +198,7 @@ function changeRadio(value) {
                     </v-col>
                 </v-row>
 
-                <v-row>
+                <v-row class="ma-0">
                     <v-col cols="12" md="3">
                         <v-text-field variant="outlined" color="primary" append-inner-icon="mdi-sofa-outline"
                             v-model="formData.nHall" label="الصالة" type="number" required density="compact"></v-text-field>
@@ -235,7 +234,7 @@ function changeRadio(value) {
                     </v-col>
                 </v-row>
 
-                <v-row>
+                <v-row class="ma-0">
                     <v-col class="text-left">
                         <v-btn type='submit' color="primary" :disabled="isLaoding" :loading="isLaoding" size="x-large"
                             v-if="!props.isEdit" @submit.prevent="submitForm()">حفظ</v-btn>

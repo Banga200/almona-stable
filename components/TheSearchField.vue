@@ -9,7 +9,7 @@ const categoriesStore = useCategoryStore();
 const route = useRoute();
 const advertismentId = route.name === 'RealEstateRequest' ? 2 : 1 
 categoriesStore.GetAllCategories()
-advertismentStore.GetAllAdvertisments(advertismentId);
+
 
 const categories = ref("")
 const Advertisments = computed(() => {
@@ -270,7 +270,7 @@ function clearFilter() {
                     <v-card-subtitle>الفئات</v-card-subtitle>
 
                     <v-row class="ma-0" v-if="loadingCategory">
-                        <v-skeleton-loader type="chip" v-for="n in 5" width="100"></v-skeleton-loader>
+                        <v-skeleton-loader type="chip" v-for="n in 5" width="100" :key="n"></v-skeleton-loader>
                     </v-row>
                     <ChipsFilter :subCategories="categoriesStore.getSubCategories" v-if="!loadingCategory"/>
                 </v-col>

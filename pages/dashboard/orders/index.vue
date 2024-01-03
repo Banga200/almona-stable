@@ -34,6 +34,17 @@ const headers = [
         align: 'start',
         key: 'orderTime',
     },
+    {
+        title: 'رابط الإعلان',
+        align: 'start',
+        key: 'orderTime',
+    },
+    {
+        title: '',
+        align: 'start',
+        key: 'orderTime',
+        sortable: false
+    },
 ]
 definePageMeta({
     name: "Orders",
@@ -46,6 +57,14 @@ useHead({
 })
 dayjs.locale('ar')
 const searchById = ref('')
+
+function deleteOrder(id) {
+    const answer = window.confirm(` هل انت متأكد من حذف الطلب ؟ `)
+    if (answer) {
+        OrdersStore.DeleteOrder(id)
+    }
+    else { console.log("cancel") }
+}
 </script>
 <template>
     <client-only>
@@ -66,6 +85,13 @@ const searchById = ref('')
                         <td>{{ item.user.emailAddress }}</td>
                         <td>{{ item.user.phoneNumber }}</td>
                         <td>{{ dayjs(item.orderTime).format("dddd, MMMM D, YYYY h:mm A") }}</td>
+                        <td><NuxtLink :href="`/advertisement/${item.advertisementId}`" target="_blank" >رابط الإعلان <v-icon>mdi-link</v-icon></NuxtLink></td>
+                        <td><v-btn variant="flat" icon  size="small" @click="deleteOrder(item.id)">
+                            <v-tooltip activator="parent" text="حذف الطلب" location="bottom"></v-tooltip>
+                                <v-icon color="error">
+                                    mdi-delete
+                                </v-icon>
+                        </v-btn></td>
                     </tr>
                 </template>
             </v-data-table>

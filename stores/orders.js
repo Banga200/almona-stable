@@ -74,6 +74,46 @@ export const useOrdersStore = defineStore('Orders', () => {
             loading.value = false
         }
     }
+    async function DeleteOrder(id) {
+        loading.value = true
+        try {
+            const { data: orders, error } = await useFetch(`${BaseURL}/Orders`, {
+                headers: {
+                    'Content-Type': "application/json",
+                    "Authorization": `Bearer ${userStore.getToken}` 
+                },
+                method: "DELETE",
+                params: {id: id}
+            })
+            if (error.value) {
+                ComposableError.handelErros(error.value)
+                loading.value = false;
+                
+            }
+            else {
+                toast.success("تم حذف الطلب")
+                const index = Orders.value.findIndex(item => {
+                    return item.id === id
+                  })
+                  console.log(index)
+                  if (index !== -1) {
+                    Orders.value.splice(index, 1)
+                    console.log(Orders.value)
+                    console.log('Object removed:');
+                  } else {
+                    console.log('Object not found');
+                  }
+                loading.value = false
+                
+            }
+        }
 
-    return { AddNewOrders,GetAllOrders, getOrders, getLoading, getSuccess }
+        catch (error) {
+            console.log(error);
+            loading.value = false
+            success.value = false
+        }
+    }
+
+    return { AddNewOrders,GetAllOrders,DeleteOrder, getOrders, getLoading, getSuccess }
 })

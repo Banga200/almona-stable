@@ -8,11 +8,10 @@ useHead({
 const userStore = useUserStore()
 const route = useRoute()
 const advertismentStore = useAdvertismentStore();
-advertismentStore.GetAllAdvertisments();
 advertismentStore.GetAllAdvertismentsByUser(route.params.id)
 const Advertisments = computed(() => {
-    if (advertismentStore.getAdvertisments && advertismentStore.getAdvertisments.length > 0) {
-        return advertismentStore.getAdvertisments;
+    if (advertismentStore.getUserAdvertisments && advertismentStore.getUserAdvertisments.length > 0) {
+        return advertismentStore.getUserAdvertisments;
     }
 })
 const isUser = computed(() => {

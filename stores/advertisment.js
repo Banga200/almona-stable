@@ -22,29 +22,52 @@ export const useAdvertismentStore = defineStore('Advertisment', () => {
   const Advertisments = ref([]);
   const OneAdvertisment = ref([])
   const ReturnNewAdvertismentID = ref(0);
-  const ImagesCounter = ref(0)
+  const ImagesCounter = ref(0);
+  const UserAdvertisments = ref([]);
+  const RequestedAdvertisement = ref([])
   // loading 
   const loading = ref(false)
   const success_message = ref(null);
-  const error_message = ref(null)
+  const error_message = ref(null);
+  const stopScrolling = ref(false)
   // Getters 
   const getAdvertisments = computed(() => { return Advertisments.value })
   const getOneAdvertisment = computed(() => { return OneAdvertisment.value })
-
+  const getstopScrolling = computed(() => { return stopScrolling.value })
+  const getUserAdvertisments = computed(() => { return UserAdvertisments.value })
+  const getRequestedAdvertisement = computed(() => { return RequestedAdvertisement.value })
   // Actions 
   // Get All Advertisments 
-  async function GetAllAdvertisments(advertisId) {
+  async function GetAllAdvertisments(advertisId, page) {
     loading.value = true;
     try {
-      const { data: advertisments, error } = await useFetch(`${BaseURL}/Advertisements/GetAllByTypeAsync`, { params: { AdversmentTypeId: advertisId } })
+      const { data: advertisments, error } = await useFetch(`${BaseURL}/Advertisements/GetAllByTypeAsync`, {
+        params: {
+          AdversmentTypeId: advertisId,
+          page: page === 0 ? page: page -= 1,
+          pageSize: 15
+        }
+      })
       if (error.value) {
         ComposableError.handelErros(error.value)
         loading.value = false
       }
 
       else {
-        loading.value = false;
-        Advertisments.value = advertisments.value.content;
+        if (advertisments.value && advertisments.value.content.length > 0) {
+            loading.value = false;
+            
+            if (advertisId === 1) {
+                Advertisments.value = advertisments.value.content
+            }
+            else{
+              RequestedAdvertisement.value = advertisments.value.content
+            }
+
+        }
+        else {
+          loading.value = false
+        }
       }
 
 
@@ -168,12 +191,48 @@ export const useAdvertismentStore = defineStore('Advertisment', () => {
         loading.value = false
       }
       else {
-        if (file.value.code === 0) { toast.success("تم إضافةالصورة بنجاح") }
+        if (file.value.code === 0) { toast.success("تم إضافة الصورة بنجاح") }
         if (ImagesCounter.value === count.value) {
           console.log(ImagesCounter.value, count.value)
           router.push('/real-estate/عقارات');
           loading.value = false;
         }
+        loading.value = false;
+      }
+    }
+    catch (error) {
+      ComposableError.handelErros(error)
+      loading.value = false
+    }
+  }
+  async function DeleteImage(fileName, imageId) {
+    loading.value = true;
+    try {
+      const { data: file, error } = await useFetch(`${BaseURL}/File`, {
+        headers: {
+          'Content-Type': "application/json",
+          "Authorization": `Bearer ${userStore.getToken}`
+          // "Authorization": `Bearer ${token}` 
+        },
+        method: "DELETE",
+        params: { fileName: fileName, id: imageId }
+      })
+      if (error.value) {
+        ComposableError.handelErros(error)
+        loading.value = false
+      }
+      else {
+        if (file.value.code === 0) { toast.success("تم حذف الصورة ") }
+        const index = OneAdvertisment.value.imageIDs.findIndex((item) => {
+          return item.id === imageId
+        })
+        if (index !== -1) {
+          OneAdvertisment.value.imageIDs.splice(index, 1)
+          console.log('Object removed:');
+        } else {
+          console.log('Object not found');
+        }
+
         loading.value = false;
       }
     }
@@ -236,7 +295,7 @@ export const useAdvertismentStore = defineStore('Advertisment', () => {
       }
       else {
         loading.value = false;
-        Advertisments.value = advertisments.value.content;
+        UserAdvertisments.value = advertisments.value.content;
       }
 
 
@@ -287,5 +346,5 @@ export const useAdvertismentStore = defineStore('Advertisment', () => {
   function setCounterImage(number) {
     ImagesCounter.value = number
   }
-  return { Advertisments, getAdvertisments, loading, success_message, getOneAdvertisment, error_message,UpdateAdvertisement, DeleteAdvertisement,GetAdvertisementByID, setCounterImage, ReturnNewAdvertismentID, GetAllAdvertismentsBySubcategory, GetAllAdvertismentsByUser, FilterAdvertisements, AddNewAdvertisment, AddImageToAdvertisment, GetAllAdvertisments }
+  return { Advertisments, getAdvertisments, loading, success_message, getstopScrolling, getOneAdvertisment,getUserAdvertisments,getRequestedAdvertisement, error_message, DeleteImage, UpdateAdvertisement, DeleteAdvertisement, GetAdvertisementByID, setCounterImage, ReturnNewAdvertismentID, GetAllAdvertismentsBySubcategory, GetAllAdvertismentsByUser, FilterAdvertisements, AddNewAdvertisment, AddImageToAdvertisment, GetAllAdvertisments }
 })

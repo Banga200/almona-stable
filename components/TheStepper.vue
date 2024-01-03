@@ -7,7 +7,6 @@ function changeStatus() {
     
 }
 function MoveToNextStep(index) {
-    console.log("SETP !!!")
      // Move to the next step
      if (index < props.components.length - 1) {
         step.value = index + 2;
@@ -36,9 +35,9 @@ function MoveToNextStep(index) {
                 </v-stepper-header>
                 <!-- Content  -->
                 <v-stepper-window >
-                    <v-stepper-window-item   class="ma-1" v-for="(component, i) in props.components" :key="`${1}-content`"
+                    <v-stepper-window-item   class="ma-1" v-for="(component, i) in props.components" :key="i"
                         :value="i + 1">
-                        <component :is="component" :isEdit="props.isEdit" class="pa-5" @moveNextStep="MoveToNextStep(i)" :isFinalStep="props.components.length === i +1 ? true : false"/>
+                        <component :is="component" :isEdit="props.isEdit" class="pa-0 pa-md-5" @moveNextStep="MoveToNextStep(i)" :isFinalStep="props.components.length === i +1 ? true : false"/>
                     </v-stepper-window-item>
                 </v-stepper-window>
             </template>

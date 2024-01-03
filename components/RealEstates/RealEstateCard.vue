@@ -9,6 +9,7 @@ import { useOrdersStore } from '~/stores/orders';
 import { useDayjs } from '#dayjs';
 import { useRouter } from 'vue-router';
 import { useRoute } from 'vue-router';
+import defaultImage from '~/assets/images/default.webp'
 // const Varibels 
 const props = defineProps(['advertisment', 'services', 'isUserAdvertisements', 'loading', 'isDetails'])
 const advertismentStore = useAdvertismentStore();
@@ -91,8 +92,8 @@ function NavigateToDetails(id) {
                         <v-btn icon="mdi-delete" color="red" :loading="props.loading" size="small"
                             @click.stop="deleteAdvertisement(props.advertisment.id)"></v-btn>
                     </div>
-                    <img class="h-100" :src="images ? `${images[0].url}` : ''"
-                        :alt="props.advertisment.imageIDs ? props.advertisment.imageIDs[0].description : ''" loading="lazy"
+                    <img class="h-100" :src="images && images.length > 0 ? `${images[0].url}` : defaultImage"
+                        :alt="images && images.length > 0 ? images[0].description : ''" loading="lazy"
                         @click.stop="toggleMoreDetails(), changeTab(2)" />
                     <a class="image_feature right" @click.stop="toggleMoreDetails(); changeTab(2)">صور أكثر
                         <v-icon>mdi-chevron-down</v-icon></a>
@@ -105,7 +106,7 @@ function NavigateToDetails(id) {
                         <v-card-subtitle>{{ props.advertisment.subCategory ? props.advertisment.subCategory.name : ''
                         }}</v-card-subtitle>
                         <v-spacer />
-                        <v-card-subtitle> {{ props.advertisment.location }}
+                        <v-card-subtitle> {{ props.advertisment.location || '-' }}
                             <v-icon>mdi-map-marker-outline</v-icon></v-card-subtitle>
                     </v-row>
                     <v-row class="ma-0 align-center my-5">

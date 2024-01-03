@@ -16,7 +16,6 @@ const ArrayOfFiles = computed(() => {
     return files.value
 })
 const advertisement = computed(() => { return advertismentStore.getOneAdvertisment })
-console.log(advertisement)
 function handleFileChange(event) {
     const filesEvent = event.target.files;
 
@@ -66,6 +65,9 @@ function changeName(event, i) {
     updateFiles[i].fileDescription = event.target.value
     files.value = updateFiles
 }
+function deleteImage(fileName, id) {
+    advertismentStore.DeleteImage(fileName,id)
+}
 </script>
 <template>
     <v-card border>
@@ -94,7 +96,7 @@ function changeName(event, i) {
                         
                         <v-img :src="advertis.url" :lazy-src="advertis.url" aspect-ratio="1" cover
                             class="bg-grey-lighten-2 " />
-                            <v-btn color="error" size="small" class="mt-2" icon>
+                            <v-btn color="error" size="small" class="mt-2" icon @click="deleteImage(advertis.fileName, advertis.id)" :loading="isLaoding">
                                 <v-tooltip activator="parent" location="bottom">حذف الصورة</v-tooltip>
                                 <v-icon>mdi-delete</v-icon>
                             </v-btn>

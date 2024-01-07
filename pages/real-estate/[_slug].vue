@@ -8,13 +8,12 @@ const categoriesStore = useCategoryStore();
 const route = useRoute();
 const advertismentId = route.name === 'RealEstateRequest' ? 2 : 1
 const page = ref(1)
-console.log(route.params)
 categoriesStore.GetAllCategories();
-advertismentStore.GetAllAdvertisments(advertismentId, 0);
+advertismentStore.GetAllAdvertisments(advertismentId, 1);
 
 const Advertisments = computed(() => {
-    if (advertismentStore.getAdvertisments && advertismentStore.getAdvertisments.length > 0) {
-        return new Set(advertismentStore.getAdvertisments);
+    if (advertismentStore.getAdvertisments && advertismentStore.getAdvertisments.entities.length > 0) {
+        return advertismentStore.getAdvertisments
     }
 
 })
@@ -70,10 +69,10 @@ watch(page, (newPage) => {
                         العقار</v-btn>
                 </div>
                 <ProgressLoading v-if="loadPage" :isLoading="loadPage" class="my-2"/>
-                <RealEstateCard v-for="advertisment in Advertisments" :key="advertisment.id" :advertisment="advertisment" />
+                <RealEstateCard v-for="advertisment in Advertisments.entities" :key="advertisment.id" :advertisment="advertisment" />
 
             </v-row>
-            <v-pagination v-model="page" :length="4"  rounded="circle" active-color="primary" variant="flat" ></v-pagination>
+            <v-pagination v-if="Advertisments.totalPages > 1" v-model="page" :length="Advertisments.totalPages" rounded="circle" active-color="primary" variant="flat" ></v-pagination>
         </ClientOnly>
 
     </v-container>

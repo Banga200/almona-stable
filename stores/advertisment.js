@@ -44,19 +44,23 @@ export const useAdvertismentStore = defineStore('Advertisment', () => {
       const { data: advertisments, error } = await useFetch(`${BaseURL}/Advertisements/GetAllByTypeAsync`, {
         params: {
           AdversmentTypeId: advertisId,
-          page: page === 0 ? page: page -= 1,
+          page: page ,
           pageSize: 15
         }
       })
+      console.log(error)
       if (error.value) {
-        ComposableError.handelErros(error.value)
+        
         loading.value = false
       }
 
       else {
-        if (advertisments.value && advertisments.value.content.length > 0) {
+        if (advertisments.value) {
             loading.value = false;
-            
+            if (advertisments.value.code > 0 ) {
+              toast.error(advertisments.value.message)
+              return;
+            }
             if (advertisId === 1) {
                 Advertisments.value = advertisments.value.content
             }

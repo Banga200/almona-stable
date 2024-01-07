@@ -10,7 +10,7 @@ const route = useRoute()
 const advertismentStore = useAdvertismentStore();
 advertismentStore.GetAllAdvertismentsByUser(route.params.id)
 const Advertisments = computed(() => {
-    if (advertismentStore.getUserAdvertisments && advertismentStore.getUserAdvertisments.length > 0) {
+    if (advertismentStore.getUserAdvertisments && advertismentStore.getUserAdvertisments.entities.length > 0) {
         return advertismentStore.getUserAdvertisments;
     }
 })
@@ -40,7 +40,7 @@ const loading = computed(() => { return advertismentStore.loading })
             </div>
             <div v-if="isUser" class="w-100">
                 <div  v-if="parseInt(isUser.UserId) === parseInt($route.params.id)">
-                <RealEstateCard v-for="(advertisment) in Advertisments" :key="advertisment.id" :advertisment="advertisment"
+                <RealEstateCard v-for="(advertisment) in Advertisments.entities" :key="advertisment.id" :advertisment="advertisment"
                 :isUserAdvertisements="true" :loading="loading"/>
             </div>
             </div>
@@ -50,6 +50,7 @@ const loading = computed(() => { return advertismentStore.loading })
             </v-alert>
             </div>
         </v-row>
+        <v-pagination v-if="Advertisments.totalPages > 1" v-model="page" :length="Advertisments.totalPages" rounded="circle" active-color="primary" variant="flat" ></v-pagination>
     </v-container>
     </client-only>
 </template>

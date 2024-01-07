@@ -9,9 +9,9 @@ const route = useRoute();
 const page = ref(1)
 const advertismentId = route.name === 'RealEstateRequest' ? 2 : 1
 categoriesStore.GetAllCategories();
-advertismentStore.GetAllAdvertisments(advertismentId, 0);
+advertismentStore.GetAllAdvertisments(advertismentId, 1);
 const Advertisments = computed(() => {
-    if (advertismentStore.getRequestedAdvertisement && advertismentStore.getRequestedAdvertisement.length > 0) {
+    if (advertismentStore.getRequestedAdvertisement && advertismentStore.getRequestedAdvertisement.entities.length > 0) {
         return advertismentStore.getRequestedAdvertisement;
     }
 
@@ -61,9 +61,9 @@ watch(page, (newPage) => {
                     <v-btn to="/real-estate/عقارات" variant="outlined" append-icon="mdi-arrow-left"> عقارات</v-btn>
                 </div>
                 <ProgressLoading v-if="loadPage" :isLoading="loadPage" class="my-2"/>
-                <RealEstateCard v-for="advertisment in Advertisments" :key="advertisment.id" :advertisment="advertisment" />
+                <RealEstateCard v-for="advertisment in Advertisments.entities" :key="advertisment.id" :advertisment="advertisment" />
             </v-row>
-            <v-pagination v-model="page" :length="4" rounded="circle" active-color="primary" variant="flat"></v-pagination>
+            <v-pagination v-if="Advertisments.totalPage > 1" v-model="page" :length="Advertisments.totalPage" rounded="circle" active-color="primary" variant="flat"></v-pagination>
         </ClientOnly>
     </v-container>
 </template>

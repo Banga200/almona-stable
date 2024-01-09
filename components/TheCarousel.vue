@@ -16,7 +16,7 @@ function changeImage(url) {
                     <v-row class="ma-0">
                         <li v-for="(image, i) in props.images" :key="i">
                             <v-img :src="`${image.url}`"
-                                @click="$emit('changeSelectedImage', image.url), changeImage(image.url)" />
+                                @click="$emit('changeSelectedImage', image.url), changeImage(image.url)" cover/>
                         </li>
                     </v-row>
 

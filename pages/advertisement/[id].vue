@@ -25,7 +25,7 @@ const loading = computed(() => {
         <v-progress-circular :size="40" color="primary" indeterminate></v-progress-circular>
     </div>
     <v-container class="my-5">
-        <div v-if="Advertisement">
+        <div v-if="Advertisement" class="w-100">
             <real-estate-card :advertisment="Advertisement" :isDetails="true" />
         </div>
     </v-container>

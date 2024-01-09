@@ -399,7 +399,7 @@ p {
             height: 100%;
             opacity: 0.7;
             border-radius: 4px;
-            object-fit: fill;
+            object-fit: cover;
             &:hover {
                 opacity: 1;
                 border: 2px solid $white;

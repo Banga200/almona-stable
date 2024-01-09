@@ -69,7 +69,7 @@ watch(page, (newPage) => {
                         العقار</v-btn>
                 </div>
                 <ProgressLoading v-if="loadPage" :isLoading="loadPage" class="my-2"/>
-                <div v-if="Advertisments">
+                <div v-if="Advertisments" class="w-100">
                 <RealEstateCard v-for="advertisment in Advertisments.entities" :key="advertisment.id" :advertisment="advertisment" />
                 </div>
 

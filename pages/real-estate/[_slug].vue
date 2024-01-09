@@ -69,10 +69,12 @@ watch(page, (newPage) => {
                         العقار</v-btn>
                 </div>
                 <ProgressLoading v-if="loadPage" :isLoading="loadPage" class="my-2"/>
+                <div v-if="Advertisments">
                 <RealEstateCard v-for="advertisment in Advertisments.entities" :key="advertisment.id" :advertisment="advertisment" />
+                </div>
 
             </v-row>
-            <v-pagination v-if="Advertisments.totalPages > 1" v-model="page" :length="Advertisments.totalPages" rounded="circle" active-color="primary" variant="flat" ></v-pagination>
+            <v-pagination v-if="Advertisments && Advertisments.totalPages > 1" v-model="page" :length="Advertisments.totalPages" rounded="circle" active-color="primary" variant="flat" ></v-pagination>
         </ClientOnly>
 
     </v-container>

@@ -98,7 +98,6 @@ export const useOrdersStore = defineStore('Orders', () => {
                   console.log(index)
                   if (index !== -1) {
                     Orders.value.splice(index, 1)
-                    console.log(Orders.value)
                     console.log('Object removed:');
                   } else {
                     console.log('Object not found');

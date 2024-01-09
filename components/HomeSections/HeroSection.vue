@@ -1,9 +1,9 @@
 <script setup>
 import buildingImage from '~/assets/images/building.png'
 const icons = [
-    { icon: 'mdi-twitter', title: 'Twitter' },
-    { icon: 'mdi-facebook', title: 'Facebook' },
-    { icon: 'mdi-instagram ', title: 'Instagram ' },
+    { icon: 'mdi-twitter', title: 'Twitter', link: 'https://x.com/mona25672?t=MPU4hdH5HhvotgNFcxDzaw&s=08' },
+    { icon: 'mdi-facebook', title: 'Facebook', link: 'https://www.facebook.com/ALmona.202?mibextid=ZbWKwL' },
+    { icon: 'mdi-instagram ', title: 'Instagram', link: 'https://www.instagram.com/almona2022?igsh=MXdvOHR2aWdwNHpocA==' },
 ]
 </script>
 <template>
@@ -24,8 +24,8 @@ const icons = [
                 <client-only >
                     <!-- Social Media Icons  -->
                     <v-sheet rounded min-width="50" class="py-1 text-center float-left d-flex flex-md-column mt-8 mt-md-0">
-                        <v-btn v-for="(item, i) in icons" :key="i" icon color="black" class="mx-2 ma-md-0 d-block"
-                            variant="text">
+                        <v-btn v-for="(item, i) in icons" :key="i" icon color="black" class="mx-2 align-center ma-md-0 d-flex"
+                            variant="text" :href="item.link" target="_blank" >
                             <v-tooltip activator="parent" location="bottom">{{ item.title }}</v-tooltip>
                             <v-icon>{{ item.icon }}</v-icon>
                         </v-btn>

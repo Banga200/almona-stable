@@ -35,7 +35,7 @@ export const useUserStore = defineStore('User', () => {
                 method: "POST",
                 body: JSON.stringify(payload)
             })
-            console.log(user)
+            console.log(error)
             if (error.value) {
                 if (error.value.data.code === 1005) {
                     ComposableError.handelErros(error.value)
@@ -60,7 +60,8 @@ export const useUserStore = defineStore('User', () => {
         }
         catch (error) {
             ComposableError.handelErros(error)
-            Loading.value = false
+            Loading.value = false;
+            console.log(error)
         }
     }
     async function Register(payload) {
@@ -191,7 +192,6 @@ export const useUserStore = defineStore('User', () => {
                   console.log(index)
                   if (index !== -1) {
                     UserList.value.splice(index, 1)
-                    console.log(UserList.value)
                     console.log('Object removed:');
                   } else {
                     console.log('Object not found');
@@ -241,9 +241,11 @@ export const useUserStore = defineStore('User', () => {
         }
     }
     function setTokenToCookies(token, decode) {
-        const today = new Date();
+        const date = new Date(10 * 1000);
+        const cookieExpiration = date.toUTCString();
         const cookie = useCookie('token', {
-            expires: new Date(today.getTime() + decode.exp),
+            maxAge: 86400 ,
+            // expires: cookieExpiration,
             secure: true
         })
         cookie.value = token.accessToken

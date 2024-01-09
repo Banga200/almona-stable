@@ -10,7 +10,7 @@ const route = useRoute()
 const advertismentStore = useAdvertismentStore();
 advertismentStore.GetAllAdvertismentsByUser(route.params.id)
 const Advertisments = computed(() => {
-    if (advertismentStore.getUserAdvertisments && advertismentStore.getUserAdvertisments.entities.length > 0) {
+    if (advertismentStore.getUserAdvertisments) {
         return advertismentStore.getUserAdvertisments;
     }
 })
@@ -50,7 +50,7 @@ const loading = computed(() => { return advertismentStore.loading })
             </v-alert>
             </div>
         </v-row>
-        <v-pagination v-if="Advertisments.totalPages > 1" v-model="page" :length="Advertisments.totalPages" rounded="circle" active-color="primary" variant="flat" ></v-pagination>
+        <v-pagination v-if="Advertisments && Advertisments.totalPages > 1" v-model="page" :length="Advertisments.totalPages" rounded="circle" active-color="primary" variant="flat" ></v-pagination>
     </v-container>
     </client-only>
 </template>

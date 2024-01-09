@@ -73,12 +73,12 @@ function handleScroll(event) {
                         {{ item.title }}
                     </v-list-item>
                     <!-- This list is for any routing pages  -->
-                    <v-list-item v-for="item in routeNavs" :key="item.title" :to="item.link" color="priamry" >
+                    <v-list-item v-for="item in routeNavs" :key="item.title" :to="item.link" color="priamry" :append-icon="item.icon">
                         {{ item.title }}
                     </v-list-item>
                     <v-spacer />
                     <v-divider class="mt-2"/>
-                    <v-btn  variant="flat" class="mt-2" v-if="isUser ? isUser.Role === 'Admin' : isUser" to="/dashboard/orders">لوحة التحكم</v-btn>
+                    <v-list-item variant="flat" class="mt-2" v-if="isUser ? isUser.Role === 'Admin' : isUser" to="/dashboard/orders" append-icon="mdi-view-dashboard-outline">لوحة التحكم</v-list-item>
                     <v-btn prepend-icon="mdi-account-outline" variant="outlined" to="/login" rounded class="mr-2 mt-10" v-if="!isUser">
                         تسجيل الدخول
                     </v-btn>

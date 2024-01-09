@@ -47,11 +47,11 @@ watch(page, (newPage) => {
         <TheSearchField />
       </v-sheet>
       <v-divider class="my-5" />
-      <v-row class="ma-0 mt-5" :class="{ 'justify-center': !Advertisments }">
+      <v-row class="ma-0 mt-5 justify-center" >
         <div class="w-100" v-if="loading">
           <AdvertisementLoading v-for="n in 5" :key="n" />
         </div>
-        <div v-if="!Advertisments" class="text-center my-10">
+        <div v-if="Advertisments?.entities?.length === 0" class="text-center my-10">
           لاتوجد طلبات حاليا <br /><br />
           <v-btn
             color="primary"

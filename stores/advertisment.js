@@ -283,16 +283,21 @@ export const useAdvertismentStore = defineStore('Advertisment', () => {
       loading.value = false
     }
   }
-  async function GetAllAdvertismentsByUser(userId) {
+  async function GetAllAdvertismentsByUser(userId,page) {
     loading.value = true;
     try {
       const { data: advertisments, error } = await useFetch(`${BaseURL}/Advertisements/GetAllByUsderIdAsync`, {
         headers: {
           "Authorization": `Bearer ${userStore.getToken}`
         },
-        params: { userId: userId }
+        params: {
+          page: page,
+          pageSize: 15, 
+          userId: userId
+         }
       }
       )
+      console.log(advertisments)
       if (error.value) {
         ComposableError.handelErros(error.value)
         loading.value = false

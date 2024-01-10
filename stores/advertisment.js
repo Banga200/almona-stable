@@ -176,9 +176,7 @@ export const useAdvertismentStore = defineStore('Advertisment', () => {
     }
   }
   // Add Images to Advertisments 
-  const count = ref(0)
-  async function AddImageToAdvertisment(payload) {
-    count.value = count.value + 1
+  async function AddImageToAdvertisment(payload,imageNumber) {
     loading.value = true;
     try {
       const { data: file, error } = await useFetch(`${BaseURL}/File`, {
@@ -192,21 +190,19 @@ export const useAdvertismentStore = defineStore('Advertisment', () => {
       })
       if (error.value) {
         ComposableError.handelErros(error)
-        loading.value = false
+        loading.value = false;
+        success_message.value = false
       }
       else {
-        if (file.value.code === 0) { toast.success("تم إضافة الصورة بنجاح") }
-        if (ImagesCounter.value === count.value) {
-          console.log(ImagesCounter.value, count.value)
-          router.push('/real-estate/عقارات');
-          loading.value = false;
-        }
+        if (file.value.code === 0) { toast.success(`تم إضافة الصورة ${imageNumber} بنجاح`) }
+        success_message.value = true
         loading.value = false;
       }
     }
     catch (error) {
       ComposableError.handelErros(error)
-      loading.value = false
+      loading.value = false;
+      success_message.value = false;
     }
   }
   async function DeleteImage(fileName, imageId) {

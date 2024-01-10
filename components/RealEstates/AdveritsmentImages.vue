@@ -1,10 +1,11 @@
 <script setup>
 import { ref, computed, watch, onMounted } from 'vue';
 import { useAdvertismentStore } from '~/stores/advertisment'
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 const props = defineProps(['isEdit'])
 const emit = defineEmits(['apiRequestSuccess']);
 const route = useRoute()
+const router = useRouter()
 const advertismentStore = useAdvertismentStore();
 const imageUrls = ref([])
 let files = ref([]);
@@ -15,6 +16,7 @@ const isLaoding = computed(() => {
 const ArrayOfFiles = computed(() => {
     return files.value
 })
+const success = computed(() => {return advertismentStore.success_message})
 const advertisement = computed(() => { return advertismentStore.getOneAdvertisment })
 function handleFileChange(event) {
     const filesEvent = event.target.files;
@@ -46,8 +48,7 @@ function clearPreviewImages() {
     imageUrls.value = [];
     files.value = []
 }
-function submitForm() {
-    advertismentStore.setCounterImage(files.value.length)
+async function submitForm() {
     for (let index = 0; index < files.value.length; index++) {
         const file = {
             fileName: files.value[index].name,
@@ -57,7 +58,10 @@ function submitForm() {
             advertisementId: advertismentStore.ReturnNewAdvertismentID || parseInt(route.params.editId)
         }
         // Call Api 
-        advertismentStore.AddImageToAdvertisment(file)
+        await advertismentStore.AddImageToAdvertisment(file, index + 1)
+    }
+    if (success) {
+        router.push("/real-estate/عقارات")
     }
 }
 function changeName(event, i) {

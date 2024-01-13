@@ -34,7 +34,7 @@ const subcategories = computed(() => {
 })
 </script>
 <template>
-  <v-sheet max-width="800">
+  <v-sheet >
     <v-slide-group show-arrows mandatory>
       <v-slide-group-item v-for="category in subcategories" :key="category.id" v-slot="{ isSelected, toggle }">
         <v-btn class="ma-2" rounded :color="isSelected ? 'primary' : undefined"

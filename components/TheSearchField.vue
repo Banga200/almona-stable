@@ -257,7 +257,7 @@ function clearFilter() {
         </v-col>
         <v-col cols="12" sm="3" md="3" class="py-0 mt-3 mt-md-0"><v-btn variant="flat" size="large"
                 :class="{ 'w-100': mobile }" class="w-50" rounded color="primary" @click="handelFilter">بحث</v-btn></v-col>
-        <v-col cols="12">
+        <v-col cols="12" class="pa-0 mt-2 pa-md-2">
             <v-row cols="12" class="align-center ma-0">
                 <v-col cols="12" sm="6" md="4" class="d-flex align-center">
                     <v-card-subtitle class=" pr-0">نوع العقار:</v-card-subtitle>
@@ -265,9 +265,9 @@ function clearFilter() {
                         density="compact" :items="allCategories" item-title="name" item-value="id"
                         v-model="categories"></v-select>
                 </v-col>
-                <v-col cols="12" lg="8" v-if="categoriesStore.getSubCategories.length > 0" class="align-center"
-                    :class="{ 'd-flex': !mobile }">
-                    <v-card-subtitle>الفئات</v-card-subtitle>
+                <v-col cols="12" v-if="categoriesStore.getSubCategories.length > 0" class="align-center pa-0"
+                    >
+                    <v-card-subtitle class="d-block">الفئات</v-card-subtitle>
 
                     <v-row class="ma-0" v-if="loadingCategory">
                         <v-skeleton-loader type="chip" v-for="n in 5" width="100" :key="n"></v-skeleton-loader>

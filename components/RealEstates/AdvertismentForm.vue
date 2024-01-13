@@ -159,7 +159,7 @@ function changeRadio(value) {
                         </v-row>
                     </v-col>
                 </v-row>
-                <v-row class="align-center ma-0 mb-2 ">
+                <v-row class="align-center ma-0 mb-2 ">{{console.log(categories)}}
                     <v-col cols="12" sm="3"><v-card-title class="pr-1 "> فئة العقار:</v-card-title></v-col>
                     <v-col cols="12" sm="4" md="3">
                         <v-combobox variant="outlined" hide-details label="النوع" color="primary" density="compact"
@@ -187,6 +187,16 @@ function changeRadio(value) {
                             v-model="formData.space" label="المساحة" type="number" density="compact"
                             required></v-text-field>
                     </v-col>
+                    <v-col cols="12" md="3" v-if="category === 4 || category === 3">
+                        <v-text-field variant="outlined" color="primary" append-inner-icon="mdi-land-plots-marker"
+                            v-model="formData.space" label="عدد القطع" type="number" density="compact"
+                            required></v-text-field>
+                    </v-col>
+                    <v-col cols="12" md="3" v-if="category === 4 || category === 3">
+                        <v-text-field variant="outlined" color="primary" append-inner-icon="mdi-file-document-multiple-outline"
+                            v-model="formData.space" label="نوع الوثائق" density="compact"
+                            required></v-text-field>
+                    </v-col>
                     <v-col cols="12" md="3">
                         <v-text-field variant="outlined" color="primary" v-model="formData.age" label="العمر" type="number"
                             required density="compact"></v-text-field>
@@ -196,9 +206,7 @@ function changeRadio(value) {
                             v-model="formData.nRooms" label="عدد الغرف" type="number" density="compact"
                             required></v-text-field>
                     </v-col>
-                </v-row>
 
-                <v-row class="ma-0">
                     <v-col cols="12" md="3">
                         <v-text-field variant="outlined" color="primary" append-inner-icon="mdi-sofa-outline"
                             v-model="formData.nHall" label="الصالة" type="number" required density="compact"></v-text-field>

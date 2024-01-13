@@ -48,7 +48,7 @@ watch(page, (newPage) => {
                 to="/real-estate/request-advertisements" v-if="$route.path !== '/real-estate/request-advertisements'">طلبات
                 العقار</v-btn>
         </v-row>
-        <v-sheet class="px-md-10 px-2 py-3" rounded>
+        <v-sheet class="px-md-10 px-2 py-3 overflow-x-hidden" rounded>
             <ClientOnly>
                 <TheSearchField />
             </ClientOnly>

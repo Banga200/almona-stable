@@ -37,12 +37,14 @@ export const useUserStore = defineStore('User', () => {
             })
             console.log(error)
             if (error.value) {
-                if (error.value.data.code === 1005) {
-                    ComposableError.handelErros(error.value)
-                    UserEmail.value = error.value.data.content.email
-                    SendVerifyCode(error.value.data.content.userId);
-                    Loading.value =false
-                    return;
+                if (error.value.data) {
+                    if (error.value.data.code === 1005) {
+                        ComposableError.handelErros(error.value)
+                        UserEmail.value = error.value.data.content.email
+                        SendVerifyCode(error.value.data.content.userId);
+                        Loading.value =false
+                        return;
+                    }
                 }
                 ComposableError.handelErros(error.value)
                 Loading.value = false

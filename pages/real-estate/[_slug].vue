@@ -12,7 +12,7 @@ categoriesStore.GetAllCategories();
 advertismentStore.GetAllAdvertisments(advertismentId, 1);
 
 const Advertisments = computed(() => {
-    if (advertismentStore.getAdvertisments && advertismentStore.getAdvertisments.entities.length > 0) {
+    if (advertismentStore.getAdvertisments) {
         return advertismentStore.getAdvertisments
     }
 

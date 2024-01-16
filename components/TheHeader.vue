@@ -114,13 +114,14 @@ function handleScroll(event) {
                                 
                             </v-row>
                             <v-btn stacked prepend-icon="mdi-view-dashboard-outline" class="ml-10" v-if="isUser ? isUser.Role === 'Admin' : isUser" to="/dashboard/orders">لوحة التحكم</v-btn>
-                            <v-btn rounded variant="outlined" :size="mobile ? 'small' : 'large'" to="/login"
-                                prepend-icon="mdi-account-outline" v-if="!isUser">
-                                تسجيل الدخول
-                            </v-btn>
+                            
                             
                         </v-row>
                     </client-only>
+                    <v-btn rounded variant="outlined"  to="/login"
+                                prepend-icon="mdi-account-outline" v-if="!isUser">
+                                تسجيل الدخول
+                            </v-btn>
                     <user-drop-menu v-if="isUser" :User="isUser" />
                 </v-container>
                 

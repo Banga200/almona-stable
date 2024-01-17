@@ -7,12 +7,12 @@ import { useRoute } from 'vue-router';
 import { useRouter } from 'vue-router';
 const route = useRoute();
 const router = useRouter();
-const props = defineProps(['subCategories'])
+const props = defineProps(['subCategories', 'page'])
 const { mobile } = useDisplay();
 const advertismentStore = useAdvertismentStore();
 const categoryStore = useCategoryStore()
 const advertismentId = route.name === 'RealEstateRequest' ? 2 : 1;
-const page = ref(1)
+const page = ref(props.page)
 function getSpecific(id, name) {
   if (id === 0) {
     advertismentStore.GetAllAdvertisments(advertismentId, page.value);

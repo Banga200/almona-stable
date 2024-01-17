@@ -7,7 +7,8 @@ import { useRoute } from 'vue-router'
 const advertismentStore = useAdvertismentStore();
 const categoriesStore = useCategoryStore();
 const route = useRoute();
-const advertismentId = route.name === 'RealEstateRequest' ? 2 : 1 
+const advertismentId = route.name === 'RealEstateRequest' ? 2 : 1 ;
+const props = defineProps(['page'])
 categoriesStore.GetAllCategories()
 
 
@@ -67,7 +68,7 @@ const { mobile } = useDisplay();
 const menu = ref(null)
 const listOfNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 const loadingCategory = computed(() => { return categoriesStore.getLoading })
-const page = ref(1)
+const page = ref(props.page)
 watch(categories, (value) => {
     if (value === 0) {
         categoriesStore.GetAllSubGategories();
@@ -281,7 +282,7 @@ function clearFilter() {
                     <v-row class="ma-0" v-if="loadingCategory">
                         <v-skeleton-loader type="chip" v-for="n in 5" width="100" :key="n"></v-skeleton-loader>
                     </v-row>
-                    <ChipsFilter :subCategories="categoriesStore.getSubCategories" v-if="!loadingCategory"/>
+                    <ChipsFilter :page="page" :subCategories="categoriesStore.getSubCategories" v-if="!loadingCategory"/>
                 </v-col>
             </v-row>
 

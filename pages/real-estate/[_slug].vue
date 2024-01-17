@@ -50,7 +50,7 @@ watch(page, (newPage) => {
         </v-row>
         <v-sheet class="px-md-10 px-2 py-3 overflow-x-hidden" rounded>
             <ClientOnly>
-                <TheSearchField />
+                <TheSearchField :page='page'/>
             </ClientOnly>
 
         </v-sheet>

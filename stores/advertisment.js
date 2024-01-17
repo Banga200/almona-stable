@@ -56,7 +56,7 @@ export const useAdvertismentStore = defineStore("Advertisment", () => {
         {
           params: {
             AdversmentTypeId: advertisId,
-            page: page,
+            page: page ? page : 1,
             pageSize: 15,
           },
         }
@@ -251,12 +251,15 @@ export const useAdvertismentStore = defineStore("Advertisment", () => {
       loading.value = false;
     }
   }
-  async function FilterAdvertisements(fields) {
+  async function FilterAdvertisements(fields,adversmentTypeId, page) {
     loading.value = true;
     try {
       const { data: advertisments, error } = await useFetch(
-        `${BaseURL}/Advertisements/GetAllByFilterAsync/${fields.AdvertisementTypeId}`,
-        { params: fields }
+        `${BaseURL}/Advertisements/GetAllByFilterAsync/${adversmentTypeId}`,
+        { params: fields,
+          page: page ?  page : 1,
+          pageSize: 20
+        }
       );
       if (error.value) {
         ComposableError.handelErros(error.value);
@@ -270,12 +273,15 @@ export const useAdvertismentStore = defineStore("Advertisment", () => {
       loading.value = false;
     }
   }
-  async function GetAllAdvertismentsBySubcategory(id) {
+  async function GetAllAdvertismentsBySubcategory(id, page) {
     loading.value = true;
     try {
       const { data: advertisments, error } = await useFetch(
         `${BaseURL}/Advertisements/GetAllBySubCatogryAsync`,
-        { params: { SubcatogryId: id } }
+        { params: { SubcatogryId: id },
+          page: page ? page : 1,
+          pageSize: 20
+        }
       );
       if (error.value) {
         ComposableError.handelErros(error.value);

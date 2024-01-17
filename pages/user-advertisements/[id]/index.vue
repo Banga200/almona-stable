@@ -35,7 +35,7 @@ watch(page,() => {
 </script>
 <template>
   <client-only>
-    <v-container>
+    <v-container class="realEstate-container">
       <BackButton />
       <v-row class="ma-0 mt-5 justify-center">
         <div class="w-100" v-if="loading">

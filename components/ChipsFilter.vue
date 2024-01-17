@@ -11,12 +11,13 @@ const props = defineProps(['subCategories'])
 const { mobile } = useDisplay();
 const advertismentStore = useAdvertismentStore();
 const categoryStore = useCategoryStore()
-const advertismentId = route.name === 'RealEstateRequest' ? 2 : 1
+const advertismentId = route.name === 'RealEstateRequest' ? 2 : 1;
+const page = ref(1)
 function getSpecific(id, name) {
   if (id === 0) {
-    advertismentStore.GetAllAdvertisments(advertismentId);
+    advertismentStore.GetAllAdvertisments(advertismentId, page.value);
   }
-  else { advertismentStore.GetAllAdvertismentsBySubcategory(id) }
+  else { advertismentStore.GetAllAdvertismentsBySubcategory(id,page.value) }
 
 }
 const subcategories = computed(() => {
@@ -38,7 +39,7 @@ const subcategories = computed(() => {
     <v-slide-group show-arrows mandatory>
       <v-slide-group-item v-for="category in subcategories" :key="category.id" v-slot="{ isSelected, toggle }">
         <v-btn class="ma-2" rounded :color="isSelected ? 'primary' : undefined"
-          @click="toggle(), getSpecific(category.id,category.name)" border>
+          @click="toggle(), getSpecific(category.id,category.name)" border :readonly="isSelected">
           {{ category.name }}
         </v-btn>
       </v-slide-group-item>

@@ -47,7 +47,7 @@ const filters = ref({
     HasLicense: '',
     HasFireExtinguishers: '',
     AllowSingles: '',
-    AdvertisementTypeId: route.meta.name === 'RealEstateRequest' ? 2 : 1
+    AdvertisementTypeId: ''
 })
 const booleanProperties = ref([
     { text: "HasElectricity", label: 'كهرباء' },
@@ -67,7 +67,7 @@ const { mobile } = useDisplay();
 const menu = ref(null)
 const listOfNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 const loadingCategory = computed(() => { return categoriesStore.getLoading })
-
+const page = ref(1)
 watch(categories, (value) => {
     if (value === 0) {
         categoriesStore.GetAllSubGategories();
@@ -94,23 +94,32 @@ onMounted(() => {
 
 function handelFilter() {
     menu.value = false;
+    let count = 0
     const latestFilter = {}
     for (const key in filters.value) {
         if (Object.hasOwnProperty.call(filters.value, key)) {
             const element = filters.value[key];
             if(element !== ''){
                 latestFilter[key] = filters.value[key]
+                count += 1
             }
         }
     }
-    advertismentStore.FilterAdvertisements(latestFilter);
+    let advetiseTypeID = route.meta.name === 'RealEstateRequest' ? 2 : 1
+    if (count > 0) {
+        
+        advertismentStore.FilterAdvertisements(latestFilter,advetiseTypeID, page.value);
+
+    }
+    else {
+        advertismentStore.GetAllAdvertisments(advetiseTypeID, page.value)
+    }
 }
 function clearFilter() {
     for (const key in filters.value) {
         if (Object.hasOwnProperty.call(filters.value, key)) {
-            if (key !== 'AdvertisementTypeId') {
                 filters.value[key] = ''
-            }
+            
         }
     }
 }

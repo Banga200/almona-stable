@@ -252,13 +252,14 @@ export const useAdvertismentStore = defineStore("Advertisment", () => {
     }
   }
   async function FilterAdvertisements(fields, adversmentTypeId, page) {
+    console.log(fields)
     loading.value = true;
     try {
       const { data: advertisments, error } = await useFetch(
         `${BaseURL}/Advertisements/GetAllByFilterAsync/${adversmentTypeId}`,
         {
           params: {
-            fields,
+            ...fields,
             page: page ? page : 1,
             pageSize: 20,
           },

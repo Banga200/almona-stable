@@ -100,7 +100,7 @@ function handelFilter() {
     for (const key in filters.value) {
         if (Object.hasOwnProperty.call(filters.value, key)) {
             const element = filters.value[key];
-            if(element !== ''){
+            if(element !== '' && element !== false && element !== null){
                 latestFilter[key] = filters.value[key]
                 count += 1
             }

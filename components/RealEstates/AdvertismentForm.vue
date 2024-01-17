@@ -27,7 +27,7 @@ const formData = ref({
   NLands: 1,
   NFloor: 0,
   NEntry: 0,
-  DocType: '',
+  DocType: "",
   createTime: "2023-08-20",
   Availability: false,
   hasElectricity: false,
@@ -59,9 +59,15 @@ const booleanProperties = ref([
   { text: "hasFireExtinguishers", label: "طفايات حريق" },
   { text: "allowSingles", label: "السماح للعزاب" },
 ]);
+const bathrooms = ref([
+  { text: "hasElectricity", label: "كهرباء" },
+  { text: "hasConditioning", label: "تكييف" },
+  { text: "hasFireExtinguishers", label: "طفايات حريق" },
+  { text: "hasLicense", label: "مرخص" },
+]);
 const selectedItem = ref(1);
 const radio = ref(2);
-const category = ref('');
+const category = ref("");
 const advertismentTypes = ref([
   { text: "عرض عقار", id: 1 },
   { text: "طلب عقار", id: 2 },
@@ -264,7 +270,7 @@ function changeRadio(value) {
               required
             ></v-text-field>
           </v-col>
-          
+
           <v-col cols="12" md="3">
             <v-text-field
               variant="outlined"
@@ -335,7 +341,11 @@ function changeRadio(value) {
               density="compact"
             ></v-text-field>
           </v-col>
-          <v-col cols="12" md="3" v-if="category.id !== 5 && category.id !== 4 && category.id !== 3">
+          <v-col
+            cols="12"
+            md="3"
+            v-if="category.id !== 5 && category.id !== 4 && category.id !== 3"
+          >
             <v-text-field
               variant="outlined"
               color="primary"
@@ -347,7 +357,11 @@ function changeRadio(value) {
               required
             ></v-text-field>
           </v-col>
-          <v-col cols="12" md="3" v-if="category.id !== 5 && category.id !== 4 && category.id !== 3">
+          <v-col
+            cols="12"
+            md="3"
+            v-if="category.id !== 5 && category.id !== 4 && category.id !== 3"
+          >
             <v-text-field
               variant="outlined"
               color="primary"
@@ -360,7 +374,11 @@ function changeRadio(value) {
             ></v-text-field>
           </v-col>
 
-          <v-col cols="12" md="3" v-if="category.id !== 5 && category.id !== 4 && category.id !== 3">
+          <v-col
+            cols="12"
+            md="3"
+            v-if="category.id !== 5 && category.id !== 4 && category.id !== 3"
+          >
             <v-text-field
               variant="outlined"
               color="primary"
@@ -372,7 +390,14 @@ function changeRadio(value) {
               density="compact"
             ></v-text-field>
           </v-col>
-          <v-col cols="12" md="3" v-if="category.id !== 5 && category.id !== 4 && category.id !== 3 || category.id === 5">
+          <v-col
+            cols="12"
+            md="3"
+            v-if="
+              (category.id !== 5 && category.id !== 4 && category.id !== 3) ||
+              category.id === 5
+            "
+          >
             <v-text-field
               variant="outlined"
               color="primary"
@@ -414,25 +439,47 @@ function changeRadio(value) {
           <!-- Example: Add fields for nHall, nBathroom, price, currency, etc. -->
         </v-row>
         <!-- الخدمات  -->
-        <v-card-title class="pr-1">الخدمات:</v-card-title>
         <ClientOnly>
-          <v-row>
-            <!-- Include checkboxes for boolean properties -->
-            <v-col
-              cols="6"
-              sm="4"
-              lg="2"
-              v-for="property in booleanProperties"
-              :key="property"
-            >
-              <v-checkbox
-                color="primary"
-                v-model="formData[property.text]"
-                :label="property.label"
-                class="mt-3"
-              ></v-checkbox>
-            </v-col>
-          </v-row>
+          <div v-if="category.id !== 4 && category.id !== 3">
+            <v-card-title class="pr-1">الخدمات:</v-card-title>
+
+            <v-row v-if="category.id !== 5">
+              <!-- Include checkboxes for boolean properties -->
+              <v-col
+                cols="6"
+                sm="4"
+                md="3"
+                lg="2"
+                v-for="property in booleanProperties"
+                :key="property"
+              >
+                <v-checkbox
+                  color="primary"
+                  v-model="formData[property.text]"
+                  :label="property.label"
+                  class="mt-3"
+                ></v-checkbox>
+              </v-col>
+            </v-row>
+            <!-- اذا كان محل  -->
+            <v-row v-if="category.id === 5">
+              <v-col
+                cols="6"
+                sm="4"
+                md="3"
+                lg="2"
+                v-for="property in bathrooms"
+                :key="property"
+              >
+                <v-checkbox
+                  color="primary"
+                  v-model="formData[property.text]"
+                  :label="property.label"
+                  class="mt-3"
+                ></v-checkbox>
+              </v-col>
+            </v-row>
+          </div>
         </ClientOnly>
 
         <v-row class="ma-0">

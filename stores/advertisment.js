@@ -251,14 +251,17 @@ export const useAdvertismentStore = defineStore("Advertisment", () => {
       loading.value = false;
     }
   }
-  async function FilterAdvertisements(fields,adversmentTypeId, page) {
+  async function FilterAdvertisements(fields, adversmentTypeId, page) {
     loading.value = true;
     try {
       const { data: advertisments, error } = await useFetch(
         `${BaseURL}/Advertisements/GetAllByFilterAsync/${adversmentTypeId}`,
-        { params: fields,
-          page: page ?  page : 1,
-          pageSize: 20
+        {
+          params: {
+            fields,
+            page: page ? page : 1,
+            pageSize: 20,
+          },
         }
       );
       if (error.value) {
@@ -278,9 +281,12 @@ export const useAdvertismentStore = defineStore("Advertisment", () => {
     try {
       const { data: advertisments, error } = await useFetch(
         `${BaseURL}/Advertisements/GetAllBySubCatogryAsync`,
-        { params: { SubcatogryId: id },
-          page: page ? page : 1,
-          pageSize: 20
+        {
+          params: {
+            SubcatogryId: id,
+            page: page ? page : 1,
+            pageSize: 20,
+          },
         }
       );
       if (error.value) {

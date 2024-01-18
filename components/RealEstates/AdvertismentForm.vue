@@ -24,12 +24,12 @@ const formData = ref({
   nBathroom: 0,
   price: 0,
   currency: "",
-  NLands: 1,
-  NFloor: 0,
-  NEntry: 0,
-  DocType: "",
+  nLands: 0,
+  nFloor: 0,
+  nEntry: 0,
+  docType: "",
   createTime: "2023-08-20",
-  Availability: false,
+  availability: false,
   hasElectricity: false,
   hasWater: false,
   hasSanitation: false,
@@ -288,7 +288,7 @@ function changeRadio(value) {
               variant="outlined"
               color="primary"
               append-inner-icon="mdi-land-plots-marker"
-              v-model="formData.NLands"
+              v-model="formData.nLands"
               label="عدد الاراضي"
               type="number"
               density="compact"
@@ -300,7 +300,7 @@ function changeRadio(value) {
               variant="outlined"
               color="primary"
               append-inner-icon="mdi-land-plots-marker"
-              v-model="formData.Availability"
+              v-model="formData.availability"
               label="هل تملك وثائق؟"
               type="number"
               density="compact"
@@ -312,7 +312,7 @@ function changeRadio(value) {
               variant="outlined"
               color="primary"
               append-inner-icon="mdi-file-document-multiple-outline"
-              v-model="formData.DocType"
+              v-model="formData.docType"
               label="نوع الوثائق"
               density="compact"
               required
@@ -323,7 +323,7 @@ function changeRadio(value) {
               variant="outlined"
               color="primary"
               append-inner-icon="mdi-door-open"
-              v-model="formData.NEntry"
+              v-model="formData.nEntry"
               label="عدد المداخل"
               type="number"
               density="compact"
@@ -350,7 +350,7 @@ function changeRadio(value) {
               variant="outlined"
               color="primary"
               append-inner-icon="mdi-stairs-up"
-              v-model="formData.NFloor"
+              v-model="formData.nFloor"
               label="عدد الادوار"
               type="number"
               density="compact"

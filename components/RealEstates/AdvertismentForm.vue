@@ -77,6 +77,7 @@ setTimeout(() => {
     Advertismentstore.GetAdvertisementByID(parseInt(route.params.editId));
   }
 }, 200);
+const form = ref(null);
 // Call APi
 advertisementTypesStore.GetAllAdvertisementTypes();
 categoryStore.GetAllCategories();
@@ -98,6 +99,14 @@ const isLaoding = computed(() => {
 const categoryLoading = computed(() => {
   return categoryStore.getLoading;
 });
+const requiredField = ref([
+  (value) => {
+    if (value) {
+      return true;
+    }
+    return "الحقل مطلوب";
+  },
+]);
 // const advertisementTypesLoading = computed(() => {return advertisementTypesStore.getLoading})
 
 onMounted(() => {
@@ -117,12 +126,19 @@ watch(category, (value) => {
 });
 // ============= Functions ================
 async function submitForm() {
-  await Advertismentstore.AddNewAdvertisment(formData.value);
+  const { valid } = await form.value.validate();
+  if (valid) {
+    await Advertismentstore.AddNewAdvertisment(formData.value);
+  } else {
+    window.scrollTo(0, 0);
+    return;
+  }
   // تحريك الخطوات
   if (Advertismentstore.error_message) {
     return;
+  } else {
+    emit("moveNextStep");
   }
-  emit("moveNextStep");
 }
 async function editForm() {
   await Advertismentstore.UpdateAdvertisement(formData.value);
@@ -137,7 +153,10 @@ function changeRadio(value) {
 </script>
 <template>
   <v-card border>
-    <v-form @submit.prevent="props.isEdit ? editForm() : submitForm()">
+    <v-form
+      ref="form"
+      @submit.prevent="props.isEdit ? editForm() : submitForm()"
+    >
       <!-- <v-row class="ma-0 align-center justify-center mb-2">
                 <v-card-title>{{ $route.params._slug }}</v-card-title>
             </v-row> -->
@@ -194,6 +213,7 @@ function changeRadio(value) {
               variant="outlined"
               append-inner-icon="mdi-format-title"
               color="primary"
+              :rules="requiredField"
               v-model="formData.title"
               label="العنوان"
               density="compact"
@@ -204,6 +224,7 @@ function changeRadio(value) {
               <v-col cols="12">
                 <v-textarea
                   variant="outlined"
+                  :rules="requiredField"
                   append-inner-icon="mdi-subtitles-outline"
                   color="primary"
                   v-model="formData.description"
@@ -225,6 +246,7 @@ function changeRadio(value) {
               variant="outlined"
               hide-details
               label="النوع"
+              :rules="requiredField"
               color="primary"
               density="compact"
               :items="categories"
@@ -303,6 +325,7 @@ function changeRadio(value) {
               v-model="formData.availability"
               label="هل تملك وثائق؟"
               type="number"
+              :rules="requiredField"
               density="compact"
               required
             ></v-checkbox>

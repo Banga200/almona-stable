@@ -68,7 +68,7 @@ async function makeOrderAndDirect(advertisment) {
 }
 function directNoneUserToWhatsapp(advertisment) {
   window.open(
-    `https://wa.me/967770682862?text=نوع العقار: *${advertisment.subCategory.name}*%0A سعر العقار: *${advertisment.price}* %0A  موقع العقار: *${advertisment.location}* %0A رقم المرجع: *${advertisment.id}* %0A%0A ${window.location.origin}/advertisement/${advertisment.id}`,
+    `https://wa.me/967772769759?text=نوع العقار: *${advertisment.subCategory.name}*%0A سعر العقار: *${advertisment.price}* %0A  موقع العقار: *${advertisment.location}* %0A رقم المرجع: *${advertisment.id}* %0A%0A ${window.location.origin}/advertisement/${advertisment.id}`,
     "_blank"
   );
 }

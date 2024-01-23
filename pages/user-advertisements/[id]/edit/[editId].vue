@@ -8,6 +8,12 @@ definePageMeta({
    name: 'EditAdvertisement', 
    breadcrumb: 'تعديل إعلان',
 })
+useHead({
+    title: 'شركة المنى |  تعديل اعلان',
+    hid: 'description',
+    name: 'description',
+    content: 'تعديل اعلان'
+})
 </script>
 <template>
     <client-only>

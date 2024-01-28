@@ -7,9 +7,23 @@ export default defineNuxtConfig({
       'composables/**'
     ]
   },
+  generate: {
+    routes: [
+      '/real-estate/[_slug]',
+      '/advertisement/[id]',
+      '/auth-code/[id]',
+      '/user-advertisements/[id]',
+      '/user-advertisements/[id]/edit/editId',
+
+    ],
+  },
   nitro: {
     devProxy: {
       '/api' : process.env.BaseURL,
+    },
+    prerender: {
+      crawlLinks: true,
+      failOnError: false,
     }
   },
   devtools: { enabled: true },
@@ -60,6 +74,7 @@ export default defineNuxtConfig({
   },
   routeRules: {
     '/': {ssr: true},
+    "/dashboard/**": { ssr: false },
   },
   ssr: true,
   css: ["~/assets/css/main.css"],

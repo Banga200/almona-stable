@@ -51,7 +51,7 @@ export const useAdvertismentStore = defineStore("Advertisment", () => {
   async function GetAllAdvertisments(advertisId, page) {
     loading.value = true;
     try {
-      const { data: advertisments, error } = await useFetch(
+      const advertisments = await $fetch(
         `${BaseURL}/Advertisements/GetAllByTypeAsync`,
         {
           params: {
@@ -60,26 +60,26 @@ export const useAdvertismentStore = defineStore("Advertisment", () => {
             pageSize: 15,
           },
         }
-      );
-      console.log(error);
-      if (error.value) {
-        loading.value = false;
-      } else {
-        if (advertisments.value) {
-          loading.value = false;
-          if (advertisments.value.code > 0) {
-            toast.error(advertisments.value.message);
-            return;
-          }
-          if (advertisId === 1) {
-            Advertisments.value = advertisments.value.content;
+      )
+        .then((res) => {
+          if (res) {
+            loading.value = false;
+            if (res.code > 0) {
+              toast.error(res.message);
+              return;
+            }
+            if (advertisId === 1) {
+              Advertisments.value = res.content;
+            } else {
+              RequestedAdvertisement.value = res.content;
+            }
           } else {
-            RequestedAdvertisement.value = advertisments.value.content;
+            loading.value = false;
           }
-        } else {
+        })
+        .catch((error) => {
           loading.value = false;
-        }
-      }
+        });
     } catch (error) {
       ComposableError.handelErros(error);
       loading.value = false;
@@ -252,7 +252,7 @@ export const useAdvertismentStore = defineStore("Advertisment", () => {
     }
   }
   async function FilterAdvertisements(fields, adversmentTypeId, page) {
-    console.log(fields)
+    console.log(fields);
     loading.value = true;
     try {
       const { data: advertisments, error } = await useFetch(

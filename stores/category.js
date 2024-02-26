@@ -26,28 +26,21 @@ export const useCategoryStore = defineStore('Category', () => {
   async function GetAllCategories() {
     loading.value = true
     try {
-      const { data: categories, error } = await useFetch(`${BaseURL}/Categories/GetAllAsync`);
-      if (error.value) {
-        ComposableError.handelErros(error.value)
-        loading.value = false
-      }
-      else {
-        setTimeout(() => {
-          if (categories.value) {
-            Categories.value = categories.value.content;
-            loading.value = false
-          }
-          else {
-            Categories.value = categories.content;
+      const categories = await $fetch(`${BaseURL}/Categories/GetAllAsync`).then(res => {
+         loading.value = false
+         setTimeout(() => {
+          if (res) {
+            Categories.value = res.content;
             loading.value = false
           }
         },200)
-        
-      }
+      }).catch(error => {
+         loading.value = false
+      });
     }
     catch (error) {
       loading.value = false
-      ComposableError.handelErros(error)
+      ComposableError.handelErros(error);
       console.log(error);
     }
   }

@@ -87,7 +87,6 @@ export const useAdvertismentStore = defineStore("Advertisment", () => {
   }
   // Get Advertisment By ID
   async function GetAdvertisementByID(id) {
-    console.log(id);
     loading.value = true;
     try {
       const { data: advertisment, error } = await useFetch(

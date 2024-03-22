@@ -42,6 +42,7 @@ const formData = ref({
   hasLicense: false,
   hasFireExtinguishers: false,
   allowSingles: false,
+  subCategory: '',
   subCategoryId: "",
   advertisementTypeId: null,
 });
@@ -76,6 +77,7 @@ setTimeout(() => {
   if (route.params.editId) {
     Advertismentstore.GetAdvertisementByID(parseInt(route.params.editId));
   }
+   
 }, 200);
 const form = ref(null);
 // Call APi
@@ -120,6 +122,12 @@ watch(advertis, () => {
   if (Advertismentstore.getOneAdvertisment) {
     formData.value = Advertismentstore.getOneAdvertisment;
   }
+  let editcategory = categoryStore.getCategories.find(item => {
+    if (formData.value.subCategory) {
+     return item.id === formData.value.subCategory.categoryId
+    }
+  })
+  category.value = editcategory
 });
 watch(category, (value) => {
   categoryStore.GetGategoryByID(value.id);

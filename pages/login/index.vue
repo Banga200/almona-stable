@@ -69,7 +69,7 @@ async function CallLogin() {
                     prepend-inner-icon="mdi-lock-outline" variant="outlined" @click:append-inner="visible = !visible"
                     color="primary" v-model="user.password" class="my-2" ></v-text-field>
 
-                <v-btn block class="mb-8" color="teal" rounded size="large" variant="tonal"  @click="CallLogin"  :loading="userStore.getLaoding">
+                <v-btn block class="mb-8" color="yellow-darken-1" rounded size="large" variant="tonal"  @click="CallLogin"  :loading="userStore.getLaoding">
                     تسجيل الدخول
                 </v-btn>
             </v-form>

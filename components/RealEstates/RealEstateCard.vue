@@ -9,7 +9,6 @@ import { useOrdersStore } from "~/stores/orders";
 import { useDayjs } from "#dayjs";
 import { useRouter } from "vue-router";
 import { useRoute } from "vue-router";
-import defaultImage from "~/assets/images/default.webp";
 // const Varibels
 const props = defineProps([
   "advertisment",

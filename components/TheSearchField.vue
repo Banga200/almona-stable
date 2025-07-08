@@ -83,7 +83,12 @@ watch(filters, (value) => {
 })
 onMounted(() => {
     if (categoriesStore.getCategories) {
-        categoriesStore.Categories.unshift({ id: 0, name: 'الكل' })
+        let isAllExist =  categoriesStore.Categories.find((item)=> {
+            return item.id === 0
+        })
+        if (!isAllExist) {
+            categoriesStore.Categories.unshift({ id: 0, name: 'الكل' })
+        }
         // const isAllIn = categoriesStore.getCategories.find(item => {
         //     return item.id === 0
         // })

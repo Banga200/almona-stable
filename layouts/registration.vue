@@ -1,7 +1,7 @@
 <template>
         <v-container>
             <v-row class="my-5">
-                <v-btn variant="text" prepend-icon="mdi-arrow-right" @click="$router.back" style="z-index: 999;" color="white">الرجوع الى الخلف</v-btn>
+                <v-btn variant="text" prepend-icon="mdi-arrow-right" @click="$router.back" style="z-index: 999;" class="white">الرجوع الى الخلف</v-btn>
                 <v-spacer />
             </v-row>
             <!-- <v-row class="ma-0" style="z-index: 999;">
@@ -18,7 +18,7 @@
                     <slot/>
                 </v-col>
                 <v-col class="text-center d-none d-sm-block">
-                    <span class="title"> شركة <span class="coma">المٌنى</span> للتجارة والخدمات المحدودة</span>
+                    <span class="title"> شركة المٌنى الذهبية للتجارة والخدمات المحدودة</span>
                 <br />
                 <v-btn append-icon="mdi-home-outline"  class="heroButton mt-8 text-center mx-auto"
                     width="200px" size="large" @click="$router.push('/')" variant="flat"> الصفحة الرئيسية</v-btn>

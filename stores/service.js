@@ -21,10 +21,31 @@ export const useServiceStore = defineStore("service", () => {
     }
   }
   async function AddNewService(payload) {
+    let body = payload
     services.value.loading = true;
     success.value = false;
+    let imageIds = []
     try {
-      console.log(payload);
+      // for (let index = 0; index < body.images.length; index++) {
+      //   const element = body.images[index];
+      //   if (element instanceof File || element instanceof Blob) {
+      //   const image = await prepareUploadFileObject(element);
+      //   const upload = await fileStore.UploadImage(image, index + 1);
+      //   imageIds.push(upload[0].id);
+      //  } else {
+      //     // Already an ID — keep it
+      //     imageIds.push(element);
+      //   }
+      // }
+      if(isNaN(body.logoId)) {
+        if (Array.isArray(body.logoId) && (body.logoId[0] instanceof File || body.logoId[0] instanceof Blob)) {
+          const image = await prepareUploadFileObject(body.logoId[0]);
+          const upload = await fileStore.UploadImage(image);
+          body.logoId = upload[0].id
+        }
+      }
+      body.images = [14];
+      body = await SetUpBody(body)      
       const { data, code } = await useServerAPI(`/BusinessService`, {
         method: "POST",
         body: JSON.stringify(payload),
@@ -86,12 +107,18 @@ export const useServiceStore = defineStore("service", () => {
     }
   }
   async function SetUpBody(data, isEdit = false) {
-    console.log(data)
     let body = {
       ...(isEdit ? {id: data.id }: {}),
       name: data.name,
       description: data.description,
-      serviceDetails: data.serviceDetails,
+      serviceDetails: data.serviceDetails.filter(obj =>
+              Object.keys(obj).length > 0 &&
+              obj.value !== undefined &&
+              obj.value !== null &&
+              obj.value !== ''
+        ),
+      images: data.images,
+      logoId: data.logoId
     };
     return body;
   }

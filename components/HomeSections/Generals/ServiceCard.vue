@@ -14,13 +14,14 @@ const isHovered = ref(false);
         <v-btn class="ma-2 white" icon="mdi-delete" color="red" size="small" @click="emit('delete',props.info)"/>
       </div>
     <v-row>
-      <v-col cols="12" md="3" class="pa-0">
-        <v-img :src="props.info.image" height="100%" cover />
+      <v-col cols="12" md="3"  class="pa-0">
+        
+        <v-img :src="useImageStream(props.info.images[0])" height="100%" cover/>
       </v-col>
       <v-col cols="10" md="9" class="d-flex flex-column ga-4 pa-6">
         <div class="d-flex ga-4 align-center">
           <v-avatar size="72" :color="isHovered ? 'primary' : 'avatar'">
-            <v-icon size="48" :icon="props.info.icon" :color="isHovered ? '#fff' : 'primary'" />
+            <v-img height="54" :src="useImageStream(props.info.logoId)" :color="isHovered ? '#fff' : 'primary'" />
           </v-avatar>
           <h3 class="text-2xl font-bold">{{ props.info.name }}</h3>
         </div>

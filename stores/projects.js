@@ -31,11 +31,15 @@ export const useProjectStore = defineStore("project", () => {
     try {
       for (let index = 0; index < body.images.length; index++) {
         const element = body.images[index];
+        if (element instanceof File || element instanceof Blob) {
         const image = await prepareUploadFileObject(element);
-        const upload = await fileStore.UploadImage(image, index+1);
-        imageIds.push(upload[0].id)
+        const upload = await fileStore.UploadImage(image, index + 1);
+        imageIds.push(upload[0].id);
+      } else {
+        // Already an ID — keep it
+        imageIds.push(element);
       }
-      if (true) { 
+      }
         body.images =  imageIds;
         body.projectType = 2
         body = await SetUpBody(body)
@@ -47,7 +51,7 @@ export const useProjectStore = defineStore("project", () => {
           projects.value.content.push(data);
           success.value = true;
         }
-      }
+      
     } finally {
       projects.value.loading = false;
     }

@@ -12,21 +12,13 @@ const form = ref({
   name: "",
   description: '',
   serviceDetails: [{}],
+  images: null,
+  logoId: null
 });
-const imagePreview = ref(null);
 onMounted(() => {
   
 });
-watch(
-  () => form.value.images,
-  (newVal) => {
-    if (newVal && newVal.length > 0) {
-      imagePreview.value = URL.createObjectURL(newVal[0]);
-    } else {
-      imagePreview.value = null;
-    }
-  }
-);
+
 const addAchievement = () => {
   form.value.serviceDetails.push({});
 };
@@ -48,6 +40,40 @@ defineExpose({
 
 <template>
   <v-form class="pa-6" @submit.prevent="saveService" ref="formRef">
+    <v-row>
+      <v-col>
+         <v-file-input
+              variant="outlined"
+              rounded="lg"
+              label="الصور"
+              v-model="form.images"
+              accept="image/*"
+              clearable
+              show-size
+              counter
+              multiple
+              chips
+              :rules="requiredField"
+              prepend-icon="mdi-camera"
+            />
+      </v-col>
+      <v-col>
+       <v-file-input
+              variant="outlined"
+              rounded="lg"
+              label="ايقونة الخدمة"
+              v-model="form.logoId"
+              accept="image/*"
+              clearable
+              show-size
+              counter
+              multiple
+              chips
+              :rules="requiredField"
+              prepend-icon="mdi-camera"
+            />
+      </v-col>
+    </v-row>
     <v-row class="ga-6">
       <v-col cols="12" lg="6">
         <div class="d-flex ga-4 flex-wrap">

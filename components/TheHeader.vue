@@ -200,7 +200,6 @@ function handleScroll(event) {
               to="/dashboard/orders"
               >لوحة التحكم</v-btn
             >
-            {{ console.log(isUser) }}
           </v-row>
         </client-only>
         <v-btn

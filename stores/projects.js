@@ -8,15 +8,24 @@ export const useProjectStore = defineStore("project", () => {
     loading: false,
     content: [],
   });
+  const project = ref({
+    loading: false,
+    content: {},
+  });
   const success = ref(false);
 
   async function GetAllProjects() {
     projects.value.loading = true;
     try {
       
-        const { data, code } = await useServerAPI(`/Project/GetAllAsync`);
+        const { data, code } = await useServerAPI(`/Project/paged`, {
+          params: {
+            page: 1,
+            Pagesize: 100
+          }
+        });
         if (data) {
-          projects.value.content = data;
+          projects.value.content = data.entities;
         }
       
     } finally {
@@ -40,7 +49,7 @@ export const useProjectStore = defineStore("project", () => {
         imageIds.push(element);
       }
       }
-        body.images =  imageIds;
+        body.images = imageIds;
         body.projectType = 2
         body = await SetUpBody(body)
         const { data, code } = await useServerAPI(`/Project`, {
@@ -54,6 +63,24 @@ export const useProjectStore = defineStore("project", () => {
       
     } finally {
       projects.value.loading = false;
+    }
+  }
+  async function GetProjectById(id) {
+    project.value.loading = true;
+    success.value = false;
+    try {
+        const { data, code } = await useServerAPI(`/Project`, {
+          params: {
+            id: id
+          }
+        }); 
+        if (data) {
+          project.value.content = data;
+          success.value = true;
+        }
+      
+    } finally {
+      project.value.loading = false;
     }
   }
  async function EditProject(payload) {
@@ -90,7 +117,6 @@ export const useProjectStore = defineStore("project", () => {
       let projectIndex = projects.value.content.findIndex((project) => {
         return project.id === payload.id
       })
-      console.log(projectIndex)
       if (projectIndex != -1) {
         projects.value.content.splice(projectIndex, payload);    
       }
@@ -153,8 +179,10 @@ export const useProjectStore = defineStore("project", () => {
   }
   return {
     projects,
+    project,
     success,
     AddNewProject,
+    GetProjectById,
     EditProject,
     GetAllProjects,
     DeleteProject 

@@ -12,6 +12,7 @@ const form = ref({
   description: "",
   foreignDescription: "",
   date: null,
+  dateShow: null,
   numberOfCompanies: "",
   statistics: [{}],
   locationId: null,
@@ -53,7 +54,8 @@ const rawDate = ref(null)
 
 const onDateSelected = (date) => {
   rawDate.value = date
-  form.value.date = formatDate(date);
+  form.value.dateShow = formatDate(date);
+  form.value.date = date;
   menu.value = false
   console.log(JSON.stringify({
   date: new Date(date).toISOString()
@@ -179,7 +181,7 @@ defineExpose({
             >
               <template #activator="{ props }">
                 <v-text-field
-                  v-model="form.date"
+                  v-model="form.dateShow"
                   v-bind="props"
                   label="تاريخ المشروع"
                   variant="outlined"

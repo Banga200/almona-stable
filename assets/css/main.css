@@ -154,6 +154,20 @@ button.white .v-btn__content, button.white .v-btn__append, button.white .v-btn__
   color: #fff;
 }
 
+#verticalCarousel .v-window__controls {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: end;
+  gap: 12px;
+}
+
 .custom-button {
   -webkit-transition: all .5s ease-in-out;
   transition: all .5s ease-in-out;
@@ -275,7 +289,7 @@ header .v-toolbar__content {
 }
 
 main.bg-gray {
-  background-color: #0f49500e;
+  background-color: #fafafa;
 }
 
 main .heroSection {

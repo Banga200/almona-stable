@@ -143,6 +143,12 @@ button{
     }
     
 }
+#verticalCarousel .v-window__controls{
+    flex-direction: column;
+    justify-content: center;
+    align-items: end;
+    gap: 12px;
+}
 .custom-button {
     transition: all .5s ease-in-out;
         &:hover {
@@ -238,7 +244,7 @@ header {
 
 }
 main.bg-gray {
-    background-color:#0f49500e;
+    background-color: $bg-gray-50;
 }
 main .heroSection {
     min-height: 100vh;

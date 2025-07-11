@@ -24,11 +24,11 @@ const emit = defineEmits(['edit', 'delete']);
                 </div>
                 <div class="d-flex align-center ga-2">
                     <v-icon icon="$MapMarker" size="16" color="primary"/>
-                    <span class="text-sm">{{ props.info.city.name }}</span>
+                    <span class="text-sm" v-if=" props.info.city">{{ props.info.city.name }}</span>
                 </div>
                 <div class="d-flex align-center ga-2">
                     <v-icon icon="$Customers" size="16" color="primary"/>
-                    <span class="text-sm">{{ props.info.companiesCount }}</span>
+                    <span class="text-sm">{{ props.info.numberOfCompanies + (props.info.numberOfCompanies > 2 ?  " شركات ": " شركة")  }}</span>
                 </div>
             </div>
             <h4>أبرز الإنجازات:</h4>
@@ -46,8 +46,7 @@ const emit = defineEmits(['edit', 'delete']);
             class="mt-4 pa-0"
             color="primary"
             variant="text" 
-            append-icon="$ExternalLink"
-            >عرض التفاصيل</v-btn>
+            append-icon="$ExternalLink" :to="`/projects/${props.info.id}`">عرض التفاصيل</v-btn>
              </div>
         </div>
     </div>

@@ -15,9 +15,11 @@ definePageMeta({
 })
 const serviceStore = useServiceStore();
 const projectStore = useProjectStore();
+const postStore = usePostStore()
 const storeActionsMap = {
   'serviceStore.GetAllServices': () => serviceStore.GetAllServices(),
   'projectStore.GetAllProjects': () => projectStore.GetAllProjects(),
+  'postStore.GetAllPost': () => postStore.GetAllPosts(),
 }
 onMounted(() => {
     const elements = document.querySelectorAll('.intersection')
@@ -48,6 +50,7 @@ onMounted(() => {
     <OurProjects :projects="projectStore.projects.content" :loading="projectStore.projects.loading" class="intersection" data-store-action="projectStore.GetAllProjects"/>
     <WorkTeam/>
     <RateOurTeam/>
+    <PostSection :post="postStore.posts.content" :loading="postStore.posts.loading" class="intersection" data-store-action="postStore.GetAllPost"/>
     <ContactUs/>
    </div>
 </template>

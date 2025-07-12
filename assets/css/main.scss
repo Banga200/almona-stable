@@ -457,6 +457,9 @@ p {
         width: 135px;
     }
 }
+.service-card .margin-image-service {
+    margin-inline-start: 12rem;
+}
 #our-numbers {
     background: $liner-gredient-to-bottom;
     color: $white !important;
@@ -905,7 +908,6 @@ p {
     opacity: 0.5;
   }
 }
-
 // Tablets
 @media (max-width: 769px) {
     main .v-container.heroSection {
@@ -930,6 +932,19 @@ p {
         width: 100%;
         padding: 1rem;
     }
+
+}
+@media (max-width: 1020px) {
+     .service-card {
+        .image-container {
+            height: 200px !important;
+        }
+        .margin-image-service {
+        margin-inline-start: 0;
+        margin-block-start: 12rem;
+        }
+     } 
+    
 }
 @media (min-width: 1023px) {
     main .v-container.heroSection {

@@ -68,11 +68,10 @@ const savePost = async (payload) => {
     </v-dialog>
     <v-progress-linear indeterminate class="mt-4" v-if="postStore.posts.loading"></v-progress-linear>
     <v-row class="mt-8">
-      <v-col cols="4" v-for="post in postStore.posts.content" :key="post.id">
-        <v-card>
-          <div
+      <v-col cols="4" v-for="post in postStore.posts.content" :key="post.id" class="relative">
+        <div
             class="position-absolute"
-            style="left: 0; z-index: 1; top: 0;"
+            style="left: 10px; z-index: 1; top: 10px;"
           >
             <v-btn
               class="ma-2 white"
@@ -89,15 +88,7 @@ const savePost = async (payload) => {
               @click="deletePost(post)"
             />
           </div>
-          <v-row no-gutters class="mb-4">
-            <v-img :src="useImageStream(post.images[0])" height="200" cover />
-          </v-row>
-          <h2>{{ post.title }}</h2>
-          <v-divider class="my-4" />
-          <div class="overflow-auto" style="height: 200px">
-            {{ post.content }}
-          </div>
-        </v-card>
+          <PostCard :post="post" :isAdmin="true"/>
       </v-col>
     </v-row>
   </div>

@@ -547,6 +547,11 @@ p {
   width: 135px;
 }
 
+.service-card .margin-image-service {
+  -webkit-margin-start: 12rem;
+          margin-inline-start: 12rem;
+}
+
 #our-numbers {
   background: -webkit-gradient(linear, left top, right bottom, from(#f9d71c), to(#d4af37));
   background: linear-gradient(to bottom right, #f9d71c, #d4af37);
@@ -1112,6 +1117,18 @@ p {
   .card-hold-text {
     width: 100%;
     padding: 1rem;
+  }
+}
+
+@media (max-width: 1020px) {
+  .service-card .image-container {
+    height: 200px !important;
+  }
+  .service-card .margin-image-service {
+    -webkit-margin-start: 0;
+            margin-inline-start: 0;
+    -webkit-margin-before: 12rem;
+            margin-block-start: 12rem;
   }
 }
 

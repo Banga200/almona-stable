@@ -83,6 +83,7 @@ onMounted(async() => {
                 </v-col>
             </v-row>
         </v-col>
+        <h3 class="font-bold mt-16">مشاريع اخرى</h3>
         <v-progress-linear indeterminate v-if="projects.loading" color="primary"/>
         <v-carousel hide-delimiters v-model="projectsSlide" height="auto">
              <v-carousel-item v-for="projectGroup in projectGroups" :key="projectGroup">

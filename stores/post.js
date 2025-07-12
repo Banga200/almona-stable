@@ -8,6 +8,10 @@ export const usePostStore = defineStore("post", () => {
     loading: false,
     content: [],
   });
+  const post = ref({
+    loading: false,
+    content: {},
+  });
   const success = ref(false);
 
   async function GetAllPosts() {
@@ -21,6 +25,23 @@ export const usePostStore = defineStore("post", () => {
       
     } finally {
       posts.value.loading = false;
+    }
+  }
+  async function GetPostById(id) {
+    post.value.loading = true;
+    try {
+      
+        const { data, code } = await useServerAPI(`/Post`, {
+          params: {
+            id: id
+          }
+        });
+        if (data) {
+          post.value.content = data;
+        }
+      
+    } finally {
+      post.value.loading = false;
     }
   }
   async function AddNewPost(payload) {
@@ -135,10 +156,12 @@ export const usePostStore = defineStore("post", () => {
   } 
   return {
     posts,
+    post,
     success,
     AddNewPost,
     EditPost,
     GetAllPosts,
+    GetPostById,
     DeletePost 
   };
 });

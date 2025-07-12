@@ -13,12 +13,12 @@ const isHovered = ref(false);
         <v-btn class="ma-2 white" icon="mdi-pencil" color="success" size="small" @click="emit('edit',props.info)"/>
         <v-btn class="ma-2 white" icon="mdi-delete" color="red" size="small" @click="emit('delete',props.info)"/>
       </div>
-    <v-row>
-      <v-col cols="12" md="3"  class="pa-0">
+    <v-row no-gutters>
+      <v-col cols="12" md="3"  class="pa-0 position-absolute h-100 image-container">
         
         <v-img :src="useImageStream(props.info.images[0])" height="100%" cover/>
       </v-col>
-      <v-col cols="10" md="9" class="d-flex flex-column ga-4 pa-6">
+      <v-col cols="12" md="9" class="d-flex flex-column ga-4 pa-6 margin-image-service">
         <div class="d-flex ga-4 align-center">
           <v-avatar size="72" :color="isHovered ? 'primary' : 'avatar'">
             <v-img height="54" :src="useImageStream(props.info.logoId)" :color="isHovered ? '#fff' : 'primary'" />

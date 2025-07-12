@@ -543,6 +543,10 @@ p {
   color: #fff;
 }
 
+.project-card .v-btn {
+  width: 135px;
+}
+
 #our-numbers {
   background: -webkit-gradient(linear, left top, right bottom, from(#f9d71c), to(#d4af37));
   background: linear-gradient(to bottom right, #f9d71c, #d4af37);

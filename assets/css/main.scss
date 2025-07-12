@@ -448,6 +448,14 @@ p {
         background: $primary-color;
         color: $white;
     }
+    // p {
+    //     overflow: hidden;
+    //     text-overflow: ellipsis;
+    //     word-break:;
+    // }
+    .v-btn {
+        width: 135px;
+    }
 }
 #our-numbers {
     background: $liner-gredient-to-bottom;

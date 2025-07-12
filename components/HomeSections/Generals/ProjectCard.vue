@@ -1,7 +1,7 @@
 <script setup>
 import { useImageStream } from '~/composables/useImageStream';
 
-const props = defineProps(['info', "isAdmin"])
+const props = defineProps(['info', "isAdmin", 'small'])
 const emit = defineEmits(['edit', 'delete']);
 </script>
 <template>
@@ -16,7 +16,7 @@ const emit = defineEmits(['edit', 'delete']);
         </div>
         <div class="d-flex flex-column ga-3 pa-6">
             <h1 class="font-bold">{{ props.info.name }}</h1>
-            <p>{{ props.info.description }}</p>
+            <p :class="{'text-truncate': props.small}">{{ props.info.description }}</p>
             <div class="d-flex flex-wrap align-items-center ga-4">
                 <div class="d-flex align-center ga-2" v-if="props.info.date">
                     <v-icon icon="$Event" size="16" color="primary"/>

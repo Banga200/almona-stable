@@ -25,7 +25,7 @@ const isHovered = ref(false);
           </v-avatar>
           <h3 class="text-2xl font-bold">{{ props.info.name }}</h3>
         </div>
-        <p class="text-lg">
+        <p class="text-lg" :class="{'text-truncate': props.small}">
           {{ props.info.description }}
         </p>
         <ul class="list">

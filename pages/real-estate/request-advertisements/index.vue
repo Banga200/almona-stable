@@ -40,7 +40,8 @@ watch(page, (newPage) => {
 });
 </script>
 <template>
-  <v-container class="mt-5 realEstate-container">
+  <section>
+    <v-container class="realEstate-container">
     <BackButton />
     <ClientOnly>
       <v-sheet class="px-10 mt-2 py-3" rounded>
@@ -87,4 +88,5 @@ watch(page, (newPage) => {
       ></v-pagination>
     </ClientOnly>
   </v-container>
+  </section>
 </template>

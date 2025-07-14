@@ -40,11 +40,12 @@ watch(page, (newPage) => {
 })
 </script>
 <template>
-    <v-container class="mt-5 realEstate-container" id="container">
+    <section>
+        <v-container class="realEstate-container" id="container">
         <v-row class="text-left mb-2 ma-0">
             <BackButton v-if="$route.path === '/real-estate/request-advertisements'" />
             <v-spacer />
-            <v-btn append-icon="mdi-arrow-left" class="text-teal" variant="outlined"
+            <v-btn append-icon="mdi-arrow-left" variant="outlined"
                 to="/real-estate/request-advertisements" v-if="$route.path !== '/real-estate/request-advertisements'">طلبات
                 العقار</v-btn>
         </v-row>
@@ -78,4 +79,5 @@ watch(page, (newPage) => {
         </ClientOnly>
 
     </v-container>
+    </section>
 </template>

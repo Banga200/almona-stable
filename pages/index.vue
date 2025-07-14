@@ -48,7 +48,7 @@ onMounted(() => {
     <OurServices :services="serviceStore.services.content" :loading="serviceStore.services.loading" class="intersection" data-store-action="serviceStore.GetAllServices"/>
     <OurNumbers/>
     <OurProjects :projects="projectStore.projects.content" :loading="projectStore.projects.loading" class="intersection" data-store-action="projectStore.GetAllProjects"/>
-    <WorkTeam/>
+    <!--<WorkTeam/>-->
     <RateOurTeam/>
     <PostSection :post="postStore.posts.content" :loading="postStore.posts.loading" class="intersection" data-store-action="postStore.GetAllPost"/>
     <ContactUs/>

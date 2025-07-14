@@ -59,10 +59,33 @@ export const useServiceStore = defineStore("service", () => {
     }
   }
   async function EditService(payload) {
+    let body = payload
     services.value.loading = true;
     success.value = false;
-    let body = await SetUpBody(payload, true);
+    let imageIds = []
+    console.log(body)
     try {
+       for (let index = 0; index < body.images.length; index++) {
+        const element = body.images[index];
+        if (element instanceof File || element instanceof Blob) {
+        const image = await prepareUploadFileObject(element);
+        const upload = await fileStore.UploadImage(image, index + 1);
+        imageIds.push(upload[0].id);
+       } else {
+          // Already an ID — keep it
+          imageIds.push(element);
+        }
+      }
+      console.log(body)
+      if(isNaN(body.logoId)) {
+        if (Array.isArray(body.logoId) && (body.logoId[0] instanceof File || body.logoId[0] instanceof Blob)) {
+          const image = await prepareUploadFileObject(body.logoId[0]);
+          const upload = await fileStore.UploadImage(image);
+          body.logoId = upload[0].id
+        }
+      }
+      body.images = imageIds;
+      body = await SetUpBody(body, true)      
       const { data, code } = await useServerAPI(`/BusinessService`, {
         method: "PUT",
         body: JSON.stringify(body),

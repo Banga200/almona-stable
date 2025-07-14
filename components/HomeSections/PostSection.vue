@@ -13,7 +13,7 @@ onMounted(() => {
       <h1 class="text-4xl title text-gradient">الأخبار</h1>
       <div class="line-gradient mt-8"></div>
     </div>
-    <div class="text-end mb-4">
+    <div class="text-end mb-4" v-if="props.post?.length > 3">
       <v-btn
         variant="outlined"
         text="عرض الكل"

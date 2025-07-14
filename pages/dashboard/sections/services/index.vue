@@ -20,6 +20,7 @@ const serviceForm = ref(null);
 
 const editService = (service) => {
     formDialog.value = true
+    console.log(service)
     requestAnimationFrame(() => {
         serviceForm.value.form = {...service}
         isEdit.value = true

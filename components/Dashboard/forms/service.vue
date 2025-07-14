@@ -13,7 +13,8 @@ const form = ref({
   description: '',
   serviceDetails: [{}],
   images: null,
-  logoId: null
+  logoId: null,
+  logoIdFile: null
 });
 onMounted(() => {
   
@@ -30,6 +31,9 @@ const removeAchievement = (index) => {
 const saveService = async () => {
   const { valid } = await formRef.value.validate();
   if (valid) {
+    if (typeof form.value.logoId !== 'number') {
+     form.value.logoId = form.value.logoIdFile 
+    }
     emit("save", form.value);
   }
 };
@@ -58,11 +62,12 @@ defineExpose({
             />
       </v-col>
       <v-col>
+        {{ form.logoId }}
        <v-file-input
               variant="outlined"
               rounded="lg"
               label="ايقونة الخدمة"
-              v-model="form.logoId"
+              v-model="form.logoIdFile"
               accept="image/*"
               clearable
               show-size

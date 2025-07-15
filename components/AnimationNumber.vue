@@ -9,7 +9,7 @@ const props = defineProps(["value", "duration"])
 const { current, animate } = useAnimationNumber(0)
 
 // ③ run the first animation when component mounts
-onMounted(() => animate(props.value))
+onMounted(() => animate(props.value, props.duration))
 
 // ④ if the prop changes later, re‑animate
 watch(() => props.value, v => animate(v))

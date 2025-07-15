@@ -1,4 +1,6 @@
 <script setup>
+import AnimationNumber from '../AnimationNumber.vue';
+
 const icons = [
     { icon: 'mdi-twitter', title: 'Twitter', link: 'https://x.com/mona25672?t=MPU4hdH5HhvotgNFcxDzaw&s=08' },
     { icon: 'mdi-facebook', title: 'Facebook', link: 'https://www.facebook.com/ALmona.202?mibextid=ZbWKwL' },
@@ -43,7 +45,7 @@ const heroInfo = [
                             <v-icon  size="x-large" :icon="info.icon" color="#fff"/>
                         </v-avatar>
                         <div class="text-center">
-                            <div class="text-3xl font-bold mb-1">{{ info.count }}</div>
+                            <div class="text-3xl font-bold mb-1"><AnimationNumber :value="info.count"/> </div>
                             <div class="text-sm">{{ info.title }}</div>
                         </div>
                     </div>
@@ -52,9 +54,9 @@ const heroInfo = [
         </v-row>
         
     </v-container>
-            <div class="hero-navigate">
+            <a href="#aboutus"  class="hero-navigate">
                 <div class="scroll"></div>
-            </div>
+            </a>
      
     </div>
     

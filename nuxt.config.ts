@@ -27,7 +27,10 @@ export default defineNuxtConfig({
       meta: [
         { name: 'description', content: 'شركة المُنى للتجارة والخدمات المحدودة , خدمات العقار ' },
         { name: 'keywords', content: 'شركة المنى, عقارات, اراضي, مخططات, المنى, شقق, شقق ايجار, بيت ,بيوت , منزل , عمارة ,فيلا, محل, محلات' },
-      ]
+      ],
+      link: [
+      { rel: 'icon', type: 'image/png', href: '/favicon.png' }
+    ]
     }
   },
   components: [

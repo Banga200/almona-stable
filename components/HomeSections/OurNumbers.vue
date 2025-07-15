@@ -41,7 +41,7 @@ const numbers = [
                         <v-avatar class="mb-6" size="64">
                             <v-icon :icon="number.icon" size="32" color="white"></v-icon>
                         </v-avatar>
-                        <h1 class="text-4xl">{{ number.count }}</h1>
+                        <h1 class="text-4xl"><animation-number :value="number.count"/> +</h1>
                         <h3 class="text-xl mb-3">{{ number.title }}</h3>
                         <p class="text-sm text-white text-center">{{ number.description }}</p>
                     </div>

@@ -15,7 +15,7 @@ const projectStore = useProjectStore()
         <div class="line-gradient mt-8"></div>
       </div>
       <div class="text-end mb-4">
-        <v-btn variant="outlined" text="عرض الكل" append-icon="mdi-arrange-bring-forward" to="/projects" color="primary"/>
+        <v-btn variant="outlined" text="عرض الكل" append-icon="mdi-arrange-bring-forward" to="/projects" color="primary" v-if="props.projects && props.projects?.length > 0"/>
       </div>
       <div class="grid-cols-2 ga-8">
         <div v-for="(project, index) in props.projects.slice(0, 4)" :key="index" class="pa-0">

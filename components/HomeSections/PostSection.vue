@@ -20,14 +20,17 @@ onMounted(() => {
         append-icon="mdi-arrange-bring-forward"
         to="/posts"
         color="primary"
-      />
+        />
     </div>
     <v-row v-if="props.post?.length < 3">
         <v-col cols="12" md="6" lg="4" v-for="post in props.post" :key="post">
             <PostCard :post="post" :small="true"/>
         </v-col>
     </v-row>
-    <v-carousel cycle hide-delimiter-background v-else>
+    <div class="mt-4 text-center" v-if="props.loading">
+          <v-progress-circular indeterminate color="primary"/>
+        </div>
+    <v-carousel cycle hide-delimiter-background v-if="props.post?.length > 3">
         <v-carousel-item v-for="postGroup in posts" :key="postGroup">
             <v-row>
                 <v-col v-for="post in postGroup" :key="post" cols="12" md="6" lg="4">

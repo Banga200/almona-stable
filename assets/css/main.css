@@ -150,7 +150,7 @@ button .v-btn__content, button .v-btn__append {
   color: #9a7209;
 }
 
-button.white .v-btn__content, button.white .v-btn__append, button.white .v-btn__prepend {
+button.bg-success .v-btn__content, button.bg-success .v-btn__append, button.bg-success .v-btn__prepend, button.bg-primary .v-btn__content, button.bg-primary .v-btn__append, button.bg-primary .v-btn__prepend, button.bg-red .v-btn__content, button.bg-red .v-btn__append, button.bg-red .v-btn__prepend, button.white .v-btn__content, button.white .v-btn__append, button.white .v-btn__prepend {
   color: #fff;
 }
 
@@ -430,8 +430,8 @@ section {
 }
 
 .card-gradient {
-  background: -webkit-gradient(linear, left top, right bottom, from(#f9d71c), to(#d4af37));
-  background: linear-gradient(to bottom right, #f9d71c, #d4af37);
+  background: -webkit-gradient(linear, left top, right bottom, from(#fad81d), to(#c19508));
+  background: linear-gradient(to bottom right, #fad81d, #c19508);
   padding: 2rem;
   border-radius: 1rem;
   display: -webkit-box;
@@ -553,8 +553,8 @@ p {
 }
 
 #our-numbers {
-  background: -webkit-gradient(linear, left top, right bottom, from(#f9d71c), to(#d4af37));
-  background: linear-gradient(to bottom right, #f9d71c, #d4af37);
+  background: -webkit-gradient(linear, left top, right bottom, from(#fad81d), to(#c19508));
+  background: linear-gradient(to bottom right, #fad81d, #c19508);
   color: #fff !important;
 }
 

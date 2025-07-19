@@ -1,16 +1,12 @@
 <script setup>
 import AnimationNumber from '../AnimationNumber.vue';
-
+const props = defineProps(['statistics'])
 const icons = [
     { icon: 'mdi-twitter', title: 'Twitter', link: 'https://x.com/mona25672?t=MPU4hdH5HhvotgNFcxDzaw&s=08' },
     { icon: 'mdi-facebook', title: 'Facebook', link: 'https://www.facebook.com/ALmona.202?mibextid=ZbWKwL' },
     { icon: 'mdi-instagram ', title: 'Instagram', link: 'https://www.instagram.com/almona2022?igsh=MXdvOHR2aWdwNHpocA==' },
 ]
-const heroInfo = [
-    {icon: "$Quality", title: 'معارض ناجحة', count: '10+'},
-    {icon: "$Customers", title: 'عميل موثوق', count: '50+'},
-    {icon: "mdi-star-outline", title: 'سنوات الخبرة', count: '5+'},
-]
+
 </script>
 <template>
     <div class="heroSection ">
@@ -38,8 +34,8 @@ const heroInfo = [
                     </v-sheet>
                 </client-only> 
             </v-col> -->
-            <v-row class="ga-8 w-100 hero-info-row justify-space-around">
-                <v-col cols="auto" v-for="info in heroInfo" :key="info.title">
+                <v-row class="ga-8 w-100 hero-info-row justify-space-around">
+                <v-col cols="auto" v-for="info in props.statistics" :key="info.title">
                     <div class="d-flex flex-column align-center ga-2">
                         <v-avatar  size="64" class="transparent-20">
                             <v-icon  size="x-large" :icon="info.icon" color="#fff"/>

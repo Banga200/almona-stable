@@ -8,11 +8,11 @@ const types = [
   { id: 1, title: "معارض" },
   { id: 2, title: "مشاريع" },
 ];
-const projectEvents = computed(() => {
-    return projectStore.projects.content.filter((item) => {
-        return item.projectType === selectedType.value
-    })
-})
+ watch(selectedType, (newVal) => {
+  if (newVal) {
+    projectStore.GetAllProjects(newVal);
+  }
+ })
 </script>
 <template>
   <section>
@@ -31,7 +31,7 @@ const projectEvents = computed(() => {
           cols="12"
           md="6"
           lg="4"
-          v-for="project in projectEvents || []"
+          v-for="project in projectStore.projects.content || []"
           :key="project"
         >
           <ProjectCard :info="project" :small="true" />

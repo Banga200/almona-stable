@@ -136,11 +136,12 @@ button{
     .v-btn__content, .v-btn__append {
         color: $button-text-color;
     }
-    &.white {
-        .v-btn__content, .v-btn__append , .v-btn__prepend {
+    &.bg-success,&.bg-primary,&.bg-red, &.white {
+         .v-btn__content, .v-btn__append , .v-btn__prepend {
             color: $white;
         }
     }
+    
     
 }
 #verticalCarousel .v-window__controls{

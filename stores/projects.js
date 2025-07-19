@@ -14,14 +14,15 @@ export const useProjectStore = defineStore("project", () => {
   });
   const success = ref(false);
 
-  async function GetAllProjects() {
+  async function GetAllProjects(projectType = 2, pageSize = 100) {
     projects.value.loading = true;
     try {
       
         const { data, code } = await useServerAPI(`/Project/paged`, {
           params: {
             page: 1,
-            Pagesize: 100
+            Pagesize: pageSize,
+            projectType: projectType 
           }
         });
         if (data) {

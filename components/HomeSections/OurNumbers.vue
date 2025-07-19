@@ -1,31 +1,7 @@
 <script setup>
-const numbers = [
-    {
-        icon: '$Quality',
-        title: 'معارض ناجحة',
-        count: '1010+',
-        description: 'معارض متخصصة نظمناها بنجاح'
-    },
-    {
-        icon: '$Customers',
-        title: 'عميل موثوق',
-        count: '50+',
-        description: 'عملاء يثقون في خدماتنا'
-    },
-    {
-        icon: '$Event',
-        title: 'سنوات من الخبرة',
-        count: '5+',
-        description: 'خبرة متراكمة في السوق اليمني'
-    },
-    {
-        icon: '$MapMarker',
-        title: 'محافظات يمنية',
-        count: '8',
-        description: 'مشاركون من مختلف المحافظات'
-    },
-    // Add more numbers as needed
-];
+const props = defineProps(['statistics'])
+
+
 </script>
 <template>
     <section id="our-numbers">
@@ -36,7 +12,7 @@ const numbers = [
                 <div class="line-gradient mt-8"></div>
             </div>
             <v-row class="mt-12">
-                <v-col v-for="(number, index) in numbers" :key="index" cols="12" md="6" lg="3">
+                <v-col v-for="(number, index) in props.statistics" :key="index" cols="12" md="6" lg="3">
                     <div class="card text-center">
                         <v-avatar class="mb-6" size="64">
                             <v-icon :icon="number.icon" size="32" color="white"></v-icon>

@@ -23,6 +23,11 @@ const items = ref([
     icon: "mdi-view-dashboard",
     children: [
       {
+        title: "الإحصائيات",
+        link: "/dashboard/sections/statistics",
+        icon: "mdi-chart-bar",
+      },
+      {
         title: "الخدمات",
         link: "/dashboard/sections/services",
         icon: "$Services",
@@ -31,6 +36,11 @@ const items = ref([
         title: "المشاريع",
         link: "/dashboard/sections/projects",
         icon: "mdi-office-building-cog",
+      },
+      {
+        title: "فريق العمل",
+        link: "/dashboard/sections/workTeam",
+        icon: "mdi-account-tie",
       },
       {
         title: "النشرات الإخبارية",

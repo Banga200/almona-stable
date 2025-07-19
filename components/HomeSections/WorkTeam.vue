@@ -14,7 +14,7 @@ const props = defineProps(['teamMembers', 'loading'])
       <div class="line-gradient"></div>
     </div>
     <v-row>
-      <v-col cols="12" sm="6" md="4" lg="3" v-for="teamMember in props.teamMembers" :key="teamMember.id">
+      <v-col cols="12" sm="6" md="4" xl="3" v-for="teamMember in props.teamMembers" :key="teamMember.id">
         <WorkerCard :info="teamMember"/>
       </v-col>
     </v-row>

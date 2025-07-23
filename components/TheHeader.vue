@@ -178,7 +178,7 @@ function handleScroll(event) {
               <v-btn stacked @click="() => $router.push('/#aboutus')"
                 >من نحن</v-btn
               >
-              <v-btn stacked @click="() => $router.push('/#services')"
+              <v-btn stacked @click="() => $router.push('/#ourProjects')"
                 >اعمالنا</v-btn
               >
               <v-btn stacked to="/real-estate/عقارات">عقارات</v-btn>

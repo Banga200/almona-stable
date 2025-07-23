@@ -1,5 +1,5 @@
 <script setup>
-const props = defineProps(['info', 'isAdmin'])
+const props = defineProps(['info', 'isAdmin', "small"])
 const emit = defineEmits(['edit', 'delete']);
 const isHovered = ref(false);
 </script>
@@ -18,14 +18,14 @@ const isHovered = ref(false);
         
         <v-img :src="useImageStream(props.info.images[0])" height="100%" cover/>
       </v-col>
-      <v-col cols="12" md="9" class="d-flex flex-column ga-4 pa-6 margin-image-service">
+      <v-col cols="12" md="9" class="d-flex flex-column ga-4 pa-6 margin-image-service" :style="{marginInlineStart: props.small ? '8rem': '12rem'}">
         <div class="d-flex ga-4 align-center">
           <v-avatar size="72" :color="isHovered ? 'primary' : 'avatar'">
             <v-img height="54" :src="useImageStream(props.info.logoId)" :color="isHovered ? '#fff' : 'primary'" />
           </v-avatar>
           <h3 class="text-2xl font-bold">{{ props.info.name }}</h3>
         </div>
-        <p class="text-lg" :class="{'text-truncate': props.small}">
+        <p class="text-lg" :class="{'text-truncate': props.small }" >
           {{ props.info.description }}
         </p>
         <ul class="list">
@@ -42,7 +42,7 @@ const isHovered = ref(false);
             color="primary"
             variant="text"
             append-icon="mdi-arrow-left"
-            >اعرف المزيد</v-btn
+            :to="`/services/${props.info.id}`">اعرف المزيد</v-btn
           >
         </div>
       </v-col>

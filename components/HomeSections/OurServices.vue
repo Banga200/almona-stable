@@ -91,6 +91,9 @@ const props = defineProps(['services', "loading"])
                 <p class="text-center mb-8 text-xl">نقدم مجموعة شاملة من الخدمات المتخصصة لتلبية احتياجات عملائنا في مختلف القطاعات</p>
                 <div class="line-gradient"></div>
             </div>
+             <div class="text-end mb-4">
+                <v-btn variant="outlined" text="عرض الكل" append-icon="mdi-arrange-bring-forward" to="/services" color="primary" v-if="props.services && props.services?.length > 0"/>
+            </div>
             <v-row>
                 <v-col v-for="(service, index) in props.services" :key="index" cols="12" md="6">
                     <ServiceCard :info="service"/>

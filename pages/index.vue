@@ -19,8 +19,8 @@ const postStore = usePostStore();
 const teamMemberStore = useTeamMemberstore();
 const statisticStore = useStatisticStore();
 const storeActionsMap = {
-  'serviceStore.GetAllServices': () => serviceStore.GetAllServices(),
-  'projectStore.GetAllProjects': () => projectStore.GetAllProjects(),
+  'serviceStore.GetAllServices': () => serviceStore.GetAllServices(4),
+  'projectStore.GetAllProjects': () => projectStore.GetAllProjects(2,4),
   'postStore.GetAllPost': () => postStore.GetAllPosts(),
   'teamMemberStore.GetAllTeamMembers': () => teamMemberStore.GetAllTeamMembers(),
 }

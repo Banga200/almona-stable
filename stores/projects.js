@@ -155,6 +155,12 @@ export const useProjectStore = defineStore("project", () => {
   }
 
   async function SetUpBody(data,isEdit = false) {
+    if (isEdit) {
+      data.details = data.details.map(obj => ({
+            ...obj,
+            projectId: data.id
+        }));
+    }
     let body = {
       ...(isEdit ? {"id": data.id}: {}),
       "name": data.name,
@@ -174,6 +180,12 @@ export const useProjectStore = defineStore("project", () => {
               obj.value !== undefined &&
               obj.value !== null &&
               obj.value !== ''
+        ),
+      "details": data.details.filter(obj =>
+              Object.keys(obj).length > 0 &&
+              obj.title !== undefined &&
+              obj.title !== null &&
+              obj.title !== ''
         )
     }
     return body

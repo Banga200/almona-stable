@@ -17,6 +17,7 @@ const form = ref({
   statistics: [{}],
   locationId: null,
   cityId: null,
+  details: [{}],
 });
 const imagePreview = ref(null);
 onMounted(() => {
@@ -50,24 +51,33 @@ const saveProject = async () => {
     emit("save", form.value);
   }
 };
-const rawDate = ref(null)
+const rawDate = ref(null);
 
 const onDateSelected = (date) => {
-  rawDate.value = date
+  rawDate.value = date;
   form.value.dateShow = formatDate(date);
   form.value.date = date;
-  menu.value = false
-  console.log(JSON.stringify({
-  date: new Date(date).toISOString()
-}))
-}
+  menu.value = false;
+  console.log(
+    JSON.stringify({
+      date: new Date(date).toISOString(),
+    })
+  );
+};
 function formatDate(date) {
-  if (!date) return ''
-  const d = new Date(date)
-  const day = String(d.getDate()).padStart(2, '0')
-  const month = String(d.getMonth() + 1).padStart(2, '0') // Months are 0-based
-  const year = d.getFullYear()
-  return `${day}/${month}/${year}`
+  if (!date) return "";
+  const d = new Date(date);
+  const day = String(d.getDate()).padStart(2, "0");
+  const month = String(d.getMonth() + 1).padStart(2, "0"); // Months are 0-based
+  const year = d.getFullYear();
+  return `${day}/${month}/${year}`;
+}
+function removeDetail(index) {
+  form.value.details.splice(index, 1)
+}
+const addDetail = () => {
+  form.value.details.push({});
+
 }
 defineExpose({
   form,
@@ -191,10 +201,11 @@ defineExpose({
               </template>
 
               <v-date-picker
-              v-model="rawDate"
-              @update:model-value="onDateSelected"
+                v-model="rawDate"
+                @update:model-value="onDateSelected"
                 locale="ar"
-              color="primary"/>
+                color="primary"
+              />
             </v-menu>
           </v-col>
           <v-col cols="6">
@@ -206,7 +217,49 @@ defineExpose({
           </v-col>
         </v-row>
       </v-col>
+      <v-col cols="12">
+        <h3 class="text-lg font-weight-bold mb-2">المراحل</h3>
+        <v-expansion-panels multiple>
+          <v-expansion-panel
+            v-for="(detail, index) in form.details"
+            :key="index"
+          >
+            <v-expansion-panel-title>
+              {{ detail.title || `المرحلة ${index + 1}` }}
+              <v-spacer></v-spacer>
+              <v-btn
+                icon
+                size="small"
+                @click.stop="removeDetail(index)"
+              v-if="form.details.length > 1">
+                <v-icon>mdi-close</v-icon>
+              </v-btn>
+            </v-expansion-panel-title>
 
+            <v-expansion-panel-text>
+              <v-text-field
+                v-model="detail.title"
+                label="عنوان المرحلة"
+                variant="outlined"
+                class="mb-3"
+              />
+              <v-textarea
+                v-model="detail.description"
+                label="وصف المرحلة"
+                rows="3"
+                class="mb-3"
+              />
+              <v-textarea v-model="detail.summary" label="ملخص المرحلة" rows="3" />
+            </v-expansion-panel-text>
+          </v-expansion-panel>
+        </v-expansion-panels>
+        <v-btn text="إضافة مرحلة"
+        color="primary"
+          class="mt-4"
+          @click="addDetail"
+          prepend-icon="mdi-plus"
+          variant="tonal"/>
+      </v-col>
       <v-col cols="12" lg="5">
         <h3 class="text-lg font-weight-bold mb-2">أبرز الإنجازات</h3>
         <v-row

@@ -72,6 +72,24 @@ onMounted(async() => {
                 </div>
             </div>
         <p>{{ project.content.description }}</p>
+        <h3 class="mt-8 mb-8 font-bold" v-if="project.content?.details?.length > 0">المراحل</h3>
+        <v-expansion-panels multiple >
+          <v-expansion-panel
+            v-for="(detail, index) in project.content.details"
+            :key="index"
+          >
+            <v-expansion-panel-title>
+              {{ detail.title || `المرحلة ${index + 1}` }}
+            </v-expansion-panel-title>
+
+            <v-expansion-panel-text>
+              <h3>الوصف:</h3>
+              <p>{{ detail.description }}</p>
+              <h3 class="mt-8">الملخص:</h3>
+              <p>{{ detail.summary }}</p>
+            </v-expansion-panel-text>
+          </v-expansion-panel>
+        </v-expansion-panels>
         <h3 class="mt-8 font-bold">الإنجازات</h3>
         <v-col cols="12" md="8" class="mb-8">
             <v-row class="mt-1">

@@ -37,7 +37,7 @@ const cards = [
                     <p class="text-lg">نحن شركة يمنية رائدة في تقديم خدمات المعارض، التسويق، إدارة المشاريع، وإنجاز الأعمال. نمتلك فريقاً شغوفاً بخدمة عملائنا وتحقيق نتائج ملموسة تعكس رؤيتنا في تطوير السوق اليمني.</p>
                     <p class="mt-4 text-lg">منذ تأسيسنا، نسعى لتقديم خدمات متميزة تجمع بين الخبرة المحلية والمعايير العالمية، مما يضمن تحقيق أهداف عملائنا بأعلى مستويات الجودة والاحتراف.</p>
                     <div class="d-flex ga-4 align-center mt-6 pt-4">
-                        <v-avatar size="56" image="/logo.jpg" class="pa-4" color="avatar"></v-avatar>
+                        <v-avatar size="56" image="/logo.png" class="pa-4" color="avatar"></v-avatar>
                         <div>
                             <h3 class="text-dark font-bold">المُنى الذهبية</h3>
                             <p class="text-sm">شريكك في النجاح</p>

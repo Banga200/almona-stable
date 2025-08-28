@@ -63,7 +63,7 @@ function deleteOrder(id) {
     if (answer) {
         OrdersStore.DeleteOrder(id)
     }
-    else { console.log("cancel") }
+    
 }
 </script>
 <template>

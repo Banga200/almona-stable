@@ -19,7 +19,6 @@ onMounted(() => {
     ])
     serivces.value = serivce.value;
 
-    console.log(serivce.value)
 })
 </script>
 <template>

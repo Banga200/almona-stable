@@ -35,7 +35,6 @@ export const useUserStore = defineStore('User', () => {
                 method: "POST",
                 body: JSON.stringify(payload)
             })
-            console.log(error)
             if (error.value) {
                 if (error.value.data) {
                     if (error.value.data.code === 1005) {
@@ -76,7 +75,6 @@ export const useUserStore = defineStore('User', () => {
                 method: "POST",
                 body: JSON.stringify(payload)
             })
-            console.log(user)
             if (error.value) {
                 ComposableError.handelErros(error.value)
                 Loading.value = false
@@ -128,7 +126,6 @@ export const useUserStore = defineStore('User', () => {
                 method: "POST",
                 params: {UserId: userId, Code:code},
             })
-            console.log(user)
             if (error.value) {
                 ComposableError.handelErros(error.value)
                 Loading.value = false
@@ -152,7 +149,6 @@ export const useUserStore = defineStore('User', () => {
                     "Authorization": `Bearer ${Token.value}`
                 },
             })
-            console.log(users)
             if (error.value) {
                 ComposableError.handelErros(error.value)
                 Loading.value = false
@@ -191,7 +187,6 @@ export const useUserStore = defineStore('User', () => {
                 const index = UserList.value.findIndex(item => {
                     return item.id === id
                   })
-                  console.log(index)
                   if (index !== -1) {
                     UserList.value.splice(index, 1)
                     console.log('Object removed:');
@@ -262,7 +257,6 @@ export const useUserStore = defineStore('User', () => {
         }
     }
     function setUser(user, token) {
-        console.log(user)
         User.value = user,
         Token.value = token
     }

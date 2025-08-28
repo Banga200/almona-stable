@@ -27,7 +27,6 @@ export default function () {
             const decodeUser =  jwtDecode(token);
             user.value = decodeUser
             userStore.setUser(decodeUser, token)
-            console.log(user)
         }
         
         logOut()

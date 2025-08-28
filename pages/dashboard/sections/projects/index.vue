@@ -30,7 +30,6 @@ const deleteProject = (project) => {
 }
 const saveProject = async (payload) => {
     if (isEdit.value) {
-        console.log(payload)
        await projectStore.EditProject(payload)
     }
     else {await projectStore.AddNewProject(payload)}

@@ -9,7 +9,6 @@ const emit = defineEmits(['edit', 'delete'])
           <v-btn class="ma-2 white" icon="mdi-pencil" color="success" size="small" @click="emit('edit',props.info)"/>
           <v-btn class="ma-2 white" icon="mdi-delete" color="red" size="small" @click="emit('delete',props.info)"/>
         </div>
-        {{ console.log(props.info) }}
       <v-img :src="useImageStream(props.info?.images[0])" cover height="256" />
     </div>
     <div

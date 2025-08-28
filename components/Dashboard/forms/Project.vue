@@ -29,7 +29,6 @@ watch(
   (newVal) => {
     if (newVal && newVal.length > 0) {
       if (isNaN(newVal[0])) {
-        console.log(newVal);
         imagePreview.value = URL.createObjectURL(newVal[0]);
       }
     } else {
@@ -58,11 +57,7 @@ const onDateSelected = (date) => {
   form.value.dateShow = formatDate(date);
   form.value.date = date;
   menu.value = false;
-  console.log(
-    JSON.stringify({
-      date: new Date(date).toISOString(),
-    })
-  );
+  
 };
 function formatDate(date) {
   if (!date) return "";

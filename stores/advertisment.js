@@ -112,7 +112,6 @@ export const useAdvertismentStore = defineStore("Advertisment", () => {
   }
   // Add New Advertisment
   async function AddNewAdvertisment(payload) {
-    console.log(payload);
     loading.value = true;
     try {
       const { data: advertisments, error } = await useFetch(
@@ -127,7 +126,6 @@ export const useAdvertismentStore = defineStore("Advertisment", () => {
           body: JSON.stringify(payload),
         }
       );
-      console.log(error);
       if (error.value) {
         ComposableError.handelErros(error.value);
         loading.value = false;
@@ -238,9 +236,6 @@ export const useAdvertismentStore = defineStore("Advertisment", () => {
         });
         if (index !== -1) {
           OneAdvertisment.value.imageIDs.splice(index, 1);
-          console.log("Object removed:");
-        } else {
-          console.log("Object not found");
         }
 
         loading.value = false;
@@ -251,7 +246,6 @@ export const useAdvertismentStore = defineStore("Advertisment", () => {
     }
   }
   async function FilterAdvertisements(fields, adversmentTypeId, page) {
-    console.log(fields);
     loading.value = true;
     try {
       const { data: advertisments, error } = await useFetch(
@@ -317,7 +311,6 @@ export const useAdvertismentStore = defineStore("Advertisment", () => {
           },
         }
       );
-      console.log(advertisments);
       if (error.value) {
         ComposableError.handelErros(error.value);
         loading.value = false;
@@ -332,7 +325,6 @@ export const useAdvertismentStore = defineStore("Advertisment", () => {
   }
   // Delete Advertisement
   async function DeleteAdvertisement(id) {
-    console.log(id);
     loading.value = true;
     try {
       const { data: advertisments, error } = await useFetch(
@@ -346,7 +338,6 @@ export const useAdvertismentStore = defineStore("Advertisment", () => {
           params: { id: id },
         }
       );
-      console.log(advertisments);
       if (error.value) {
         ComposableError.handelErros(error.value);
         loading.value = false;
@@ -359,9 +350,6 @@ export const useAdvertismentStore = defineStore("Advertisment", () => {
         });
         if (index !== -1) {
           Advertisments.value.splice(index, 1);
-          console.log("Object removed:");
-        } else {
-          console.log("Object not found");
         }
         loading.value = false;
       }

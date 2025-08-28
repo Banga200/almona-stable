@@ -14,7 +14,6 @@ export const useServiceStore = defineStore("service", () => {
   });
   const success = ref(false);
   async function GetAllServices(pageSize = 100, search = '') {
-    console.log(search)
     services.value.loading = true;
     try {
       const { data, code } = await useServerAPI(`/BusinessService/Paged`, {
@@ -92,7 +91,6 @@ export const useServiceStore = defineStore("service", () => {
     services.value.loading = true;
     success.value = false;
     let imageIds = []
-    console.log(body)
     try {
        for (let index = 0; index < body.images.length; index++) {
         const element = body.images[index];
@@ -105,7 +103,6 @@ export const useServiceStore = defineStore("service", () => {
           imageIds.push(element);
         }
       }
-      console.log(body)
       if(isNaN(body.logoId)) {
         if (Array.isArray(body.logoId) && (body.logoId[0] instanceof File || body.logoId[0] instanceof Blob)) {
           const image = await prepareUploadFileObject(body.logoId[0]);

@@ -7,7 +7,6 @@ export const vAnimationNumber = {
 
     // keep the element’s text in sync
     const stopWatch = watch(current, v => {
-      console.log(el)
       el.textContent = Math.round(v).toString()
     })
 

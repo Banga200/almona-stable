@@ -95,7 +95,6 @@ export const useOrdersStore = defineStore('Orders', () => {
                 const index = Orders.value.findIndex(item => {
                     return item.id === id
                   })
-                  console.log(index)
                   if (index !== -1) {
                     Orders.value.splice(index, 1)
                     console.log('Object removed:');

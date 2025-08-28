@@ -14,7 +14,6 @@ function MoveToNextStep(index) {
         // this.$set(this.steps, index, { ...this.steps[index], completed: true });
       } else {
         // Optionally handle completion, e.g., navigate to another route
-        console.log('All steps completed!');
       }
 }
 

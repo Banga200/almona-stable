@@ -2,7 +2,6 @@
 const props = defineProps(['post', "loading"])
 const posts = ref([])
 onMounted(() => {
-    console.log(props.post)
     posts.value = chunkArray(props.post,3)
 })
 </script>

@@ -53,7 +53,6 @@ function showAlert(userName, id) {
     if (answer) {
         userStore.DeleteUser(id)
     }
-    else { console.log("cancel") }
 }
 </script>
 <template>

@@ -11,7 +11,6 @@ const teamMemberFormRef = ref(null)
 const formDialog = ref(false)
 const isEdit = ref(false)
 const editTeamMember = (teamMember) => {
-    console.log(teamMember)
 
     formDialog.value = true
     requestAnimationFrame(() => {
@@ -28,7 +27,6 @@ const deleteTeamMember = (teamMember) => {
 }
 const saveTeamMember = async (payload) => {
         if (isEdit.value) {
-        console.log(payload)
        await teamMemberStore.EditTeamMember(payload)
     }
     else {await teamMemberStore.AddNewTeamMember(payload)}

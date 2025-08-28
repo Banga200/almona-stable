@@ -19,8 +19,8 @@ const icons = [
                 </h1>
 
             <h4 class="text-2xl mb-8">خدماتنا تجمع بين الإبداع والاحتراف</h4>
-            <h6 class="text-lg opacity-80 mb-10">نحن شركة يمنية رائدة في تقديم خدمات المعارض، التسويق، إدارة المشاريع، وإنجاز الأعمال</h6>
-            <v-btn text="اكتشف خدماتنا" append-icon="mdi-arrow-down" rounded="xl" size="x-large" class="font-bold mb-16 custom-button" />
+            <h6 class="text-lg opacity-80 mb-10">شركة يمنية رائدة في تقديم خدمات المعارض، التسويق، إدارة المشاريع، وإنجاز الأعمال</h6>
+            <v-btn text="اكتشف خدماتنا" append-icon="mdi-arrow-down" rounded="xl" size="x-large" class="font-bold mb-16 custom-button" @click="() => $router.push('/#ourServices')"/>
            <!-- <v-col cols="12" md="3" class="text-left d-flex justify-center justify-md-end">
 
                  <client-only >

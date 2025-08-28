@@ -1,5 +1,5 @@
 <script setup>
-import logo from "/logo.jpg";
+import logo from "/logo.png";
 import { ref, watch, onMounted, onUnmounted, onUpdated } from "vue";
 import { useDisplay } from "vuetify";
 import { useRoute } from "vue-router";
@@ -33,9 +33,17 @@ const navs = ref([
     link: "/#aboutus",
   },
   {
-    title: "خدماتنا",
-    link: "/#services",
+    title: "أعمالنا",
+    link: "/#ourProjects",
   },
+  {
+    title: "خدماتنا",
+    link: "/#ourServices",
+  },
+  {
+    title: "فريق العمل",
+    link: "/#work-team",
+  }
 ]);
 const props = defineProps(["HomeHeader"]);
 onMounted(() => {
@@ -69,13 +77,13 @@ function handleScroll(event) {
       <v-container class="d-flex pa-0">
           <v-col>
             <div class="d-flex ga-4">
-              <a class="d-flex align-center ga-2">
+              <a class="d-flex align-center ga-2" :href="'mailto:' + 'info@almonaa.com'">
                 <v-icon size="16">mdi-email-outline</v-icon>
                 <span>info@almonaa.com</span>
               </a>
-              <a class="d-flex align-center ga-2">
+              <a class="d-flex align-center ga-2" :href="'tel:' + '00967 383263332'">
                 <v-icon size="16">mdi-phone</v-icon>
-                <span>00967 383263332</span>
+                <span dir="ltr">00967 383263332</span>
               </a>
             </div>
           </v-col>
@@ -107,7 +115,7 @@ function handleScroll(event) {
           {{ item.title }}
         </v-list-item>
         <!-- This list is for any routing pages  -->
-        <v-list-item
+        <!-- <v-list-item
           v-for="item in routeNavs"
           :key="item.title"
           :to="item.link"
@@ -115,7 +123,7 @@ function handleScroll(event) {
           :append-icon="item.icon"
         >
           {{ item.title }}
-        </v-list-item>
+        </v-list-item> -->
         <v-spacer />
         <v-divider class="mt-2" />
         <v-list-item
@@ -181,15 +189,21 @@ function handleScroll(event) {
               <v-btn stacked @click="() => $router.push('/#ourProjects')"
                 >اعمالنا</v-btn
               >
-              <v-btn stacked to="/real-estate/عقارات">عقارات</v-btn>
+              <v-btn stacked @click="() => $router.push('/#ourServices')"
+                >خدماتنا</v-btn
+              >
+              <v-btn stacked @click="() => $router.push('/#work-team')"
+                >فريق العمل</v-btn
+              >
+              <!-- <v-btn stacked to="/real-estate/عقارات">عقارات</v-btn> -->
             </client-only>
 
             <v-spacer />
             <v-row class="align-center">
               <!-- إذا كان المستخدم مسجل  -->
-              <v-btn append-icon="mdi-plus" to="/real-estate/advertis" 
+              <!-- <v-btn append-icon="mdi-plus" to="/real-estate/advertis" 
                 >عرض إعلان</v-btn
-              >
+              > -->
               <!-- <v-btn prepend-icon="mdi-note-edit-outline">إرسال طلب </v-btn> -->
               <!-- زر خاص للمسوؤل  -->
             </v-row>

@@ -13,7 +13,7 @@ const contactDetails = [
     {
         title: "رقم الهاتف",
         icon: "mdi-phone",
-        content: "967+ 783263332",
+        content: "+967 783263332",
     },
     {
         title: "ساعات العمل",
@@ -53,7 +53,7 @@ const subjects = [
      <v-container>
         <div class="text-center mb-16">
             <h1 class="title text-gradient">تواصل معنا</h1>
-            <p class="text-xl text-center mb-8">نحن هنا لخدمتك والإجابة على جميع استفساراتك. تواصل معنا عبر الطرق التالية</p>
+            <p class="text-xl text-center mb-8">نحن هنا لخدمتك والإجابة على جميع استفساراتك.</p>
             <div class="line-gradient"></div>
         </div>
         <v-row>
@@ -69,7 +69,7 @@ const subjects = [
                                 </v-avatar>
                                 <div>
                                     <h4 class="mb-2">{{ detail.title }}</h4>
-                                    <p>{{ detail.content }}</p>
+                                    <p dir="ltr">{{ detail.content }}</p>
                                 </div>
                             </div>
                         </div>
@@ -79,10 +79,14 @@ const subjects = [
                     <h2 class="text-2xl font-bold mb-6 ">تابعنا على</h2>
                     <div class="d-flex ga-4 align-center follow-us">
                         <v-avatar class="facebook" size="56">
-                            <v-icon size="24" color="primary" icon="$FacebookOutline"></v-icon>
+                            <a href="https://www.facebook.com/share/1CWQNX7fvm/" target="_blank">
+                                <v-icon size="24" color="primary" icon="$FacebookOutline"></v-icon>
+                            </a>
                         </v-avatar>
                         <v-avatar class="instagram" size="56">
-                            <v-icon size="24" color="primary">mdi-instagram</v-icon>
+                            <a href="https://www.instagram.com/almonaa.co?igsh=MXdvOHR2aWdwNHpocA==" target="_blank">
+                                <v-icon size="24" color="primary">mdi-instagram</v-icon>
+                            </a>
                         </v-avatar>
                         <v-avatar class="message" size="56">
                             <v-icon size="24" color="primary" icon="$MessageCircle"></v-icon>

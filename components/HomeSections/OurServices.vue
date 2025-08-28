@@ -105,7 +105,7 @@ const props = defineProps(['services', "loading"])
             <div class="card-gradient mt-16 d-flex flex-column align-center justify-center ga-4">
                 <h1 class="text-3xl">هل تحتاج خدمة مخصصة؟</h1>
                 <p class="text-xl">تواصل معنا لمناقشة احتياجاتك والحصول على استشارة مجانية</p>
-                <v-btn text="تواصل معنا الان" append-icon="mdi-arrow-left" rounded="xl" size="x-large" class="font-bold  custom-button" />
+                <v-btn text="تواصل معنا الان" append-icon="mdi-arrow-left" rounded="xl" size="x-large" class="font-bold  custom-button" @click="() => $router.push('/#contact-us')"/>
 
             </div>
         </v-container>

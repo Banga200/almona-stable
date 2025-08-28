@@ -1,10 +1,10 @@
 <script setup>
-import logo from "/logo.jpg";
+import logo from "/logo.png";
 
 const quickLinks = [
     {title: "الرئيسية", link: '#'},
     {title: "عن الشركة", link: '#aboutus'},
-    {title: "خدماتنا", link: 'ourServices'},
+    {title: "خدماتنا", link: '#ourServices'},
     {title: "مشاريعنا", link: '#ourProjects'},
     {title: "فريق العمل", link: '#work-team'},
     {title: "اتصل بنا", link: '#contact-us'},

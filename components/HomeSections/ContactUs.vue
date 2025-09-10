@@ -1,22 +1,23 @@
 <script setup>
+const {t} = useI18n()
 const contactDetails = [
     {
-        title: "العنوان",
+        title: t("sections.contact_us.contact_info.address"),
         icon: "$MapMarker",
         content: "اليمن، حضرموت، المكلا، شارع الجسر الصيني، عمارة بن هلابي2، الدور الثالث، شقة رقم 2",
     },
     {
-        title: "البريد الإلكتروني",
+        title: t("sections.contact_us.contact_info.email"),
         icon: "mdi-email-outline",
         content: "info@almonaa.com",    
     },
     {
-        title: "رقم الهاتف",
+        title: t("sections.contact_us.contact_info.phone"),
         icon: "mdi-phone",
         content: "+967 783263332",
     },
     {
-        title: "ساعات العمل",
+        title: t("sections.contact_us.contact_info.work_hours"),
         icon: "mdi-clock-outline",
         content: "الأحد - الخميس: 8:00 ص - 3:00 م الجمعة،السبت: مغلق"
     }
@@ -61,7 +62,7 @@ const subjects = [
             <v-col class="d-flex flex-column ga-8" cols="12" md="6">
                 <v-card>
                     <div class="d-flex flex-column ga-4">
-                        <h1 class="text-2xl font-bold">معلومات التواصل</h1>
+                        <h1 class="text-2xl font-bold">{{ $t('contact_info') }}</h1>
                         <div class="d-flex flex-column ga-4">
                             <div class="d-flex ga-4" v-for="(detail, index) in contactDetails" :key="index">
                                 <v-avatar size="48" color="avatar">
@@ -76,7 +77,7 @@ const subjects = [
                     </div>
                 </v-card>
                 <v-card>
-                    <h2 class="text-2xl font-bold mb-6 ">تابعنا على</h2>
+                    <h2 class="text-2xl font-bold mb-6 ">{{ $t("sections.contact_us.follow_us") }}</h2>
                     <div class="d-flex ga-4 align-center follow-us">
                         <v-avatar class="facebook" size="56">
                             <a href="https://www.facebook.com/share/1CWQNX7fvm/" target="_blank">

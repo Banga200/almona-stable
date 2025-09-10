@@ -4,13 +4,15 @@ import { ref, watch, onMounted, onUnmounted, onUpdated } from "vue";
 import { useDisplay } from "vuetify";
 import { useRoute } from "vue-router";
 import { useUserStore } from "~/stores/auth";
+import { useSwitchLocalePath } from '#i18n'  
 const userStore = useUserStore();
 const User = useUser();
 const { mobile } = useDisplay();
 const drawer = ref(false);
 const bottomNavigation = ref(0);
 const route = useRoute();
-const {t} = useI18n();
+const {t, locale} = useI18n();
+const switchLocalePath = useSwitchLocalePath()
 const routeNavs = ref([
   {
     title: "عقارات",
@@ -71,6 +73,16 @@ function handleScroll(event) {
     }
   }
 }
+const switchLang = () => {
+  // toggle between Arabic & English
+  const newLang = locale.value === 'ar' ? 'en' : 'ar'
+
+  // change locale
+  locale.value = newLang
+
+  // navigate to correct path
+  navigateTo(switchLocalePath(newLang))
+}
 </script>
 <template>
   <client-only>
@@ -90,7 +102,7 @@ function handleScroll(event) {
           </v-col>
           <v-spacer />
           <v-col>
-            <div class="d-flex align-center justify-end ga-2">
+            <div class="d-flex align-center justify-end ga-2 lang-switch" @click="switchLang">
               <v-icon size="16">mdi-web</v-icon>
               <span> العربية | English </span>
             </div>
@@ -172,8 +184,8 @@ function handleScroll(event) {
                 <v-img :src="logo" alt="Logo Image" contain max-height="48" width="78" height="48" max-width="78" />
               </div>
                 <div>
-                    <h1 class="text-xl text-primary">المٌنى الذهبية</h1>
-                    <p class="text-sm">للتجارة والخدمات المحدودة</p>
+                    <h1 class="text-xl text-primary">{{ $t("heading.company_name") }}</h1>
+                    <p class="text-sm">{{ $t('heading.company_sub_name') }}</p>
                 </div>
             </div>
 
@@ -182,19 +194,19 @@ function handleScroll(event) {
                             </v-bottom-navigation> -->
             <client-only>
               <v-btn class="mr-md-15" stacked @click="() => $router.push('/')"
-                >الصفحة الرئيسية</v-btn
+                >{{ $t('links.home_page') }}</v-btn
               >
               <v-btn stacked @click="() => $router.push('/#aboutus')"
-                >من نحن</v-btn
+                >{{ $t('links.about_us') }} </v-btn
               >
               <v-btn stacked @click="() => $router.push('/#ourProjects')"
-                >اعمالنا</v-btn
+                >{{ $t('links.our_projects') }}</v-btn
               >
               <v-btn stacked @click="() => $router.push('/#ourServices')"
-                >خدماتنا</v-btn
+                >{{ $t('links.our_services') }}</v-btn
               >
               <v-btn stacked @click="() => $router.push('/#work-team')"
-                >فريق العمل</v-btn
+                >{{ $t('links.work_team') }}</v-btn
               >
               <!-- <v-btn stacked to="/real-estate/عقارات">عقارات</v-btn> -->
             </client-only>
@@ -213,7 +225,7 @@ function handleScroll(event) {
               class="ml-10"
               v-if="isUser ? isUser.UserName === 'Admin' : isUser"
               to="/dashboard/orders"
-              >لوحة التحكم</v-btn
+              >{{  $t('label.control_panel')}}</v-btn
             >
           </v-row>
         </client-only>
@@ -224,7 +236,7 @@ function handleScroll(event) {
           prepend-icon="mdi-account-outline"
           v-if="!isUser"
         >
-          تسجيل الدخول
+           {{ $t('label.log_in') }}
         </v-btn>
         <user-drop-menu v-if="isUser" :User="isUser" />
       </v-container>

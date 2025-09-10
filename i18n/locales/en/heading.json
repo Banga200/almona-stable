@@ -1,8 +1,97 @@
 {
-  "heading": {
-    "company": "شركة",
-    "company_name": "المٌنى الذهبية",
-    "company_sub_name": "للتجارة والخدمات المحدودة",
-    "heroTitle": "خدماتنا تجمع بين الإبداع والاحتراف"
+    "heading": {
+        "about": "About",
+        "the_company": "The Company",
+        "company": "Company",
+        "company_name": "Almona Gold",
+        "company_sub_name": "For Trading and Limited Services",
+        "heroTitle": "Our services combine creativity and professionalism",
+        "about_company": "About the Company",
+        "about_us_title": "A specialized and dedicated team",
+        "work": "Work",
+        "team": "Team"
+    },
+    "sections": {
+        "our_services": {
+            "title": "Our Services",
+            "description": "We offer a comprehensive range of specialized services to meet our clients' needs across various sectors",
+            "do_you_need_service": "Do you need a custom service?",
+            "contact_us": "Contact us to discuss your needs and get a free consultation"
+        },
+        "our_numbers": {
+            "title": "Our Numbers Speak",
+            "description": "Achievements made thanks to our clients' trust and our team's dedication",
+            "sub_title": "We are proud to serve our clients all over Yemen",
+            "sub_description": "From Sana'a to Aden, from Hadramout to Taiz, we reach our clients everywhere to provide the best services and achieve their business goals with the highest standards of quality and professionalism"
+        },
+        "our_projects": {
+            "title": "Our Projects",
+            "description": "We are proud of the exhibitions and events we have successfully organized, which have contributed to the development of various sectors in Yemen",
+            "coming_projects": "Upcoming Projects",
+            "ongoing_projects": "We are currently working on organizing new and exciting exhibitions in various sectors"
+        },
+        "work_team": {
+            "description": "A specialized and dedicated team working passionately to achieve our clients' goals and provide the best services",
+            "rate_our_team": {
+                "title": "Rate Our Team",
+                "collaboration": {
+                    "title": "Collaboration",
+                    "description": "We work as one team to achieve common goals"
+                },
+                "excellence": {
+                    "title": "Excellence",
+                    "description": "We strive for excellence in everything we do"
+                },
+                "creativity": {
+                    "title": "Creativity",
+                    "description": "We innovate creative solutions for our clients' challenges"
+                }
+            }
+        },
+        "news": {
+            "title": "News"
+        },
+        "contact_us": {
+            "title": "Contact Us",
+            "description": "We are here to serve you and answer all your inquiries.",
+            "contact_info": {
+                "address": "Address",
+                "email": "Email",
+                "phone": "Phone Number",
+                "work_hours": "Working Hours"
+            },
+            "send_us_message": {
+                "title": "Send Us a Message",
+                "form": {
+                    "full_name": "Full Name",
+                    "full_name_placeholder": "Enter full name",
+                    "email": "Email",
+                    "email_placeholder": "Enter email",
+                    "subject": "Subject",
+                    "subject_placeholder": "Choose subject",
+                    "message": "Message",
+                    "message_placeholder": "Write your message here..."
+                }
+            },
+            "follow_us": "Follow us on",
+            "special_services": "Special Services",
+            "participant_control_panel": "Participant Control Panel"
+        }
+    },
+    "quick_links": "Quick Links",
+    "our_services": "Our Services",
+    "contact_info": "Contact Information",
+    "address_location": "Yemen, Hadramout, Mukalla, Chinese Bridge Street, Bin Halabi2 Building, Third Floor, Apartment No. 2",
+    "subscribe_in_our_newsletter": "Subscribe to our newsletter",
+    "your_email_placeholder": "Your email",
+    "rights_reserved": "All rights reserved {year} ©",
+    "privacy_policy": "Privacy Policy",
+    "terms_of_use": "Terms of Use",
+    "service_agreement": "Service Agreement",
+    "exhibition_organization": "Exhibition Organization",
+    "marketing": "Marketing",
+    "project_management": "Project Management",
+    "business_execution": "Business Execution",
+    "shoghlni_service": "Shoghlni Service",
+    "business_consulting": "Business Consulting"
   }
-}

@@ -4,9 +4,10 @@ import AboutusSection from '../components/HomeSections/AboutusSection.vue';
 import GoalsSection from '~/components/HomeSections/GoalsSection.vue';
 import ServicesSection from '~/components/HomeSections/ServicesSection.vue';
 import OurServices from '~/components/HomeSections/OurServices.vue';
+const {t} = useI18n();
 
 useHead({
-    title: 'شركة المنى | الصفحة الرئيسية'
+    title: `${t('heading.company_name')} | ${t('links.home_page')}`
 })
 
 definePageMeta({
@@ -47,44 +48,44 @@ onMounted(() => {
 const heroInfo = computed(() => [
   {
     icon: "$Quality",
-    title: 'معارض ناجحة',
+    title:  t('successfulExhibitions'),
     count: `${statisticStore.statistics.content.successfulExhibitions}+`
   },
   {
     icon: "$Customers",
-    title: 'عميل موثوق',
+    title: t('trustedCustomer'),
     count: `${statisticStore.statistics.content.trustedCustomer}+`
   },
   {
     icon: "mdi-star-outline",
-    title: 'سنوات الخبرة',
+    title: t('yearsOfExperience'),
     count: `${statisticStore.statistics.content.yearsOfExperience}+`
   },
 ])
 const numbers = computed(() => [
     {
         icon: '$Quality',
-        title: 'معارض ناجحة',
+        title:  t('successfulExhibitions'),
         count: `${statisticStore.statistics.content.successfulExhibitions}+`,
-        description: 'معارض متخصصة نظمناها بنجاح'
+        description: t('successfulExhibitionsDesc'),
     },
     {
         icon: '$Customers',
-        title: 'عميل موثوق',
+        title:  t('trustedCustomer'),
         count: `${statisticStore.statistics.content.trustedCustomer}+`,
-        description: 'عملاء يثقون في خدماتنا'
+        description: t('trustedCustomerDesc'),
     },
     {
         icon: '$Event',
-        title: 'سنوات من الخبرة',
+        title:  t('yearsOfExperience'),
         count: `${statisticStore.statistics.content.yearsOfExperience}+`,
-        description: 'خبرة متراكمة في السوق اليمني'
+        description:  t('yearsOfExperienceDesc'),
     },
     {
         icon: '$MapMarker',
-        title: 'محافظات يمنية',
+        title:  t('yemeniProvinces'),
         count: `${statisticStore.statistics.content.yearsOfExperience}+`,
-        description: 'مشاركون من مختلف المحافظات'
+        description: t('participantsFromAllProvinces'),
     },
     // Add more numbers as needed
 ]);

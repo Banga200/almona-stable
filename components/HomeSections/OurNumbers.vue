@@ -7,8 +7,8 @@ const props = defineProps(['statistics'])
     <section id="our-numbers">
         <v-container>
             <div class="text-center">
-                <h1 class="text-4xl">أرقامنا تتحدث</h1>
-                <p class="text-center text-white mt-2 opacity-90 text-xl">إنجازات حققناها بفضل ثقة عملائنا وتفاني فريق العمل</p>
+                <h1 class="text-4xl">{{ $t('sections.our_numbers.title') }}</h1>
+                <p class="text-center text-white mt-2 opacity-90 text-xl">{{ $t('sections.our_numbers.description') }}</p>
                 <div class="line-gradient mt-8"></div>
             </div>
             <v-row class="mt-12">
@@ -24,8 +24,8 @@ const props = defineProps(['statistics'])
                 </v-col>
             </v-row>
             <div class="card text-center mt-16">
-                <h1 class="text-2xl mb-4">نفخر بخدمة عملائنا في جميع أنحاء اليمن</h1>
-                <p class="text-center text-white">من صنعاء إلى عدن، ومن حضرموت إلى تعز، نصل إلى عملائنا في كل مكان لتقديم أفضل الخدمات وتحقيق أهدافهم التجارية بأعلى معايير الجودة والاحتراف</p>
+                <h1 class="text-2xl mb-4">{{ $t('sections.our_numbers.sub_title') }}</h1>
+                <p class="text-center text-white">{{ $t('sections.our_numbers.sub_description') }}</p>
             </div>
         </v-container>
     </section>

@@ -1,0 +1,99 @@
+{
+    "heading": {
+        "about": "عن",
+        "the_company": "الشركة",
+        "company": "شركة",
+        "company_name": "المٌنى الذهبية",
+        "company_sub_name": "للتجارة والخدمات المحدودة",
+        "heroTitle": "خدماتنا تجمع بين الإبداع والاحتراف",
+        "about_company": "عن الشركة",
+        "about_us_title": "فريق متخصص ومتفاني",
+        "work": "العمل",
+        "team": "فريق"
+    },
+    "sections": {
+        "our_services": {
+            "title": "خدماتنا",
+            "description": "نقدم مجموعة شاملة من الخدمات المتخصصة لتلبية احتياجات عملائنا في مختلف القطاعات",
+
+            "do_you_need_service": "هل تحتاج خدمة مخصصة؟",
+            "contact_us": "تواصل معنا لمناقشة احتياجاتك والحصول على استشارة مجانية"
+        },
+        "our_numbers": {
+            "title": "أرقامنا تتحدث",
+            "description": "إنجازات حققناها بفضل ثقة عملائنا وتفاني فريق العمل",
+            "sub_title": "نفخر بخدمة عملائنا في جميع أنحاء اليمن",
+            "sub_description": "من صنعاء إلى عدن، ومن حضرموت إلى تعز، نصل إلى عملائنا في كل مكان لتقديم أفضل الخدمات وتحقيق أهدافهم التجارية بأعلى معايير الجودة والاحتراف"
+        },
+        "our_projects" :{
+            "title": "مشاريعنا",
+            "description": "نفخر بالمعارض والفعاليات التي نظمناها بنجاح، والتي ساهمت في تطوير القطاعات المختلفة في اليمن",
+            "coming_projects": "المشاريع القادمة",
+            "ongoing_projects": "نعمل حالياً على تنظيم معارض جديدة ومثيرة في مختلف القطاعات"
+
+        },
+        "work_team": {
+            "description": "فريق متخصص ومتفاني يعمل بشغف لتحقيق أهداف عملائنا وتقديم أفضل الخدمات",
+            "rate_our_team": {
+                "title": "قيم فريقنا",
+                "collaboration": {
+                    "title": "التعاون",
+                    "description": "نعمل كفريق واحد لتحقيق أهداف مشتركة"
+                },
+                "excellence": {
+                    "title": "التميز",
+                    "description": "نسعى للتميز في كل ما نقوم به"
+                },
+                "creativity": {
+                    "title": "الإبداع",
+                    "description": "نبتكر حلولاً مبدعة لتحديات عملائنا"
+                }
+            }
+        },
+        "news": {
+            "title": "الأخبار"
+        },
+        "contact_us": {
+            "title": "تواصل معنا",
+            "description": "نحن هنا لخدمتك والإجابة على جميع استفساراتك.",
+            "contact_info": {
+                "address": "العنوان",
+                "email": "البريد الإلكتروني",
+                "phone": "رقم الهاتف",
+                "work_hours": "ساعات العمل"
+            },
+            "send_us_message": {
+                "title": "أرسل لنا رسالة",
+                "form": {
+                    "full_name": "الاسم الكامل",
+                    "full_name_placeholder": "أدخل الاسم الكامل",
+                    "email": "البريد الإلكتروني",
+                    "email_placeholder": "أدخل البريد الإلكتروني",
+                    "subject": "الموضوع",
+                    "subject_placeholder": "اختر الموضوع",
+                    "message": "الرسالة",
+                    "message_placeholder": "اكتب رسالتك هنا..."
+                }
+            },
+            "follow_us": "تابعنا على",
+            "special_services": "خدمات خاصة",
+            "participant_control_panel": "لوحة تحكم المشاركين"
+        }
+    },
+    "quick_links": "روابط سريعة",
+    "our_services": "خدماتنا",
+    "contact_info": "معلومات التواصل",
+    "address_location": "اليمن، حضرموت، المكلا، شارع الجسر الصيني، عمارة بن هلابي2، الدور الثالث، شقة رقم 2",
+    "subscribe_in_our_newsletter": "اشترك في نشرتنا الإخبارية",
+    "your_email_placeholder": "بريدك الإلكتروني",
+    "rights_reserved": "جميع الحقوق محفوظة {year} ©",
+    "privacy_policy": "سياسة الخصوصية",
+    "terms_of_use": "شروط الاستخدام",
+    "service_agreement": "اتفاقية الخدمة",
+    "exhibition_organization": "تنظيم المعارض",
+    "marketing": "التسويق",
+    "project_management": "إدارة المشاريع",
+    "business_execution": "إنجاز الأعمال",
+    "shoghlni_service": "خدمة شغلني",
+    "business_consulting": "الاستشارات التجارية"
+}

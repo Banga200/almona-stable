@@ -13,7 +13,7 @@ const {post, isAdmin, small} = defineProps(['post','isAdmin', 'small'])
             {{ post.content }}
           </div>
           <div class="text-end mt-4" v-if="!isAdmin">
-            <v-btn :to="`/posts/${post.id}`" text="اعرف المزيد" append-icon="$ExternalLink" color="primary" />
+            <v-btn :to="`/posts/${post.id}`" :text="$t('button.read_more')" append-icon="$ExternalLink" color="primary" />
           </div>
         </v-card>
 </template>

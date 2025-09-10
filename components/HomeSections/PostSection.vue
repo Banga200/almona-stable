@@ -9,13 +9,13 @@ onMounted(() => {
   <section>
     <v-container>
     <div class="text-center">
-      <h1 class="text-4xl title text-gradient">الأخبار</h1>
+      <h1 class="text-4xl title text-gradient">{{ $t("sections.news.title") }}</h1>
       <div class="line-gradient mt-8"></div>
     </div>
     <div class="text-end mb-4" v-if="props.post?.length > 3">
       <v-btn
         variant="outlined"
-        text="عرض الكل"
+        :text="$t('buttons.view_all')"
         append-icon="mdi-arrange-bring-forward"
         to="/posts"
         color="primary"

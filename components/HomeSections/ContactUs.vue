@@ -52,8 +52,8 @@ const subjects = [
    <section id="contact-us" class="bg-gray-50">
      <v-container>
         <div class="text-center mb-16">
-            <h1 class="title text-gradient">تواصل معنا</h1>
-            <p class="text-xl text-center mb-8">نحن هنا لخدمتك والإجابة على جميع استفساراتك.</p>
+            <h1 class="title text-gradient">{{ $t("sections.contact_us.title") }}</h1>
+            <p class="text-xl text-center mb-8">{{ $t("sections.contact_us.description") }}</p>
             <div class="line-gradient"></div>
         </div>
         <v-row>
@@ -94,42 +94,42 @@ const subjects = [
                     </div>
                 </v-card>
                 <div class="card-gradient">
-                    <h2 class="text-2xl font-bold">خدمات خاصة</h2>
+                    <h2 class="text-2xl font-bold">{{ $t("sections.contact_us.special_services") }}</h2>
                     <div>
-                        <h4 class=mb-2>لوحة تحكم المشاركين</h4>
-                        <v-btn text="دخول المشاركين" variant="tonal" class="white"/>
+                        <h4 class=mb-2>{{ $t("sections.contact_us.participant_control_panel") }}</h4>
+                        <v-btn :text="$t('button.participant_enter')" variant="tonal" class="white"/>
                     </div>
                     <div>
-                        <h4 class=mb-2>لوحة تحكم المشاركين</h4>
+                        <h4 class=mb-2>{{ $t("sections.contact_us.participant_control_panel") }}</h4>
                         <div class="d-flex flex-column ga-2">
-                            <v-btn text="تسجيل كمتدرب " variant="tonal" class="white" block/>
-                            <v-btn text="تسجيل كمؤسسة تدريبية" variant="tonal" class="white" block/>
+                            <v-btn :text="$t('button.register_as_trainee')" variant="tonal" class="white" block/>
+                            <v-btn :text="$t('button.register_as_training_institution')" variant="tonal" class="white" block/>
                         </div>
                     </div>
                 </div>
             </v-col>
             <v-col cols="12" md="6">
                <v-card class="h-100">
-                <h2 class="text-2xl font-bold mb-6 ">أرسل لنا رسالة</h2>
+                <h2 class="text-2xl font-bold mb-6 ">{{ $t("sections.contact_us.send_us_message.title") }}</h2>
                 <v-form>
                 <div class="d-flex flex-column ga-1">
                     <div>
-                        <label class="mb-2 d-block text-sm">الاسم الكامل *</label>
-                        <v-text-field placeholder="أدخل الاسم الكامل"/>
+                        <label class="mb-2 d-block text-sm">{{ $t("sections.contact_us.send_us_message.form.full_name") }} *</label>
+                        <v-text-field :placeholder="$t('sections.contact_us.send_us_message.form.full_name_placeholder')"/>
                     </div>
                     <div>
-                        <label class="mb-2 d-block text-sm">البريد الإلكتروني *</label>
-                        <v-text-field placeholder="أدخل البريد الإلكتروني"/>
+                        <label class="mb-2 d-block text-sm">{{ $t("sections.contact_us.send_us_message.form.email") }} *</label>
+                        <v-text-field :placeholder="$t('sections.contact_us.send_us_message.form.email_placeholder')"/>
                     </div>
                     <div>
-                        <label class="mb-2 d-block text-sm">الاسم الكامل *</label>
-                        <v-select placeholder="اختر الموضوع" :items="subjects" item-title="title"/>
+                        <label class="mb-2 d-block text-sm">{{ $t("sections.contact_us.send_us_message.form.subject") }} *</label>
+                        <v-select :placeholder="$t('sections.contact_us.send_us_message.form.subject_placeholder')" :items="subjects" item-title="title"/>
                     </div>
                     <div>
-                        <label class="mb-2 d-block text-sm">الرسالة *</label>
-                        <v-textarea placeholder="اكتب رسالتك هنا..."/>
+                        <label class="mb-2 d-block text-sm">{{ $t("sections.contact_us.send_us_message.form.message") }} *</label>
+                        <v-textarea :placeholder="$t('sections.contact_us.send_us_message.form.message_placeholder')"/>
                     </div>
-                    <v-btn class="glowing-gradient-button" text="إرسال رسالة" size="large" append-icon="$Send" rounded="lg"/>
+                    <v-btn class="glowing-gradient-button" :text="$t('button.send_message')" size="large" append-icon="$Send" rounded="lg"/>
                 </div>
                 
                </v-form>

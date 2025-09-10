@@ -21,7 +21,7 @@ onUnmounted(() => {
 </script>
 <template>
     <v-app>
-        <TheHeader :HomeHeader="$route.name === 'Home' ? 'header' : ''" />
+        <TheHeader :HomeHeader="$route.name && $route.name.toString().startsWith('Home') ? 'header' : ''" />
         <v-main :class="{ 'pt-0': $route.name === 'Home', 'bg-gray': $route.name !== 'Home' }">
             <slot />
 

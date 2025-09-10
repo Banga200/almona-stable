@@ -1,0 +1,15 @@
+{
+    "button":{
+        "discover_our_services": "اكتشف خدماتنا",
+        "save": "حفظ",
+        "edit": "تعديل",
+        "delete": "حذف",
+        "view_all": "عرض الكل",
+        "contact_us": "تواصل معنا الان",
+        "read_more": "اعرف المزيد",
+        "send_message": "إرسال رسالة",
+        "participant_enter": "دخول المشاركين",
+        "register_as_trainee": "تسجيل كمتدرب",
+        "register_as_training_institution": "تسجيل كمؤسسة تدريبية"
+    }
+}

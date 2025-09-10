@@ -1,18 +1,19 @@
 <script setup>
+const {t} = useI18n();
 const rateOurTeam = [
     {
-        title: "التعاون",
-        description: "نعمل كفريق واحد لتحقيق أهداف مشتركة",
+        title: t("sections.work_team.rate_our_team.collaboration.title"),
+        description: t("sections.work_team.rate_our_team.collaboration.description"),
         icon: "🤝"
     },
     {
-        title: "التميز",
-        description: "نسعى للتميز في كل ما نقوم به",
+        title: t("sections.work_team.rate_our_team.excellence.title"),
+        description: t("sections.work_team.rate_our_team.excellence.description"),
         icon: "⭐"
     },
     {
-        title: "الإبداع",
-        description: "نبتكر حلولاً مبدعة لتحديات عملائنا",
+        title: t("sections.work_team.rate_our_team.creativity.title"),
+        description: t("sections.work_team.rate_our_team.creativity.description"),
         icon: "💡"
     }
 ]
@@ -20,7 +21,7 @@ const rateOurTeam = [
 <template>
   <v-container class="mt-16">
     <v-card class=" pa-8"  >
-      <h1 class="text-center text-3xl font-bold mb-4">قيم فريقنا</h1>
+      <h1 class="text-center text-3xl font-bold mb-4">{{ t("sections.work_team.rate_our_team.title") }}</h1>
       <v-row class="text-center">
         <v-col cols="12" md="4" v-for="item in rateOurTeam" :key="item.title">
             <AboutCard flat="true" isEmoji="true" :title="item.title" :description="item.description" :icon="item.icon" />

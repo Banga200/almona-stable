@@ -6,10 +6,10 @@ const props = defineProps(['teamMembers', 'loading'])
     <v-container>
       <div class="text-center">
       <h1 class="title text-4xl font-bold">
-        فريق <span class="text-gradient">العمل</span>
+        {{ $t('heading.team') }} <span class="text-gradient">{{ $t('heading.work') }}</span>
       </h1>
       <p class="mb-6 text-center">
-        فريق متخصص ومتفاني يعمل بشغف لتحقيق أهداف عملائنا وتقديم أفضل الخدمات
+        {{ $t('sections.work_team.description') }}
       </p>
       <div class="line-gradient"></div>
     </div>

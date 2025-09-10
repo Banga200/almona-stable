@@ -10,6 +10,7 @@ const { mobile } = useDisplay();
 const drawer = ref(false);
 const bottomNavigation = ref(0);
 const route = useRoute();
+const {t} = useI18n();
 const routeNavs = ref([
   {
     title: "عقارات",
@@ -25,23 +26,23 @@ const routeNavs = ref([
 ]);
 const navs = ref([
   {
-    title: "الصفحة الرئيسية",
+    title: t("links.home_page"),
     link: "/",
   },
   {
-    title: "من نحن؟",
+    title: t("links.about_us"),
     link: "/#aboutus",
   },
   {
-    title: "أعمالنا",
+    title: t("links.our_projects"),
     link: "/#ourProjects",
   },
   {
-    title: "خدماتنا",
+    title: t("links.our_services"),
     link: "/#ourServices",
   },
   {
-    title: "فريق العمل",
+    title: t("links.work_team"),
     link: "/#work-team",
   }
 ]);
@@ -62,7 +63,7 @@ const isUser = computed(() => {
   }
 });
 function handleScroll(event) {
-  if (route.name === "Home") {
+  if (route.name && route.name.toString().startsWith("Home")) {
     if (window.scrollY > 80) {
       document.getElementById("header").classList.add("backgroundColor");
     } else {
@@ -151,7 +152,7 @@ function handleScroll(event) {
   <v-app-bar
     scroll-behavior="elevate"
     :elevation="!props.HomeHeader ? '2' : '0'"
-    :id="props.HomeHeader"
+    :id="HomeHeader"
   >
     <client-only>
       <v-app-bar-nav-icon

@@ -1,27 +1,28 @@
 import { useUserStore } from "~/stores/auth";
 import { useToast } from "vue-toastification"
-export default defineNuxtRouteMiddleware((to,from )=> {
-    const userStore = useUserStore();
-    const user =  userStore.getUser
-    const toast = useToast()
-    const token = useCookie('token').value;
-    // skip middleware on server
-    if (process.server) return
-    
-    if (to.name === 'register' || to.name === 'login') {
-            if (user || token) {
-               return navigateTo('/')
-            }
-           else { return;}
-    }
+
+export default defineNuxtRouteMiddleware((to, from) => {
+  if (process.server) return
+
+  const userStore = useUserStore()
+  const user = userStore.getUser
+  const toast = useToast()
+  const token = useCookie('token').value
+
+  // Determine login/register paths properly (consider i18n prefix)
+  const loginPaths = ['/login', '/register']
+  if (loginPaths.includes(to.path)) {
     if (user || token) {
-        if (to.name === 'AddAdvertisment') {
-            return;
-        }
+      return navigateTo('/')
     }
-    else {
-        toast.warning("سجل اولا, لإضافة إعلان")
-        return navigateTo('/login')
-    }
-    console.log(user)
-  })
+    return
+  }
+
+  // Protected routes
+  if (!user && !token) {
+    toast.warning("سجل اولا, لإضافة إعلان")
+    return navigateTo('/login')  // safe redirect
+  }
+
+  console.log(user)
+})

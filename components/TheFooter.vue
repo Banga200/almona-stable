@@ -1,38 +1,38 @@
 <script setup>
 import logo from "/logo.png";
-
+const {t} = useI18n();
 const quickLinks = [
-    {title: "الرئيسية", link: '#'},
-    {title: "عن الشركة", link: '#aboutus'},
-    {title: "خدماتنا", link: '#ourServices'},
-    {title: "مشاريعنا", link: '#ourProjects'},
-    {title: "فريق العمل", link: '#work-team'},
-    {title: "اتصل بنا", link: '#contact-us'},
+    {title: t("links.home"), link: '#'},
+    {title: t("links.about_company"), link: '#aboutus'},
+    {title: t("links.our_services"), link: '#ourServices'},
+    {title: t("links.our_projects"), link: '#ourProjects'},
+    {title: t("links.work_team"), link: '#work-team'},
+    {title: t("links.contact_us"), link: '#contact-us'},
 ]
 const services = [
     {
         id: 1,
-        title: 'تنظيم المعارض'
+        title: t("exhibition_organization")
     },
     {
         id: 2,
-        title: 'التسويق' 
+        title: t("marketing")
     },
     {
         id: 3,
-        title: 'إدارة المشاريع'
+        title: t("project_management")
     },
     {
         id: 4,
-        title: 'إنجاز الأعمال'
+        title: t("business_execution")
     },
     {
         id: 5,
-        title: 'خدمة شغلني'
+        title: t("shoghlni_service")
     },
     {
         id: 6,
-        title: 'الاستشارات التجارية'
+        title: t("business_consulting")
     },
 ]
 </script>
@@ -52,13 +52,14 @@ const services = [
               max-width="68"
             />
             <div>
-              <h1 class="text-xl text-primary font-bold">المٌنى الذهبية</h1>
-              <p class="text-sm">للتجارة والخدمات المحدودة</p>
+              <h1 class="text-xl text-primary font-bold">{{ $t("heading.company_name") }}</h1>
+              <p class="text-sm">{{ $t("heading.company_sub_name") }}</p>
             </div>
           </div>
            <p>
-              شركة يمنية رائدة في تقديم خدمات المعارض، التسويق، إدارة المشاريع،
-              وإنجاز الأعمال. نعمل بشغف لتحقيق أهداف عملائنا.
+            {{ $t("paragraph.hero_description") }}
+              <!-- شركة يمنية رائدة في تقديم خدمات المعارض، التسويق، إدارة المشاريع،
+              وإنجاز الأعمال. نعمل بشغف لتحقيق أهداف عملائنا. -->
             </p>
 
             <div class="d-flex ga-4 align-center follow-us mt-6">
@@ -79,7 +80,7 @@ const services = [
           lg="3"
           class="mt-3 text-center text-md-right"
         >
-          <h4 class="text-xl text-primary font-bold mb-6">روابط سريعة</h4>
+          <h4 class="text-xl text-primary font-bold mb-6">{{ $t("quick_links") }}</h4>
           <ul class="list">
                 <li class="text-sm d-flex align-center ga-2" v-for="(link) in quickLinks" :key="link.title">
                     <div class="list-dot"></div>
@@ -96,11 +97,11 @@ const services = [
           lg="3"
           class="mt-3 text-center text-md-right"
         >
-            <h4 class="text-xl text-primary font-bold mb-6">خدماتنا</h4>
+          <h4 class="text-xl text-primary font-bold mb-6">{{ $t("our_services") }}</h4>
           <ul class="list">
                 <li class="text-sm d-flex align-center ga-2" v-for="(link) in services" :key="link.title">
                     <div class="list-dot"></div>
-                    <a href="#ourServices">{{ link.title }}</a>
+                    <a >{{ link.title }}</a>
                 </li>
             </ul>
         </v-col>
@@ -110,11 +111,11 @@ const services = [
           lg="3"
           class="mt-3 text-center text-md-right"
         >
-            <h4 class="text-xl text-primary font-bold mb-6">معلومات التواصل</h4>
+            <h4 class="text-xl text-primary font-bold mb-6">{{ $t("contact_info") }}</h4>
             <div class="d-flex flex-column ga-4 mb-6">
                 <div class="d-flex ga-4">
                     <v-icon icon="$MapMarker" color="primary"/>
-                    <p>اليمن، حضرموت، المكلا، شارع الجسر الصيني، عمارة بن هلابي2، الدور الثالث، شقة رقم 2</p>
+                    <p>{{ $t("address_location") }}</p>
                 </div>
                 <div class="d-flex ga-4">
                     <v-icon icon="mdi-email-outline" color="primary"/>
@@ -125,19 +126,19 @@ const services = [
                     <p>783263332 00967</p>
                 </div>
             </div>
-            <h4 class="text-primary font-bold">اشترك في نشرتنا الإخبارية</h4>
+            <h4 class="text-primary font-bold">{{ $t("subscribe_in_our_newsletter") }}</h4>
             <div class="mt-3 d-flex ga-2 align-start">
-                <v-text-field density="compact" placeholder="بريدك اللإلكتروني"/>
+                <v-text-field density="compact" :placeholder="$t('your_email_placeholder')"/>
                 <v-btn icon="mdi-email-outline" rounded="lg" color="primary" size="small" class="white"/>
             </div>
         </v-col>
       </v-row>
       <v-divider/>
-      <p class="text-center mt-3">© 2025 شركة المُنى الذهبية للتجارة والخدمات المحدودة. جميع الحقوق محفوظة.</p>
+      <p class="text-center mt-3">{{$t("heading.company") + " " + $t("heading.company_name") + " " + $t("heading.company_sub_name") + " " + $t("rights_reserved", { year: new Date().getFullYear() })}} </p>
       <div class="d-flex align-center justify-center mt-4 ga-6">
-        <a>سياسة الخصوصية</a>
-        <a>شروط الإستخدام</a>
-        <a>اتفاقية الخدمة</a>
+        <a>{{$t("privacy_policy")}}</a>
+        <a>{{$t("terms_of_use")}}</a>
+        <a>{{$t("service_agreement")}}</a>
       </div>
     </v-container>
   </section>

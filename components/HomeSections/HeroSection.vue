@@ -1,11 +1,6 @@
 <script setup>
 import AnimationNumber from '../AnimationNumber.vue';
 const props = defineProps(['statistics'])
-const icons = [
-    { icon: 'mdi-twitter', title: 'Twitter', link: 'https://x.com/mona25672?t=MPU4hdH5HhvotgNFcxDzaw&s=08' },
-    { icon: 'mdi-facebook', title: 'Facebook', link: 'https://www.facebook.com/ALmona.202?mibextid=ZbWKwL' },
-    { icon: 'mdi-instagram ', title: 'Instagram', link: 'https://www.instagram.com/almona2022?igsh=MXdvOHR2aWdwNHpocA==' },
-]
 
 </script>
 <template>
@@ -13,14 +8,14 @@ const icons = [
         <v-container id="hero" fluid class=" py-sm-10 d-flex flex-column justify-evenly">
         <!-- <img src="../../assets/images/building.png" class="heroImage" width="500" /> -->
         <v-row class="align-center flex-column justify-center justify-center">
-                <h1 class="hero-title mb-6 text-6xl text-center">شركة المٌنى الذهبية
+                <div class="hero-title mb-6 text-6xl text-center">{{ $t('heading.company') }} {{ $t('heading.company_name') }}
                     <br/>
-                    <h3 class="text-4xl">للتجارة والخدمات المحدودة</h3>
-                </h1>
+                    <h3 class="text-4xl">{{ $t('heading.company_sub_name') }}</h3>
+                </div>
 
-            <h4 class="text-2xl mb-8">خدماتنا تجمع بين الإبداع والاحتراف</h4>
-            <h6 class="text-lg opacity-80 mb-10">شركة يمنية رائدة في تقديم خدمات المعارض، التسويق، إدارة المشاريع، وإنجاز الأعمال</h6>
-            <v-btn text="اكتشف خدماتنا" append-icon="mdi-arrow-down" rounded="xl" size="x-large" class="font-bold mb-16 custom-button" @click="() => $router.push('/#ourServices')"/>
+            <h4 class="text-2xl mb-8">{{ $t('heading.heroTitle') }}</h4>
+            <h6 class="text-lg opacity-80 mb-10">{{ $t('paragraph.hero_description') }} </h6>
+            <v-btn :text="$t('button.discover_our_services')" append-icon="mdi-arrow-down" rounded="xl" size="x-large" class="font-bold mb-16 custom-button" @click="() => $router.push('/#ourServices')"/>
            <!-- <v-col cols="12" md="3" class="text-left d-flex justify-center justify-md-end">
 
                  <client-only >

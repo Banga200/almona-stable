@@ -1,0 +1,13 @@
+{
+    "links": {
+        "home_page": "الصفحة الرئيسية",
+        "home": "الرئيسية",
+        "about_company": "عن الشركة",
+        "our_services": "خدماتنا",
+        "our_projects": "مشاريعنا",
+        "work_team": "فريق العمل",
+        "contact_us": "اتصل بنا",
+        "log_out": "تسجيل الخروج",
+        "log_in": "تسجيل الدخول"
+    }
+}

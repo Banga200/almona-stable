@@ -246,6 +246,10 @@ header .v-toolbar__content {
           box-shadow: 2px 2px 5px #d4af37;
 }
 
+main {
+  padding-top: 30px !important;
+}
+
 #hero {
   padding-top: 120px !important;
   position: relative;

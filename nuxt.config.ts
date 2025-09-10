@@ -50,9 +50,20 @@ export default defineNuxtConfig({
         // @ts-expect-error
         config.plugins.push(vuetify({ autoImport: true }))
       })
-    },
+    },'@nuxtjs/i18n'
     //...
   ],
+   i18n: {
+    // locales: ['ar', 'en'],
+    defaultLocale: 'ar',
+    strategy: 'prefix_except_default',
+    langDir: 'locales',
+    lazy: true,
+    locales: [
+      { code: 'ar', name: 'Arabic', file: 'ar/index.js' },
+      { code: 'en', name: 'English', file: 'en/index.js' }
+    ]
+  },
   //  proxy:{
   //   options: {
   //     target: process.env.BaseURL,

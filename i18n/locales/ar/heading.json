@@ -3,6 +3,7 @@
         "about": "عن",
         "the_company": "الشركة",
         "company": "شركة",
+        "companies": "شركات",
         "company_name": "المٌنى الذهبية",
         "company_sub_name": "للتجارة والخدمات المحدودة",
         "heroTitle": "خدماتنا تجمع بين الإبداع والاحتراف",
@@ -95,5 +96,13 @@
     "project_management": "إدارة المشاريع",
     "business_execution": "إنجاز الأعمال",
     "shoghlni_service": "خدمة شغلني",
-    "business_consulting": "الاستشارات التجارية"
+    "business_consulting": "الاستشارات التجارية",
+    "stages": "المراحل",
+    "stage": "المرحلة",
+    "description": "الوصف",
+    "summary": "الملخص",
+    "achievements": "الإنجازات",
+    "other_projects": "مشاريع اخرى",
+    "prev": "السابق",
+    "next": "التالي"
 }

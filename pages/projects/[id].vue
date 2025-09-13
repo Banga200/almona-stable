@@ -68,29 +68,29 @@ onMounted(async() => {
                 </div>
                 <div class="d-flex align-center ga-2">
                     <v-icon icon="$Customers" size="16" color="primary"/>
-                    <span class="text-sm">{{ project.content.numberOfCompanies + (project.content.numberOfCompanies > 2 ?  " شركات": " شركة")  }}</span>
+                    <span class="text-sm">{{ project.content.numberOfCompanies + (project.content.numberOfCompanies > 2 ?  ` ${$t("heading.companies")} `: ` ${$t("heading.company")} `)  }}</span>
                 </div>
             </div>
         <p>{{ project.content.description }}</p>
-        <h3 class="mt-8 mb-8 font-bold" v-if="project.content?.details?.length > 0">المراحل</h3>
+        <h3 class="mt-8 mb-8 font-bold" v-if="project.content?.details?.length > 0">{{ $t('stages') }}</h3>
         <v-expansion-panels multiple >
           <v-expansion-panel
             v-for="(detail, index) in project.content.details"
             :key="index"
           >
             <v-expansion-panel-title>
-              {{ detail.title || `المرحلة ${index + 1}` }}
+              {{ detail.title || `${$t('stage')} ${index + 1}` }}
             </v-expansion-panel-title>
 
             <v-expansion-panel-text>
               <h3>الوصف:</h3>
               <p>{{ detail.description }}</p>
-              <h3 class="mt-8">الملخص:</h3>
+              <h3 class="mt-8">{{$t('summary')}}:</h3>
               <p>{{ detail.summary }}</p>
             </v-expansion-panel-text>
           </v-expansion-panel>
         </v-expansion-panels>
-        <h3 class="mt-8 font-bold">الإنجازات</h3>
+        <h3 class="mt-8 font-bold">{{$t('achievements')}}</h3>
         <v-col cols="12" md="8" class="mb-8">
             <v-row class="mt-1">
                 <v-col cols="6" class="pa-1" v-for="(statistic, index) in project.content.statistics" :key="index">
@@ -101,7 +101,7 @@ onMounted(async() => {
                 </v-col>
             </v-row>
         </v-col>
-        <h3 class="font-bold mt-16">مشاريع اخرى</h3>
+        <h3 class="font-bold mt-16">{{$t('other_projects')}}</h3>
         <v-progress-linear indeterminate v-if="projects.loading" color="primary"/>
         <v-carousel hide-delimiters v-model="projectsSlide" height="auto">
              <v-carousel-item v-for="projectGroup in projectGroups" :key="projectGroup">

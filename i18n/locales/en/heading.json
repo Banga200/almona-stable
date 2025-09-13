@@ -3,6 +3,7 @@
         "about": "About",
         "the_company": "The Company",
         "company": "Company",
+        "companies": "Companies",
         "company_name": "Almona Gold",
         "company_sub_name": "For Trading and Limited Services",
         "heroTitle": "Our services combine creativity and professionalism",
@@ -93,5 +94,13 @@
     "project_management": "Project Management",
     "business_execution": "Business Execution",
     "shoghlni_service": "Shoghlni Service",
-    "business_consulting": "Business Consulting"
+    "business_consulting": "Business Consulting",
+     "stages": "Stages",
+    "stage": "Stage",
+    "description": "Description",
+    "summary": "Summary",
+    "achievements": "Achievements",
+    "other_projects": "Other Projects",
+     "prev": "Previous",
+    "next": "Next"
   }

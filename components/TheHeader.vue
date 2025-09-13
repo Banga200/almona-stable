@@ -11,7 +11,7 @@ const { mobile } = useDisplay();
 const drawer = ref(false);
 const bottomNavigation = ref(0);
 const route = useRoute();
-const {t, locale} = useI18n();
+const {t, locale, setLocale} = useI18n();
 const switchLocalePath = useSwitchLocalePath()
 const routeNavs = ref([
   {
@@ -76,12 +76,9 @@ function handleScroll(event) {
 const switchLang = () => {
   // toggle between Arabic & English
   const newLang = locale.value === 'ar' ? 'en' : 'ar'
-
   // change locale
-  locale.value = newLang
+ setLocale(newLang)
 
-  // navigate to correct path
-  navigateTo(switchLocalePath(newLang))
 }
 </script>
 <template>
@@ -196,7 +193,7 @@ const switchLang = () => {
               <v-btn class="mr-md-15" stacked @click="() => $router.push('/')"
                 >{{ $t('links.home_page') }}</v-btn
               >
-              <v-btn stacked @click="() => $router.push('/#aboutus')"
+              <v-btn stacked @click="() => $router.push(`${locale}/#aboutus`)"
                 >{{ $t('links.about_us') }} </v-btn
               >
               <v-btn stacked @click="() => $router.push('/#ourProjects')"

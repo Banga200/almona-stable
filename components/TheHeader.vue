@@ -142,7 +142,7 @@ const switchLang = () => {
           v-if="isUser ? isUser.UserName === 'Admin' : isUser"
           to="/dashboard/orders"
           append-icon="mdi-view-dashboard-outline"
-          >لوحة التحكم</v-list-item
+          >{{  $t('label.control_panel')}}</v-list-item
         >
         <v-btn
           prepend-icon="mdi-account-outline"
@@ -152,7 +152,7 @@ const switchLang = () => {
           class="mr-2 mt-10"
           v-if="!isUser"
         >
-          تسجيل الدخول
+        {{ $t('label.log_in') }}
         </v-btn>
       </v-list>
     </v-navigation-drawer>

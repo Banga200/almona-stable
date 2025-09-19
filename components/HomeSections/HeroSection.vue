@@ -13,8 +13,8 @@ const props = defineProps(['statistics'])
                     <h3 class="text-4xl">{{ $t('heading.company_sub_name') }}</h3>
                 </div>
 
-            <h4 class="text-2xl mb-8">{{ $t('heading.heroTitle') }}</h4>
-            <h6 class="text-lg opacity-80 mb-10">{{ $t('paragraph.hero_description') }} </h6>
+            <h4 class="text-2xl mb-8 text-center">{{ $t('heading.heroTitle') }}</h4>
+            <h6 class="text-lg opacity-80 mb-10 text-center">{{ $t('paragraph.hero_description') }} </h6>
             <v-btn :text="$t('button.discover_our_services')" append-icon="mdi-arrow-down" rounded="xl" size="x-large" class="font-bold mb-16 custom-button" @click="() => $router.push('/#ourServices')"/>
            <!-- <v-col cols="12" md="3" class="text-left d-flex justify-center justify-md-end">
 

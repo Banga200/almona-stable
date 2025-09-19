@@ -206,7 +206,7 @@ header {
 }
 
 header .v-toolbar__content {
-  height: auto !important;
+  height: 100% !important;
 }
 
 #header {
@@ -1106,6 +1106,23 @@ p {
   }
 }
 
+@media (max-width: 426px) {
+  .text-6xl {
+    font-size: 2rem;
+  }
+  main .heroSection {
+    padding-inline: 0.5rem !important;
+  }
+  .service-card .margin-image-service {
+    -webkit-margin-start: 0rem !important;
+            margin-inline-start: 0rem !important;
+  }
+  .grid-cols-3 {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 769px) {
   main .v-container.heroSection {
     padding: 4rem;
@@ -1138,6 +1155,10 @@ p {
             margin-inline-start: 0;
     -webkit-margin-before: 12rem;
             margin-block-start: 12rem;
+  }
+  .flex-md-nowrap {
+    -ms-flex-wrap: nowrap !important;
+        flex-wrap: nowrap !important;
   }
 }
 

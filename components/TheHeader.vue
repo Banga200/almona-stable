@@ -85,7 +85,7 @@ const switchLang = () => {
   <client-only>
     <div class="contact">
       <v-container class="d-flex pa-0">
-          <v-col>
+          <v-col cols="8">
             <div class="d-flex ga-4">
               <a class="d-flex align-center ga-2" :href="'mailto:' + 'info@almonaa.com'">
                 <v-icon size="16">mdi-email-outline</v-icon>
@@ -97,7 +97,6 @@ const switchLang = () => {
               </a>
             </div>
           </v-col>
-          <v-spacer />
           <v-col>
             <div class="d-flex align-center justify-end ga-2 lang-switch" @click="switchLang">
               <v-icon size="16">mdi-web</v-icon>

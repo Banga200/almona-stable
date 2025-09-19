@@ -177,7 +177,7 @@ header {
     margin-top: 2rem;
     height: 80px;
     .v-toolbar__content {
-        height: auto !important;
+        height: 100% !important;
     }
 }
 #header {
@@ -915,6 +915,20 @@ p {
   }
 }
 // Tablets
+@media (max-width: 426px) {
+    .text-6xl {
+        font-size: 2rem
+    }
+    main .heroSection {
+        padding-inline: 0.5rem !important;
+    }
+    .service-card .margin-image-service {
+        margin-inline-start: 0rem !important;
+    }
+    .grid-cols-3 {
+        grid-template-columns: 1fr
+    }
+}
 @media (max-width: 769px) {
     main .v-container.heroSection {
         padding: 4rem;
@@ -950,6 +964,9 @@ p {
         margin-block-start: 12rem;
         }
      } 
+    .flex-md-nowrap {
+        flex-wrap: nowrap !important;
+    }
     
 }
 @media (min-width: 1023px) {

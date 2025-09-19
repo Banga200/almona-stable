@@ -32,8 +32,8 @@ const cards = computed(() => [
                 <h1 class="title">{{ $t('heading.about') }} <span class="text-gradient">{{ $t('heading.the_company') }}</span></h1>
                 <div class="line-gradient"></div>
             </div>
-            <v-row class="flex-wrap flex-md-nowrap d-flex align-center ga-12 mb-16" dense>
-                <v-col cols="12" md="6">
+            <v-row class="flex-wrap d-flex align-center ga-12 mb-16" dense>
+                <v-col cols="12" md="12" lg="5">
                     <p class="text-lg">{{ $t('paragraph.about_company_part_1') }}</p>
                     <p class="mt-4 text-lg">{{ $t('paragraph.about_company_part_2') }}</p>
                     <div class="d-flex ga-4 align-center mt-6 pt-4">
@@ -44,7 +44,7 @@ const cards = computed(() => [
                         </div>
                     </div>
                 </v-col>
-                <v-col cols="12" md="auto">
+                <v-col cols="12" md="12" lg="6">
                     <div class="card-gradient">
                         <v-img src="/images/about-us.webp" aspect-ratio="4/3" />
                         <h1 class="text-2xl font-bold">{{ $t('heading.about_us_title') }}</h1>

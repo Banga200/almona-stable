@@ -89,7 +89,7 @@ export default defineNuxtPlugin((app) => {
       }
     },
     display:{
-      mobileBreakpoint: 'md',
+      mobileBreakpoint: 'lg',
     },
     // ... your configuration
     theme: {

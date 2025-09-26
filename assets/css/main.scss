@@ -186,7 +186,7 @@ header {
     box-shadow: 0 5px 8px rgba(0,0,0,0.3) !important;
     transition: all .5s ease-in-out;
     .v-btn__content {
-        color: #000;
+        color: $white;
     }
 }
 #dashboard-header {
@@ -206,6 +206,9 @@ header {
     height: 64px;
     .logo {
         box-shadow: 2px 2px 5px $primary-color
+    }
+    .v-btn__content {
+        color: black;
     }
     
 }

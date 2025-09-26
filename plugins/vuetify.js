@@ -24,7 +24,8 @@ import  Send from "../components/Icons/Send.vue";
 import  RealEstate from "../components/Icons/RealEstate.vue";
 import Ecommerce from '../components/Icons/Ecommerce.vue';
 import EventPlanning from '../components/Icons/EventPlanning.vue';
-import StudyProjects from '../components/Icons/StudyProjects.vue'
+import StudyProjects from '../components/Icons/StudyProjects.vue';
+import Tiktok from "~/components/Icons/Tiktok.vue";
 import Brain from '../components/Icons/Brain.vue'
 export default defineNuxtPlugin((app) => {
   const aliases = {
@@ -50,7 +51,8 @@ export default defineNuxtPlugin((app) => {
     Services,
     MessageCircle,
     FacebookOutline,
-    Send
+    Send,
+    Tiktok
   }
   const vuetify = createVuetify({
     defaults: {

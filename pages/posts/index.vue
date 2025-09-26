@@ -9,7 +9,7 @@ onMounted(() => {
     <v-container>
       <v-row>
         <v-col>
-          <h1 class="text-4xl">الأخبار</h1>
+          <h1 class="text-4xl">{{ $t("sections.news.title") }}</h1>
         </v-col>
       </v-row>
       <v-divider class="mb-8" />

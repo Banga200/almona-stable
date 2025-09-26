@@ -79,19 +79,36 @@ const subjects = [
                 <v-card>
                     <h2 class="text-2xl font-bold mb-6 ">{{ $t("sections.contact_us.follow_us") }}</h2>
                     <div class="d-flex ga-4 align-center follow-us">
-                        <v-avatar class="facebook" size="56">
-                            <a href="https://www.facebook.com/share/1CWQNX7fvm/" target="_blank">
-                                <v-icon size="24" color="primary" icon="$FacebookOutline"></v-icon>
-                            </a>
-                        </v-avatar>
-                        <v-avatar class="instagram" size="56">
-                            <a href="https://www.instagram.com/almonaa.co?igsh=MXdvOHR2aWdwNHpocA==" target="_blank">
-                                <v-icon size="24" color="primary">mdi-instagram</v-icon>
-                            </a>
-                        </v-avatar>
-                        <v-avatar class="message" size="56">
-                            <v-icon size="24" color="primary" icon="$MessageCircle"></v-icon>
-                        </v-avatar>
+                        <a href="https://www.facebook.com/share/1CWQNX7fvm/" target="_blank">
+                            <v-avatar class="facebook" size="56">
+                                    <v-icon size="24" color="primary" icon="$FacebookOutline"></v-icon>
+                            </v-avatar>
+                        </a>
+                        <a href="https://www.instagram.com/almonaa.co?igsh=MXdvOHR2aWdwNHpocA==" target="_blank">
+
+                            <v-avatar class="instagram" size="56">
+                                    <v-icon size="24" color="primary">mdi-instagram</v-icon>
+                            </v-avatar>
+                        </a>
+                        <a 
+                        href="https://www.tiktok.com/@almonaa.co1?_t=ZS-8zDrVNIRqZV&_r=1"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >
+                            <v-avatar class="tiktok" size="56">
+                                <v-icon size="24" color="primary" icon="$Tiktok"></v-icon>
+                            </v-avatar>
+                        </a>
+                        <a 
+                        href="https://wa.me/783273332"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >
+                            <v-avatar class="message" size="56">
+                                <v-icon size="24" color="primary" icon="$MessageCircle"></v-icon>
+                            </v-avatar>
+                        </a>
+                        
                     </div>
                 </v-card>
                 <div class="card-gradient">

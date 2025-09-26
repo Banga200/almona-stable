@@ -353,6 +353,14 @@ section {
                 background-color: #db2777;
             }
         }
+        &.tiktok{
+            background-color: #474747;
+            i {color: #ffffff !important;}
+            &:hover {
+                i {color: $white !important;}
+                background-color: #000000;
+            }
+        }
         &.message{
             background-color: #dcfce7;
             i {color: #000 !important;}
@@ -644,6 +652,14 @@ p {
                         transform: scale(1.05);
                     }
                 }
+                &.tiktok{
+                    background-color: #474747;
+                    i {color: #ffffff !important;}
+                    &:hover {
+                        i {color: $white !important;}
+                        background-color: #000000;
+                    }
+                }
                 &.message{
                     background-color: #16a34a;
                     i {color: #fff !important;}
@@ -927,6 +943,9 @@ p {
     }
     .grid-cols-3 {
         grid-template-columns: 1fr
+    }
+    .contact .info-header {
+        display: none !important;
     }
 }
 @media (max-width: 769px) {

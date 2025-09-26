@@ -86,7 +86,7 @@ const switchLang = () => {
     <div class="contact">
       <v-container class="d-flex pa-0">
           <v-col cols="8">
-            <div class="d-flex ga-4">
+            <div class="d-flex ga-4 info-header">
               <a class="d-flex align-center ga-2" :href="'mailto:' + 'info@almonaa.com'">
                 <v-icon size="16">mdi-email-outline</v-icon>
                 <span>info@almonaa.com</span>
@@ -154,6 +154,16 @@ const switchLang = () => {
         {{ $t('label.log_in') }}
         </v-btn>
       </v-list>
+      <div class="d-flex flex-column ga-4 mt-8">
+        <a class="d-flex align-center ga-2" :href="'mailto:' + 'info@almonaa.com'" style="color: #000 !important;">
+        <v-icon size="16">mdi-email-outline</v-icon>
+        <span>info@almonaa.com</span>
+      </a>
+      <a class="d-flex align-center ga-2" :href="'tel:' + '00967 383263332'" style="color: #000 !important;">
+        <v-icon size="16">mdi-phone</v-icon>
+        <span dir="ltr">00967 383263332</span>
+      </a>
+      </div>
     </v-navigation-drawer>
   </client-only>
 
@@ -195,13 +205,13 @@ const switchLang = () => {
               <v-btn stacked @click="() => $router.push(`${locale}/#aboutus`)"
                 >{{ $t('links.about_us') }} </v-btn
               >
-              <v-btn stacked @click="() => $router.push('/#ourProjects')"
+              <v-btn stacked @click="() => $router.push(`/${locale}/#ourProjects`)"
                 >{{ $t('links.our_projects') }}</v-btn
               >
-              <v-btn stacked @click="() => $router.push('/#ourServices')"
+              <v-btn stacked @click="() => $router.push(`/${locale}/#ourServices`)"
                 >{{ $t('links.our_services') }}</v-btn
               >
-              <v-btn stacked @click="() => $router.push('/#work-team')"
+              <v-btn stacked @click="() => $router.push(`/${locale}/#work-team`)"
                 >{{ $t('links.work_team') }}</v-btn
               >
               <!-- <v-btn stacked to="/real-estate/عقارات">عقارات</v-btn> -->

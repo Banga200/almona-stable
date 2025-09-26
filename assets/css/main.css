@@ -415,6 +415,22 @@ section {
   color: #fff !important;
 }
 
+.follow-us .v-avatar.tiktok {
+  background-color: #474747;
+}
+
+.follow-us .v-avatar.tiktok i {
+  color: #ffffff !important;
+}
+
+.follow-us .v-avatar.tiktok:hover {
+  background-color: #000000;
+}
+
+.follow-us .v-avatar.tiktok:hover i {
+  color: #fff !important;
+}
+
 .follow-us .v-avatar.message {
   background-color: #dcfce7;
 }
@@ -778,6 +794,22 @@ p {
   color: #fff !important;
 }
 
+#footer .follow-us .v-avatar.tiktok {
+  background-color: #474747;
+}
+
+#footer .follow-us .v-avatar.tiktok i {
+  color: #ffffff !important;
+}
+
+#footer .follow-us .v-avatar.tiktok:hover {
+  background-color: #000000;
+}
+
+#footer .follow-us .v-avatar.tiktok:hover i {
+  color: #fff !important;
+}
+
 #footer .follow-us .v-avatar.message {
   background-color: #16a34a;
 }
@@ -1120,6 +1152,9 @@ p {
   .grid-cols-3 {
     -ms-grid-columns: 1fr;
         grid-template-columns: 1fr;
+  }
+  .contact .info-header {
+    display: none !important;
   }
 }
 

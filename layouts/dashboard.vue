@@ -47,6 +47,11 @@ const items = ref([
         link: "/dashboard/sections/posts",
         icon: "mdi-newspaper-variant-multiple-outline",
       },
+      {
+        title: "التطبيقات",
+        link: "/dashboard/sections/applications",
+        icon: "mdi-application-edit-outline",
+      },
     ],
   },
   {

@@ -225,6 +225,7 @@ header .v-toolbar__content {
 #dashboard-header {
   margin: 0;
   height: 64px;
+  position: relative !important;
 }
 
 #header.backgroundColor {

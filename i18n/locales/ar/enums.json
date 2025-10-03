@@ -1,5 +1,10 @@
 {
     "enums": {
-        
+        "exhibition_organization": "تنظيم المعارض",
+        "marketing": "التسويق",
+        "project_management": "إدارة المشاريع",
+        "business_execution": "إنجاز الأعمال",
+        "shoghlni_service": "خدمة شغلني",
+        "other": "اخرى"
     }
 }

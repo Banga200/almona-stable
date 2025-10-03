@@ -1,4 +1,5 @@
 <script setup>
+const applicationStore = useApplicationStore()
 const {t} = useI18n()
 const contactDetails = [
     {
@@ -23,31 +24,30 @@ const contactDetails = [
     }
 ]
 const subjects = [
-    {
-        id: 1,
-        title: 'تنظيم المعارض'
-    },
-    {
-        id: 2,
-        title: 'التسويق' 
-    },
-    {
-        id: 3,
-        title: 'إدارة المشاريع'
-    },
-    {
-        id: 4,
-        title: 'إنجاز الأعمال'
-    },
-    {
-        id: 5,
-        title: 'خدمة شغلني'
-    },
-    {
-        id: 0,
-        title: 'اخرى'
-    },
+    { id: 1, title: t('enums.exhibition_organization') },
+    { id: 2, title: t('enums.marketing') },
+    { id: 3, title: t('enums.project_management') },
+    { id: 4, title: t('enums.business_execution') },
+    { id: 5, title: t('enums.shoghlni_service') },
+    { id: 0, title: t('enums.other') },
 ]
+const form = ref(null)
+const formData = ref({
+    fullName: '',
+    phone: '',
+    email: '',
+    serviceType: null,
+    file: null,
+    content: ''
+})
+const saveForm = async () => {
+    const {valid} = await form.value.validate()
+    console.log(valid)
+    if (valid) {
+        await applicationStore.AddNewApplication(formData.value)
+    }
+    // Logic to save form data
+}
 </script>
 <template>
    <section id="contact-us" class="bg-gray-50">
@@ -129,25 +129,33 @@ const subjects = [
             <v-col cols="12" md="6">
                <v-card class="h-100">
                 <h2 class="text-2xl font-bold mb-6 ">{{ $t("sections.contact_us.send_us_message.title") }}</h2>
-                <v-form>
+                <v-form @submit.prevent="saveForm" ref="form">
                 <div class="d-flex flex-column ga-1">
                     <div>
                         <label class="mb-2 d-block text-sm">{{ $t("sections.contact_us.send_us_message.form.full_name") }} *</label>
-                        <v-text-field :placeholder="$t('sections.contact_us.send_us_message.form.full_name_placeholder')"/>
+                        <v-text-field :placeholder="$t('sections.contact_us.send_us_message.form.full_name_placeholder')" v-model="formData.fullName" :rules="requiredField"/>
+                    </div>
+                    <div>
+                        <label class="mb-2 d-block text-sm">{{ $t("sections.contact_us.send_us_message.form.phone") }} *</label>
+                        <v-text-field :placeholder="$t('sections.contact_us.send_us_message.form.phone_placeholder')" v-model="formData.phone" :rules="requiredField"/>
                     </div>
                     <div>
                         <label class="mb-2 d-block text-sm">{{ $t("sections.contact_us.send_us_message.form.email") }} *</label>
-                        <v-text-field :placeholder="$t('sections.contact_us.send_us_message.form.email_placeholder')"/>
+                        <v-text-field :placeholder="$t('sections.contact_us.send_us_message.form.email_placeholder')" v-model="formData.email" :rules="requiredField"/>
                     </div>
                     <div>
                         <label class="mb-2 d-block text-sm">{{ $t("sections.contact_us.send_us_message.form.subject") }} *</label>
-                        <v-select :placeholder="$t('sections.contact_us.send_us_message.form.subject_placeholder')" :items="subjects" item-title="title"/>
+                        <v-select :placeholder="$t('sections.contact_us.send_us_message.form.subject_placeholder')" :items="subjects" item-title="title" item-value="id" v-model="formData.serviceType" :rules="requiredField"/>
+                    </div>
+                    <div>
+                        <label class="mb-2 d-block text-sm">{{ $t("sections.contact_us.send_us_message.form.file") }} *</label>
+                        <v-file-input :label="$t('sections.contact_us.send_us_message.form.file_placeholder')" v-model="formData.file" :rules="requiredField" prepend-icon="" append-inner-icon="mdi-paperclip" show-size  accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"/>
                     </div>
                     <div>
                         <label class="mb-2 d-block text-sm">{{ $t("sections.contact_us.send_us_message.form.message") }} *</label>
-                        <v-textarea :placeholder="$t('sections.contact_us.send_us_message.form.message_placeholder')"/>
+                        <v-textarea :placeholder="$t('sections.contact_us.send_us_message.form.message_placeholder')" v-model="formData.content" :rules="requiredField"/>
                     </div>
-                    <v-btn class="glowing-gradient-button" :text="$t('button.send_message')" size="large" append-icon="$Send" rounded="lg"/>
+                    <v-btn class="glowing-gradient-button" :text="$t('button.send_message')" size="large" append-icon="$Send" rounded="lg" type="submit"/>
                 </div>
                 
                </v-form>

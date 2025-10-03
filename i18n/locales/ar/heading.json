@@ -68,10 +68,14 @@
                 "form": {
                     "full_name": "الاسم الكامل",
                     "full_name_placeholder": "أدخل الاسم الكامل",
+                    "phone": "رقم الجوال",
+                    "phone_placeholder": "أدخل رقم الجوال",
                     "email": "البريد الإلكتروني",
                     "email_placeholder": "أدخل البريد الإلكتروني",
                     "subject": "الموضوع",
                     "subject_placeholder": "اختر الموضوع",
+                    "file": "الملف",
+                    "file_placeholder": "اختر الملف",
                     "message": "الرسالة",
                     "message_placeholder": "اكتب رسالتك هنا..."
                 }

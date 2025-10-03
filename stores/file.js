@@ -17,7 +17,7 @@ const images = ref({
     content: []
 })
 
-   async function UploadImage(payload, imageNumber) {
+   async function UploadImage(payload, imageNumber, name) {
     images.value.loading = true;
     try {
       const { data: file, error } = await useFetch(`${BaseURL}/Files/upladFiles`, {
@@ -35,6 +35,7 @@ const images = ref({
       } else {
         if (file.value.code === 0) {
             if (imageNumber) {toast.success(`تم إضافة الصورة ${imageNumber} بنجاح`);}
+            else if (name) {toast.success(`تم إضافة ${name} بنجاح`);}
             else toast.success(`تم إضافة الصورة بنجاح`);
             images.value.content.push(file.value.content);
             return file.value.content;

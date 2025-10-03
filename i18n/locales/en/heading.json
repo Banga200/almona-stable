@@ -66,10 +66,14 @@
                 "form": {
                     "full_name": "Full Name",
                     "full_name_placeholder": "Enter full name",
+                    "phone": "Phone Number",
+                    "phone_placeholder": "Enter phone number",
                     "email": "Email",
                     "email_placeholder": "Enter email",
                     "subject": "Subject",
                     "subject_placeholder": "Choose subject",
+                    "file": "File",
+                    "file_placeholder": "Choose file",
                     "message": "Message",
                     "message_placeholder": "Write your message here..."
                 }

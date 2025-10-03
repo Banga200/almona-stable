@@ -1,5 +1,10 @@
 {
     "enums": {
-        
+         "exhibition_organization": "Exhibition Organization",
+        "marketing": "Marketing",
+        "project_management": "Project Management",
+        "business_execution": "Business Execution",
+        "shoghlni_service": "Shoghlni Service",
+        "other": "Other"
     }
 }

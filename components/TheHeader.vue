@@ -5,6 +5,8 @@ import { useDisplay } from "vuetify";
 import { useRoute } from "vue-router";
 import { useUserStore } from "~/stores/auth";
 import { useSwitchLocalePath } from '#i18n'  
+import { useLocale } from 'vuetify'
+const { current } = useLocale()
 const userStore = useUserStore();
 const User = useUser();
 const { mobile } = useDisplay();
@@ -67,9 +69,9 @@ const isUser = computed(() => {
 function handleScroll(event) {
   if (route.name && route.name.toString().startsWith("Home")) {
     if (window.scrollY > 80) {
-      document.getElementById("header").classList.add("backgroundColor");
+      document.getElementById("header")?.classList.add("backgroundColor");
     } else {
-      document.getElementById("header").classList.remove("backgroundColor");
+      document.getElementById("header")?.classList.remove("backgroundColor");
     }
   }
 }
@@ -78,7 +80,7 @@ const switchLang = () => {
   const newLang = locale.value === 'ar' ? 'en' : 'ar'
   // change locale
  setLocale(newLang)
-
+  current.value = newLang
 }
 </script>
 <template>
@@ -199,7 +201,7 @@ const switchLang = () => {
                        
                             </v-bottom-navigation> -->
             <client-only>
-              <v-btn class="mr-md-15" stacked @click="() => $router.push('/')"
+              <v-btn :class="{'mr-md-15': locale === 'ar', 'ml-md-15': locale === 'en'}" stacked @click="() => $router.push('/')"
                 >{{ $t('links.home_page') }}</v-btn
               >
               <v-btn stacked @click="() => $router.push(`${locale}/#aboutus`)"

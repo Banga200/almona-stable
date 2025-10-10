@@ -20,7 +20,7 @@ const emit = defineEmits(['edit', 'delete'])
       </div>
       <p>{{ props.info.description }}</p>
       <div>
-        <h4>التخصصات:</h4>
+        <h4>{{ $t('sections.work_team.specializations') }}:</h4>
         <div class="d-flex flex-wrap justify-center ga-2 mt-2">
           <v-chip
             :text="skill.skillName"
@@ -41,7 +41,7 @@ const emit = defineEmits(['edit', 'delete'])
             <v-icon>mdi-email-outline </v-icon>
           </v-btn>
         </a>
-        <a :href="`mailto:${props.info.email}`">
+        <a :href="`tel:${props.info.phone}`">
           <v-btn icon variant="text">
             <v-icon>mdi-phone</v-icon>
           </v-btn>

@@ -48,7 +48,7 @@ const cards = computed(() => [
                     <div class="card-gradient">
                         <v-img src="/images/about-us.webp" aspect-ratio="4/3" />
                         <h1 class="text-2xl font-bold">{{ $t('heading.about_us_title') }}</h1>
-                        <p class="opacity-90">نضم طاقم من الشباب المتميز في مختلف المجالات لضمان تقديم أفضل الخدمات لعملائنا الكرام</p>
+                        <p class="opacity-90">{{ $t("paragraph.about_us_subtitle") }}</p>
                     </div>
                 </v-col>
             </v-row>

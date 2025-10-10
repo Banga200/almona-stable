@@ -5,7 +5,7 @@ const contactDetails = [
     {
         title: t("sections.contact_us.contact_info.address"),
         icon: "$MapMarker",
-        content: "اليمن، حضرموت، المكلا، شارع الجسر الصيني، عمارة بن هلابي2، الدور الثالث، شقة رقم 2",
+        content: t("address_location"),
     },
     {
         title: t("sections.contact_us.contact_info.email"),

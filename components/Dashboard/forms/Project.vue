@@ -2,6 +2,7 @@
 import { ref } from "vue";
 const emit = defineEmits(["save"]);
 const cityStore = useCityStore();
+const projectStore = useProjectStore()
 const locationStore = useLoctaionStore();
 const formRef = ref();
 const menu = ref(false);
@@ -59,16 +60,20 @@ const onDateSelected = (date) => {
   menu.value = false;
   
 };
-function formatDate(date) {
-  if (!date) return "";
-  const d = new Date(date);
-  const day = String(d.getDate()).padStart(2, "0");
-  const month = String(d.getMonth() + 1).padStart(2, "0"); // Months are 0-based
-  const year = d.getFullYear();
-  return `${day}/${month}/${year}`;
-}
-function removeDetail(index) {
+
+async function removeDetail(id,index) {
+  if (id) {
+    let confirmMessage = confirm("هل تريد حذف المرحلة ؟")
+    if (confirmMessage) {
+     await projectStore.DeleteProjectStage(id);
+     if (projectStore.success) {
+      form.value.details.splice(index, 1)
+     }
+    }
+    return
+  }
   form.value.details.splice(index, 1)
+
 }
 const addDetail = () => {
   form.value.details.push({});
@@ -225,7 +230,7 @@ defineExpose({
               <v-btn
                 icon
                 size="small"
-                @click.stop="removeDetail(index)"
+                @click.stop="removeDetail(detail.id,index)"
               v-if="form.details.length > 1">
                 <v-icon>mdi-close</v-icon>
               </v-btn>

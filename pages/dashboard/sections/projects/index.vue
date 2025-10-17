@@ -19,6 +19,7 @@ const editProject = (project) => {
     formDialog.value = true
     requestAnimationFrame(() => {
         projectForm.value.form = {...project}
+        projectForm.value.form.dateShow = formatDate(project.date)
         isEdit.value = true
     })
 }

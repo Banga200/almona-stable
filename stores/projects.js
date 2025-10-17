@@ -88,7 +88,6 @@ export const useProjectStore = defineStore("project", () => {
   let body = { ...payload }; // shallow clone to avoid mutating original
   projects.value.loading = true;
   success.value = false;
-
   try {
     let imageIds = [];
 
@@ -129,6 +128,24 @@ export const useProjectStore = defineStore("project", () => {
   }
 }
 
+ async function DeleteProjectStage(id) {
+    projects.value.loading = true;
+    success.value = false;
+    try {
+      
+        const { data, code } = await useServerAPI(`/Project/DeleteProjectDetailRange`, {
+          method: "DELETE",
+          body: [id]
+        });
+        if (data) {
+          toast.success("تم الحذف بنجاح")
+          success.value = true;
+        }
+      
+    } finally {
+      projects.value.loading = false;
+    }
+  }
  async function DeleteProject(id) {
     projects.value.loading = true;
     success.value = false;
@@ -161,6 +178,7 @@ export const useProjectStore = defineStore("project", () => {
             projectId: data.id
         }));
     }
+    let datetime = toLocalDateTime(data.date)
     let body = {
       ...(isEdit ? {"id": data.id}: {}),
       "name": data.name,
@@ -171,7 +189,7 @@ export const useProjectStore = defineStore("project", () => {
       "foreignTitle": data.foreignTitle,
       "cityId": data.cityId,
       "projectType": 2,
-      "date": new Date(data.date).toISOString(),
+      "date": datetime,
       "numberOfCompanies": data.numberOfCompanies,
       "locationId": data.locationId,
       "images": data.images,
@@ -198,6 +216,7 @@ export const useProjectStore = defineStore("project", () => {
     GetProjectById,
     EditProject,
     GetAllProjects,
-    DeleteProject 
+    DeleteProject,
+    DeleteProjectStage
   };
 });

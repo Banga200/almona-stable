@@ -137,14 +137,14 @@ const services = [
                     <v-icon icon="$MapMarker" color="primary"/>
                     <p>{{ $t("address_location") }}</p>
                 </div>
-                <div class="d-flex ga-4">
+                <a class="d-flex ga-4" :href="'mailto:' + 'info@almonaa.com'">
                     <v-icon icon="mdi-email-outline" color="primary"/>
-                    <p>info@almonaa.com</p>
-                </div>
-                <div class="d-flex ga-4">
+                    <span>info@almonaa.com</span>
+                </a>
+                <a :href="'tel:' + '783263332 00967'" class="d-flex ga-4">
                     <v-icon icon="mdi-phone" color="primary"/>
-                    <p>783263332 00967</p>
-                </div>
+                    <span>783263332 00967</span>
+                </a>
             </div>
             <h4 class="text-primary font-bold">{{ $t("subscribe_in_our_newsletter") }}</h4>
             <div class="mt-3 d-flex ga-2 align-start">

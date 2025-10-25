@@ -93,9 +93,9 @@ const switchLang = () => {
                 <v-icon size="16">mdi-email-outline</v-icon>
                 <span>info@almonaa.com</span>
               </a>
-              <a class="d-flex align-center ga-2" :href="'tel:' + '00967 383263332'">
+              <a class="d-flex align-center ga-2" :href="'tel:' + '783263332 00967'">
                 <v-icon size="16">mdi-phone</v-icon>
-                <span dir="ltr">00967 383263332</span>
+                <span >783263332 00967</span>
               </a>
             </div>
           </v-col>

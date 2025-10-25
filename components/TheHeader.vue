@@ -30,23 +30,23 @@ const routeNavs = ref([
 ]);
 const navs = ref([
   {
-    title: t("links.home_page"),
+    title: "links.home_page",
     link: "/",
   },
   {
-    title: t("links.about_us"),
+    title: "links.about_us" ,
     link: "/#aboutus",
   },
   {
-    title: t("links.our_projects"),
+    title: "links.our_projects",
     link: "/#ourProjects",
   },
   {
-    title: t("links.our_services"),
+    title: "links.our_services",
     link: "/#ourServices",
   },
   {
-    title: t("links.work_team"),
+    title: "links.work_team",
     link: "/#work-team",
   }
 ]);
@@ -123,7 +123,7 @@ const switchLang = () => {
           :href="item.link"
           color="priamry"
         >
-          {{ item.title }}
+          {{ $t(item.title) }}
         </v-list-item>
         <!-- This list is for any routing pages  -->
         <!-- <v-list-item

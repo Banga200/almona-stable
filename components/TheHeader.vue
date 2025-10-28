@@ -204,7 +204,7 @@ const switchLang = () => {
               <v-btn :class="{'mr-md-15': locale === 'ar', 'ml-md-15': locale === 'en'}" stacked @click="() => $router.push('/')"
                 >{{ $t('links.home_page') }}</v-btn
               >
-              <v-btn stacked @click="() => $router.push(`${locale}/#aboutus`)"
+              <v-btn stacked @click="() => $router.push(`/${locale}/#aboutus`)"
                 >{{ $t('links.about_us') }} </v-btn
               >
               <v-btn stacked @click="() => $router.push(`/${locale}/#ourProjects`)"

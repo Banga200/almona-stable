@@ -251,6 +251,10 @@ header .v-toolbar__content {
   color: black;
 }
 
+article {
+  padding-top: 2rem;
+}
+
 .lang-switch {
   cursor: pointer;
 }

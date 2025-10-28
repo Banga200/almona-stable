@@ -10,7 +10,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
   const token = useCookie('token').value
 
   // Determine login/register paths properly (consider i18n prefix)
-  const loginPaths = ['/login', '/register']
+  const loginPaths = ['/login', '/register', '/ar/login', '/ar/register', '/en/login', '/en/register']
   if (loginPaths.includes(to.path)) {
     if (user || token) {
       return navigateTo('/')

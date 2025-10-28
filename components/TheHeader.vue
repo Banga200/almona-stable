@@ -14,6 +14,8 @@ const drawer = ref(false);
 const bottomNavigation = ref(0);
 const route = useRoute();
 const {t, locale, setLocale} = useI18n();
+const localePath = useLocalePath()
+
 const switchLocalePath = useSwitchLocalePath()
 const routeNavs = ref([
   {
@@ -129,7 +131,7 @@ const switchLang = () => {
         <!-- <v-list-item
           v-for="item in routeNavs"
           :key="item.title"
-          :to="item.link"
+          :to="localePath(item.link)"
           color="priamry"
           :append-icon="item.icon"
         >
@@ -148,7 +150,7 @@ const switchLang = () => {
         <v-btn
           prepend-icon="mdi-account-outline"
           variant="outlined"
-          to="/login"
+          :to="`/${locale}/login`"
           rounded
           class="mr-2 mt-10"
           v-if="!isUser"
@@ -240,7 +242,7 @@ const switchLang = () => {
         <v-btn
           rounded
           variant="outlined"
-          to="/login"
+          :to="`/${locale}/login`"
           prepend-icon="mdi-account-outline"
           v-if="!isUser"
         >

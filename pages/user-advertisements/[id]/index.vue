@@ -8,6 +8,7 @@ useHead({
 });
 const page = ref(1)
 const userStore = useUserStore();
+const localePath = useLocalePath()
 const route = useRoute();
 const advertismentStore = useAdvertismentStore();
 advertismentStore.GetAllAdvertismentsByUser(route.params.id, page.value);
@@ -47,11 +48,11 @@ watch(page,() => {
               color="primary"
               append-icon="mdi-plus"
               class="ml-md-10 ml-2"
-              to="/real-estate/advertis"
+              :to="localePath('/real-estate/advertis')"
               >إضافة إعلان</v-btn
             >
             <v-btn
-              to="/real-estate/request-advertisements"
+              :to="localePath('/real-estate/request-advertisements')"
               variant="outlined"
               append-icon="mdi-arrow-left"
               >طلبات العقار</v-btn

@@ -231,7 +231,7 @@ defineExpose({
                 icon
                 size="small"
                 @click.stop="removeDetail(detail.id,index)"
-              v-if="form.details.length > 1">
+             >
                 <v-icon>mdi-close</v-icon>
               </v-btn>
             </v-expansion-panel-title>

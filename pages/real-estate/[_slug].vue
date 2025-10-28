@@ -5,6 +5,7 @@ import { useCategoryStore } from '~/stores/category';
 import { useRoute } from 'vue-router';
 const advertismentStore = useAdvertismentStore();
 const categoriesStore = useCategoryStore();
+const localePath = useLocalePath()
 const route = useRoute();
 const advertismentId = route.name === 'RealEstateRequest' ? 2 : 1
 const page = ref(1)
@@ -64,9 +65,9 @@ watch(page, (newPage) => {
                 <div v-if="Advertisments?.entities?.length === 0" class="text-center my-10">
 
                     لاتوجد إعلانات حاليا <br /><br />
-                    <v-btn color="primary" append-icon="mdi-plus" class="ml-md-10 ml-2" to="/real-estate/advertis">إضافة
+                    <v-btn color="primary" append-icon="mdi-plus" class="ml-md-10 ml-2" :to="localePath('/real-estate/advertis')">إضافة
                         إعلان</v-btn>
-                    <v-btn to="/real-estate/request-advertisements" variant="outlined" append-icon="mdi-arrow-left">طلبات
+                    <v-btn :to="localePath('/real-estate/request-advertisements')" variant="outlined" append-icon="mdi-arrow-left">طلبات
                         العقار</v-btn>
                 </div>
                 <ProgressLoading v-if="loadPage" :isLoading="loadPage" class="my-2"/>

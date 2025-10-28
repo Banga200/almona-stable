@@ -3,6 +3,7 @@ import { ref } from "vue";
 import { useUserStore } from "~/stores/auth";
 import { useDisplay } from "vuetify";
 const userStore = useUserStore();
+const localePath = useLocalePath()
 const drawer = ref(false);
 const openPasswordDialog = ref(false);
 const { mobile } = useDisplay();
@@ -91,7 +92,7 @@ function changePasswordDialogState(value) {
           <v-btn
             stacked
             prepend-icon="mdi-plus"
-            to="/real-estate/advertis"
+            :to="localePath('/real-estate/advertis')"
             v-if="!mobile"
             >إضافة إعلان</v-btn
           >
@@ -128,7 +129,7 @@ function changePasswordDialogState(value) {
                 <v-list-item
                   v-for="child in item.children"
                   :key="child.title"
-                  :to="child.link"
+                  :to="localePath(child.link)"
                   :prepend-icon="child.icon"
                   color="primary"
                   style="padding-inline: 40px !important"
@@ -140,7 +141,7 @@ function changePasswordDialogState(value) {
               <!-- If item has no children -->
               <v-list-item
                 v-else
-                :to="item.link"
+                :to="localePath(item.link)"
                 :prepend-icon="item.icon"
                 color="primary"
                 style="padding-inline: 20px !important"
@@ -161,7 +162,7 @@ function changePasswordDialogState(value) {
             </v-list-item>
 
             <v-list-item
-              to="/real-estate/advertis"
+              :to="localePath('/real-estate/advertis')"
               append-icon="mdi-plus"
               color="primary"
               style="padding-inline: 20px !important"

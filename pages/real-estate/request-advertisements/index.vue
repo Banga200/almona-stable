@@ -6,6 +6,7 @@ import { useRoute } from "vue-router";
 const advertismentStore = useAdvertismentStore();
 const categoriesStore = useCategoryStore();
 const route = useRoute();
+const localePath = useLocalePath()
 const page = ref(1);
 const advertismentId = route.name === "RealEstateRequest" ? 2 : 1;
 categoriesStore.GetAllCategories();
@@ -58,11 +59,11 @@ watch(page, (newPage) => {
             color="primary"
             append-icon="mdi-plus"
             class="ml-md-10 ml-2"
-            to="/real-estate/advertis"
+            :to="localePath('/real-estate/advertis')"
             >إضافة إعلان</v-btn
           >
           <v-btn
-            to="/real-estate/عقارات"
+            :to="localePath('/real-estate/عقارات')"
             variant="outlined"
             append-icon="mdi-arrow-left"
           >

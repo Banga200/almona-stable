@@ -141,9 +141,9 @@ const services = [
                     <v-icon icon="mdi-email-outline" color="primary"/>
                     <span>info@almonaa.com</span>
                 </a>
-                <a :href="'tel:' + '783263332 00967'" class="d-flex ga-4">
+                <a :href="'tel:' + `${companyPhone}`" class="d-flex ga-4">
                     <v-icon icon="mdi-phone" color="primary"/>
-                    <span>783263332 00967</span>
+                    <span>{{ companyPhone }}</span>
                 </a>
             </div>
             <h4 class="text-primary font-bold">{{ $t("subscribe_in_our_newsletter") }}</h4>

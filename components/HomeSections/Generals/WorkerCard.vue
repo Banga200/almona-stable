@@ -33,17 +33,19 @@ const emit = defineEmits(['edit', 'delete'])
       </div>
       <!-- Socail Media  -->
       <div class="d-flex align-center justify-center ga-2 social-media-icons">
-        <v-btn icon variant="text">
-          <v-icon icon="$Linkedin" />
-        </v-btn>
+        <a :href="props.info.contactLinks.linkedIn" target="_blank">
+          <v-btn icon variant="text">
+            <v-icon icon="$Linkedin" />
+          </v-btn>
+        </a>
         <a :href="`mailto:${props.info.email}`">
           <v-btn icon variant="text">
             <v-icon>mdi-email-outline </v-icon>
           </v-btn>
         </a>
-        <a :href="`tel:${props.info.phone}`">
+        <a :href="`tel:${props.info.phoneNumber}`">
           <v-btn icon variant="text">
-            <v-icon>mdi-phone</v-icon>
+            <v-icon>mdi-phone</v-icon>  
           </v-btn>
         </a>
       </div>

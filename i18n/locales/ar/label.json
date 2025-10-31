@@ -2,6 +2,14 @@
     "label": {
         "lang": "العربية",
         "log_in": "تسجيل الدخول",
-        "control_panel": "لوحة تحكم"
+        "control_panel": "لوحة تحكم",
+        "whatsApp": "واتساب",
+        "linkedIn": "لينكد إن",
+        "facebook": "فيسبوك",
+        "instagram": "إنستغرام",
+        "twitter": "تويتر",
+        "telegram": "تيليجرام",
+        "tikTok": "تيك توك",
+        "email": "البريد الإلكتروني"
     }
 }

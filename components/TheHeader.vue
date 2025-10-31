@@ -95,9 +95,9 @@ const switchLang = () => {
                 <v-icon size="16">mdi-email-outline</v-icon>
                 <span>info@almonaa.com</span>
               </a>
-              <a class="d-flex align-center ga-2" :href="'tel:' + '783263332 00967'">
+              <a class="d-flex align-center ga-2" :href="'tel:' + `${companyPhone}`">
                 <v-icon size="16">mdi-phone</v-icon>
-                <span >783263332 00967</span>
+                <span>{{ companyPhone }}</span>
               </a>
             </div>
           </v-col>
@@ -158,14 +158,14 @@ const switchLang = () => {
         {{ $t('label.log_in') }}
         </v-btn>
       </v-list>
-      <div class="d-flex flex-column ga-4 mt-8">
+      <div class="d-flex flex-column ga-4 mt-8 px-4">
         <a class="d-flex align-center ga-2" :href="'mailto:' + 'info@almonaa.com'" style="color: #000 !important;">
         <v-icon size="16">mdi-email-outline</v-icon>
         <span>info@almonaa.com</span>
       </a>
-      <a class="d-flex align-center ga-2" :href="'tel:' + '00967 383263332'" style="color: #000 !important;">
+      <a class="d-flex align-center ga-2" :href="'tel:' + `${companyPhone}`" style="color: #000 !important;">
         <v-icon size="16">mdi-phone</v-icon>
-        <span dir="ltr">00967 383263332</span>
+        <span >{{ companyPhone }}</span>
       </a>
       </div>
     </v-navigation-drawer>

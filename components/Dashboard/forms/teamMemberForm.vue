@@ -11,6 +11,15 @@ const form = ref({
   description: "",
   imagesIdsSerialized: "",
   images: [],
+  contactLinks: {
+    linkedIn: "",
+    facebook: "",
+    instagram: "",
+    twitter: "",
+    telegram: "",
+    tikTok: "",
+    email: ""
+  },
   skills: [
     {
       id: 0,
@@ -82,9 +91,10 @@ defineExpose({
       <v-col cols="12" md="6">
         <v-text-field
           v-model="form.email"
-          label="البريد الإلكتروني"
+          :label="$t('label.email')"
           type="email"
           required
+        :rules="[emailFormat]"
         />
       </v-col>
       <v-col cols="12" md="6">
@@ -121,6 +131,11 @@ defineExpose({
       <v-icon start>mdi-plus</v-icon> إضافة مهارة
     </v-btn>
 
+    <v-divider class="my-4" />
+    <h4 class="mb-4">روابط التواصل الاجتماعي:</h4>
+    <div class="d-flex ga-4">
+      <v-text-field v-model="form.contactLinks.linkedIn" :label="$t('label.linkedIn')" />
+    </div>
     <v-divider class="my-4" />
 
     <v-btn color="success" type="submit" class="mt-8" block>حفظ</v-btn>

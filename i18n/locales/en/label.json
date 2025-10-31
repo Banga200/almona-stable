@@ -2,6 +2,14 @@
     "label": {
         "lang": "English",
         "log_in": "Login",
-        "control_panel": "Control Panel"
+        "control_panel": "Control Panel",
+        "whatsApp": "WhatsApp",
+        "linkedIn": "LinkedIn",
+        "facebook": "Facebook",
+        "instagram": "Instagram",
+        "twitter": "Twitter",
+        "telegram": "Telegram",
+        "tikTok": "TikTok",
+        "email": "Email"
     }
 }

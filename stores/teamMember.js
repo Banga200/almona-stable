@@ -162,6 +162,10 @@ export const useTeamMemberstore = defineStore("teamMember", () => {
     description: data.description,
     imagesIdsSerialized: data.imagesIdsSerialized,
     images: data.images,
+    contactLinks: {
+      linkedIn: data.contactLinks.linkedIn,
+    },
+    teamMemberType: 2, // 2 for team members
     skills: (data.skills || []).filter(skill =>
       skill &&
       Object.keys(skill).length > 0 &&

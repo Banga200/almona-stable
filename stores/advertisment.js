@@ -14,7 +14,7 @@ export const useAdvertismentStore = defineStore("Advertisment", () => {
   const userStore = useUserStore();
   const BaseURL = runtimeConfig.public.apiBase;
   const toast = useToast();
-  const ComposableError = useError();
+  const ComposableError = useErrorHandle();
   const router = useRouter();
   const { token } = useUser();
   // States

@@ -11,7 +11,7 @@ export const useFileStore = defineStore("file", () => {
   const userStore = useUserStore();
   const BaseURL = runtimeConfig.public.apiBase;
   const toast = useToast();
-  const ComposableError = useError();
+  const ComposableError = useErrorHandle();
 const images = ref({
     loading: false,
     content: []

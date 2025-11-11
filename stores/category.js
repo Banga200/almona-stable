@@ -12,7 +12,7 @@ export const useCategoryStore = defineStore('Category', () => {
   const runtimeConfig = useRuntimeConfig();
 
   const BaseURL = runtimeConfig.public.apiBase;
-  const ComposableError = useError()
+  const ComposableError = useErrorHandle()
   // States 
   // Holds All Advertisment
   const Categories = ref([]);

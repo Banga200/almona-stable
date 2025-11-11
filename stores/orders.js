@@ -5,7 +5,7 @@ import { useToast } from "vue-toastification";
 export const useOrdersStore = defineStore('Orders', () => {
     const runtimeConfig = useRuntimeConfig();
     const userStore = useUserStore();
-    const ComposableError = useError();
+    const ComposableError = useErrorHandle();
     const BaseURL = runtimeConfig.public.apiBase;
     const toast = useToast();
     // States 

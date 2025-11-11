@@ -3,7 +3,7 @@ import { useUserStore } from '~/stores/auth';
 
 export const useServerAPI = async (request, opts = {}) => {
   const userStore = useUserStore();
-const ComposableError = useError();
+const ComposableError = useErrorHandle();
   const runtimeConfig = useRuntimeConfig();
   const BaseURL = runtimeConfig.public.apiBase;
 

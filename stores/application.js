@@ -2,7 +2,7 @@ import { useToast } from "vue-toastification";
 
 export const useApplicationStore = defineStore("Application", () => {
   const toast = useToast();
-  const ComposableError = useError();
+  const ComposableError = useErrorHandle();
   const fileStore = useFileStore();
   const applications = ref({
     loading: false,

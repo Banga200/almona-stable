@@ -10,7 +10,7 @@ export const useUserStore = defineStore('User', () => {
     const router = useRouter()
     const route = useRoute();
     const toast = useToast();
-    const ComposableError = useError()
+    const ComposableError = useErrorHandle()
     // States 
     const User = ref(null);
     const UserList = ref([])

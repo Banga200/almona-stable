@@ -2,7 +2,7 @@ import { useToast } from "vue-toastification";
 
 export const useLoctaionStore = defineStore("location", () => {
   const toast = useToast();
-  const ComposableError = useError();
+  const ComposableError = useErrorHandle();
   const fileStore = useFileStore();
   const locations = ref({
     loading: false,

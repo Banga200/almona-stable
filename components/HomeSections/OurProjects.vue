@@ -29,21 +29,19 @@ const projectStore = useProjectStore()
         <p class="text-xl">
           {{ $t('sections.our_projects.ongoing_projects') }}
         </p>
-        <div class="grid-cols-3 ga-6">
-          <div class="background-transparent pa-4 px-16  rounded-lg text-center">
-            <h4 class="font-bold">معرض الطاقة المتجددة</h4>
-            <p class="text-center text-sm">قريباً في 2025</p>
+        <div class="grid-cols-2 ga-6">
+          <div class="background-transparent pa-4 px-16 rounded-lg text-center">
+            <h4 class="font-bold">{{ $t('expos.one.title') }}</h4>
           </div>
 
-          <div class="background-transparent pa-4 px-16  rounded-lg text-center">
-            <h4 class="font-bold">معرض الصحة والجمال</h4>
-            <p class="text-center text-sm">الربع الثاني 2025</p>
+          <div class="background-transparent pa-4 px-16 rounded-lg text-center">
+            <h4 class="font-bold">{{ $t('expos.two.title') }}</h4>
           </div>
 
-          <div class="background-transparent pa-4 px-16  rounded-lg text-center">
-            <h4 class="font-bold">معرض التعليم والتدريب</h4>
-            <p class="text-center text-sm">النصف الثاني 2025</p>
-          </div>
+          <!-- <div class="background-transparent pa-4 px-16 rounded-lg text-center">
+            <h4 class="font-bold">{{ $t('expos.education.title') }}</h4>
+            <p class="text-center text-sm">{{ $t('expos.education.date') }}</p>
+          </div> -->
         </div>
       </div>
     </v-container>

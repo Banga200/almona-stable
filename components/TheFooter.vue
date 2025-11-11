@@ -143,7 +143,7 @@ const services = [
                 </a>
                 <a :href="'tel:' + `${companyPhone}`" class="d-flex ga-4">
                     <v-icon icon="mdi-phone" color="primary"/>
-                    <span>{{ companyPhone }}</span>
+                    <span dir="ltr">{{ companyPhone }}</span>
                 </a>
             </div>
             <h4 class="text-primary font-bold">{{ $t("subscribe_in_our_newsletter") }}</h4>

@@ -1,4 +1,4 @@
-export let companyPhone = "783263332"
+export let companyPhone = "+967783263332"
 export const chunkArray = (array, size) => {
   const result = []
   for (let i = 0; i < array.length; i += size) {

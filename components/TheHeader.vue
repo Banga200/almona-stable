@@ -97,7 +97,7 @@ const switchLang = () => {
               </a>
               <a class="d-flex align-center ga-2" :href="'tel:' + `${companyPhone}`">
                 <v-icon size="16">mdi-phone</v-icon>
-                <span>{{ companyPhone }}</span>
+                <span dir="ltr">{{ companyPhone }}</span>
               </a>
             </div>
           </v-col>
@@ -165,7 +165,7 @@ const switchLang = () => {
       </a>
       <a class="d-flex align-center ga-2" :href="'tel:' + `${companyPhone}`" style="color: #000 !important;">
         <v-icon size="16">mdi-phone</v-icon>
-        <span >{{ companyPhone }}</span>
+        <span dir="ltr">{{ companyPhone }}</span>
       </a>
       </div>
     </v-navigation-drawer>

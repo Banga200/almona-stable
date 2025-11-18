@@ -111,7 +111,7 @@ const saveForm = async () => {
                         
                     </div>
                 </v-card>
-                <div class="card-gradient">
+                <!-- <div class="card-gradient">
                     <h2 class="text-2xl font-bold">{{ $t("sections.contact_us.special_services") }}</h2>
                     <div>
                         <h4 class=mb-2>{{ $t("sections.contact_us.participant_control_panel") }}</h4>
@@ -124,7 +124,7 @@ const saveForm = async () => {
                             <v-btn :text="$t('button.register_as_training_institution')" variant="tonal" class="white" block/>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </v-col>
             <v-col cols="12" md="6">
                <v-card class="h-100">

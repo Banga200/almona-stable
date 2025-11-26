@@ -54,7 +54,24 @@ const save = async () => {
 };
 defineExpose({
    setFormData(data) {
-    form.value = { ...data }
+    const defaultLinks = {
+      linkedIn: "",
+      facebook: "",
+      instagram: "",
+      twitter: "",
+      telegram: "",
+      tikTok: "",
+      email: ""
+    };
+
+    form.value = {
+      ...form.value,   // keep default structure
+      ...data,         // overwrite with API data
+      contactLinks: {
+        ...defaultLinks,
+        ...(data.contactLinks ?? {}) // fill only available values
+      },
+    }
   }
 });
 </script>
@@ -134,7 +151,7 @@ defineExpose({
     <v-divider class="my-4" />
     <h4 class="mb-4">روابط التواصل الاجتماعي:</h4>
     <div class="d-flex ga-4">
-      <v-text-field v-model="form.contactLinks?.linkedIn" :label="$t('label.linkedIn')" />
+      <v-text-field v-model="form.contactLinks.linkedIn" :label="$t('label.linkedIn')" />
     </div>
     <v-divider class="my-4" />
 

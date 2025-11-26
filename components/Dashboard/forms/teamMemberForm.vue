@@ -134,7 +134,7 @@ defineExpose({
     <v-divider class="my-4" />
     <h4 class="mb-4">روابط التواصل الاجتماعي:</h4>
     <div class="d-flex ga-4">
-      <v-text-field v-model="form.contactLinks.linkedIn" :label="$t('label.linkedIn')" />
+      <v-text-field v-model="form.contactLinks?.linkedIn" :label="$t('label.linkedIn')" />
     </div>
     <v-divider class="my-4" />
 
